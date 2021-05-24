@@ -28,10 +28,10 @@ public class Const {
 
 
         //PLATFORM
-        public static final int PLATFORM_WIDTH = 70;
-        public static final int PLATFORM_HEIGHT = 14;
+        public static final int PLATFORM_WIDTH = 60;
+        public static final int PLATFORM_HEIGHT = 12;
         public static final double PLATFORM_V = DOODLER_V0_Y;
-        public static final double[] LAYER_HEIGHT = {PLATFORM_HEIGHT + 36};
+        public static final double[] LAYER_HEIGHT = {PLATFORM_HEIGHT + 36, PLATFORM_HEIGHT + 86};
         public static final int LOWER_PLATFORM_OFFSET = STAGE_HEIGHT - 100;
 
 

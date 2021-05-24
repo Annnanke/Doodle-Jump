@@ -1,6 +1,7 @@
 package Main;
 
 import Basics.Const;
+import Basics.Layer;
 import Models.Doodler;
 import Models.Platform;
 import javafx.animation.AnimationTimer;
@@ -18,7 +19,8 @@ public class Game extends Pane {
     private boolean moving_left, moving_right, isRunning;
     private Doodler player;
     private Scene scene = new Scene(new Pane());
-    private ArrayList<Platform> platforms;
+    public AnimationTimer timer;
+    //private ArrayList<Layer> layers;
     private ImageView background;
 
     public Game(int lvl){
@@ -26,6 +28,8 @@ public class Game extends Pane {
         this.lvl = lvl;
         init();
     }
+
+    public Game(){lvl = 1;}
 
     private void init(){
         setWidth(Const.STAGE_WIDTH);
@@ -38,13 +42,13 @@ public class Game extends Pane {
         background = new ImageView(Const.BACKGROUND);
         add(background);
 
-        platforms = new ArrayList<>();
+        Layer.setRoot(this);
 
         player = new Doodler((Const.STAGE_WIDTH - Const.DOODLER_WIDTH)/2,Const.LOWER_PLATFORM_OFFSET - Const.DOODLER_HEIGHT, this);
 
         generatePlatforms();
 
-        AnimationTimer timer = new AnimationTimer() {
+        timer = new AnimationTimer() {
             @Override
             public void handle(long l) {update();}
         };
@@ -56,8 +60,7 @@ public class Game extends Pane {
         doodlersMovement();
         platformsMovement();
         checkForCollision();
-        Platform.generateWhenPassed(lvl - 1);
-
+        Layer.generateWhenPassed();
     }
 
     public void setScene(Scene scene) {
@@ -86,48 +89,26 @@ public class Game extends Pane {
     }
 
     private void generatePlatforms(){
-  /*
-        double half_delta = (Const.LAYER_HEIGHT[lvl - 1] - Const.PLATFORM_HEIGHT)/2;
-        for(double start = Const.STAGE_HEIGHT - Const.LAYER_HEIGHT[lvl - 1]; start >= 0; start -= Const.LAYER_HEIGHT[lvl - 1])
-            add(new Platform(new Random().nextInt(Const.STAGE_WIDTH - Const.PLATFORM_WIDTH), start + half_delta, this));
-*/
-        double half_delta = (Const.LAYER_HEIGHT[lvl - 1] - Const.PLATFORM_HEIGHT)/2;
         int N = (int) (Const.STAGE_HEIGHT / Const.LAYER_HEIGHT[lvl - 1]);
-        for (int i = N; i >= 0; i--) {
-            add(new Platform(new Random().nextInt(Const.STAGE_WIDTH - Const.PLATFORM_WIDTH),
-                    (i - 1) * Const.LAYER_HEIGHT[lvl - 1] + half_delta, this));
-
-
-        }
-    }
-
-    public ArrayList<Platform> getPlatforms(){
-        return platforms;
+        for (int i = N; i >= 0; i--) new Layer((i - 1) * Const.LAYER_HEIGHT[lvl - 1]);
     }
 
     public void add(ImageView im){
         if(!getChildren().contains(im)) getChildren().add(im);
-        if(im.getClass() == Platform.class) platforms.add((Platform) im);
     }
 
-    public void remove(ImageView im){
-        if(getChildren().contains(im)) getChildren().remove(im);
-        if(im.getClass() == Platform.class) platforms.remove((Platform) im);
-    }
 
     private void checkForCollision(){
-        for (Platform p : platforms) {
+        for (Layer p : Layer.all) {
             if (
                     player.getDetector().getBoundsInParent().intersects(p.getDetector().getBoundsInParent())
-                            //TODO better intersection
-           // player.getDetector().intersection(p.getDetector())
                             && player.getSpeed_y() < 0
                             && player.isMoving()
             ) {
             player.setSpeed_y(Const.DOODLER_V0_Y);
-            if(p.getTranslateY() < Const.LOWER_PLATFORM_OFFSET) {
+            if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
                 p.setPivot(true);
-                landing = p.getTranslateY() - Const.DOODLER_HEIGHT;
+                landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
             }
         }
         }
@@ -140,18 +121,19 @@ public class Game extends Pane {
     }
 
     private void platformsMovement(){
-        if(hasPivot()) {
+        if(Layer.hasPivot()) {
             player.setTranslateY(landing);
             player.setMoving(false);
         } else player.setMoving(true);
-        for (Platform moving_platform : platforms) moving_platform.moveDown(lvl - 1);
+        //for (Layer moving_platform : layers) moving_platform.moveDown(lvl - 1);
+        Layer.move();
     }
 
-    public boolean hasPivot(){
-        for(Platform p : platforms) if(p.isPivot()) return true;
-        return false;
-    }
 
+
+    public int getLvl() {
+        return lvl;
+    }
 
     private double landing;
 }

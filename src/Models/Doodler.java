@@ -10,15 +10,12 @@ import javafx.scene.shape.Rectangle;
 
 public class Doodler extends ImageView {
 
-    private double x, y;
     private double speed_x, speed_y;
     private Detector detector;
     private boolean moving = true;
 
     public Doodler(double x, double y, Game root) {
         super(Const.CAT_NORMAL);
-        this.x = x;
-        this.y = y;
         setTranslateX(x);
         setTranslateY(y);
         detector = new Detector((int)(x + getImage().getWidth()/3), (int)(y + Const.DOODLER_HEIGHT - 7), (int)(getImage().getWidth() * 0.5), this);
