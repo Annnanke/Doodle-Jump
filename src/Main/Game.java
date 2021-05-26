@@ -1,6 +1,7 @@
 package Main;
 
 import Basics.Const;
+import Basics.Generator;
 import Basics.Layer;
 import Models.Doodler;
 import Models.Platform;
@@ -15,12 +16,11 @@ import java.util.Random;
 
 public class Game extends Pane {
 
-    private int lvl;
+    private static int lvl;
     private boolean moving_left, moving_right, isRunning;
     private Doodler player;
     private Scene scene = new Scene(new Pane());
     public AnimationTimer timer;
-    //private ArrayList<Layer> layers;
     private ImageView background;
 
     public Game(int lvl){
@@ -46,7 +46,7 @@ public class Game extends Pane {
 
         player = new Doodler((Const.STAGE_WIDTH - Const.DOODLER_WIDTH)/2,Const.LOWER_PLATFORM_OFFSET - Const.DOODLER_HEIGHT, this);
 
-        generatePlatforms();
+        Generator.generatePlatforms();
 
         timer = new AnimationTimer() {
             @Override
@@ -88,10 +88,7 @@ public class Game extends Pane {
         });
     }
 
-    private void generatePlatforms(){
-        int N = (int) (Const.STAGE_HEIGHT / Const.LAYER_HEIGHT[lvl - 1]);
-        for (int i = N; i >= 0; i--) new Layer((i - 1) * Const.LAYER_HEIGHT[lvl - 1]);
-    }
+
 
     public void add(ImageView im){
         if(!getChildren().contains(im)) getChildren().add(im);
@@ -131,7 +128,7 @@ public class Game extends Pane {
 
 
 
-    public int getLvl() {
+    public static int getLvl() {
         return lvl;
     }
 

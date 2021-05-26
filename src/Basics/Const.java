@@ -21,6 +21,7 @@ public class Const {
         public static final double DOODLER_V0_Y = 15;
         public static final double PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_RIGHT = 0.7;
         public static final double PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_LEFT = 1 - PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_RIGHT;
+        public static final double DOODLER_HEIGHT_OF_JUMP = -DOODLER_V0_Y * DOODLER_V0_Y / (2 * GRAVITY);
 
         //DETECTORS
         public static final double DETECTOR_OPACITY = 0;
@@ -45,6 +46,12 @@ public class Const {
                 DOODLER_WIDTH, DOODLER_HEIGHT, true, true);
 
         public static final Image PLATFORM_1 = new Image(new File("src/Images/platform1.png").toURI().toString()
+                ,PLATFORM_WIDTH, PLATFORM_HEIGHT, true, true);
+
+        public static final Image PLATFORM_1_BROKEN = new Image(new File("src/Images/platform1_broken.png").toURI().toString()
+                ,PLATFORM_WIDTH, PLATFORM_HEIGHT, true, true);
+
+        public static final Image TRAMPOLINE = new Image(new File("src/Images/trampoline.png").toURI().toString()
                 ,PLATFORM_WIDTH, PLATFORM_HEIGHT, true, true);
 
         public static final Image BACKGROUND = new Image(new File("src/Images/background.jpg").toURI().toString());

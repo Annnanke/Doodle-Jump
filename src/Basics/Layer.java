@@ -18,7 +18,7 @@ public class Layer {
 
     public Layer(double y){
         this.y = y;
-        p = new Platform(new Random().nextInt(Const.STAGE_WIDTH - Const.PLATFORM_WIDTH), y + offset, root);
+        p = Generator.nextPlatform(y + offset);
         all.add(this);
         if(top == null) top = this;
         else if(top.getY() > getY()) top = this;
@@ -79,6 +79,9 @@ public class Layer {
         return top;
     }
 
+    public static Game getRoot() {
+        return root;
+    }
 
     public static Layer getPivot(){
         for(Layer l : all) if(l.isPivot()) return l;
@@ -92,6 +95,11 @@ public class Layer {
     public boolean isPivot() {
         return pivot;
     }
+
+    public static ArrayList<Layer> getAll() {
+        return all;
+    }
+
 
     public void setPivot(boolean pivot) {
         this.pivot = pivot;
