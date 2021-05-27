@@ -106,24 +106,37 @@ public class Game extends Pane {
                             && player.isMoving()
             ) {
                 switch (p.getPlatform().getType()){
-                    case Platform.DEFAULT:
+//                    case Platform.DEFAULT:
+//                        player.setSpeed_y(Const.DOODLER_V0_Y);
+//                        if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
+//                            p.setPivot(true);
+//                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+//                        }
+//                        break;
+//                    case Platform.MOVING:
+//                        player.setSpeed_y(Const.DOODLER_V0_Y);
+//                        if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
+//                            p.setPivot(true);
+//                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+//                        }
+//                        break;
+//                    case Platform.TRAMPOLINE:
+//                        //TODO change for trampoline jump
+//                        trampolineJump(p);
+//                        break;
+                    default:
                         player.setSpeed_y(Const.DOODLER_V0_Y);
                         if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
                             p.setPivot(true);
                             landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
                         }
                         break;
-                    case Platform.MOVING:
-                        System.out.println(3);
-                        player.setSpeed_y(Const.DOODLER_V0_Y);
-                        if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
+                    case Platform.TRAMPOLINE :
+                        player.setSpeed_y(Const.TRAMPOLINE_V_0);
+                        //if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
                             p.setPivot(true);
                             landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
-                        }
-                        break;
-                    case Platform.TRAMPOLINE:
-                        //TODO change for trampoline jump
-                        trampolineJump(p);
+                       // }
                         break;
                     case Platform.CRACKED:
                         p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN);
@@ -135,11 +148,7 @@ public class Game extends Pane {
     }
 
     private void trampolineJump(Layer l){
-        player.setSpeed_y(Const.DOODLER_V0_Y);
-        if(l.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
-            l.setPivot(true);
-            landing = l.getPlatformY() - Const.DOODLER_HEIGHT;
-        }
+
     }
 
     private void doodlersMovement(){
@@ -160,10 +169,12 @@ public class Game extends Pane {
         Layer.move();
     }
 
-
-
     public static int getLvl() {
         return lvl;
+    }
+
+    public Doodler getPlayer() {
+        return player;
     }
 
     private double landing;

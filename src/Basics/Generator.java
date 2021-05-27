@@ -24,7 +24,7 @@ public class Generator {
     public static int nextType(double y){
         int type = randomiseForType(1 );//all except for cracked
         for(Layer l : all)
-            if(Math.abs(l.getPlatformY() - y) < Const.DOODLER_HEIGHT_OF_JUMP) type = randomiseForType(1); //all
+            if(Math.abs(l.getPlatformY() - Const.PLATFORM_HEIGHT - y) < Const.DOODLER_HEIGHT_OF_JUMP) type = randomiseForType(1); //all
             return type;
     }
 
