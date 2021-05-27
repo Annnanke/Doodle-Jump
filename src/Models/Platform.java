@@ -5,11 +5,14 @@ import Basics.Layer;
 import Main.Game;
 import javafx.scene.image.ImageView;
 
+import java.util.Random;
+
 public class Platform extends ImageView {
 
     private static Game root;
     private Detector detector;
     private int type, crackedCounter = 0;
+    private double horizontal_speed = Const.HORIZONTAL_SPEED * Math.pow(-1, new Random().nextInt());
 
     public Platform(double x, double y, int type, Game root) {
         super();
@@ -52,7 +55,18 @@ public class Platform extends ImageView {
     }
 
     public void disposeOfPostCracked(){
-        if(++crackedCounter > Const.POST_CRACKED_TIME_OF_EΧΙSTENCE) setImage(null);
+        if(++crackedCounter > Const.POST_CRACKED_TIME_OF_LIFE) setImage(null);
+    }
+
+    public static void moveAllMovingHorizontally(){
+        for(Layer l : Layer.getAll())
+            if(l.getPlatform().getType() == MOVING) {
+                if(l.getPlatform().getTranslateX() + Const.PLATFORM_WIDTH + l.getPlatform().horizontal_speed > Const.STAGE_WIDTH ||
+                   l.getPlatform().getTranslateX() + l.getPlatform().horizontal_speed < 0 ) l.getPlatform().horizontal_speed *= -1;
+                l.getPlatform().setTranslateX(l.getPlatform().getTranslateX() + l.getPlatform().horizontal_speed);
+            }
+
+
     }
 
     public void moveDetector(){

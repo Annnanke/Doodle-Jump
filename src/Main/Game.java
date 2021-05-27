@@ -114,6 +114,7 @@ public class Game extends Pane {
                         }
                         break;
                     case Platform.MOVING:
+                        System.out.println(3);
                         player.setSpeed_y(Const.DOODLER_V0_Y);
                         if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
                             p.setPivot(true);
@@ -126,7 +127,6 @@ public class Game extends Pane {
                         if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
                             p.setPivot(true);
                             landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
-
                         }
                         break;
                     case Platform.CRACKED:
@@ -145,11 +145,14 @@ public class Game extends Pane {
     }
 
     private void platformsMovement(){
+        //horizontal movement
+        Platform.moveAllMovingHorizontally();
+
+        //vertical movement
         if(Layer.hasPivot()) {
             player.setTranslateY(landing);
             player.setMoving(false);
         } else player.setMoving(true);
-        //for (Layer moving_platform : layers) moving_platform.moveDown(lvl - 1);
         Layer.move();
     }
 

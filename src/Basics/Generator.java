@@ -18,9 +18,6 @@ public class Generator {
     }
 
     public static Platform nextPlatform(double y){
-//        int type = new Random().nextInt(Platform.CRACKED);
-//        for(Layer l : all)
-//            if(Math.abs(l.getPlatformY() - y) < Const.DOODLER_HEIGHT_OF_JUMP) type = new Random().nextInt(Platform.CRACKED + 1);
         return new Platform(new Random().nextInt(Const.STAGE_WIDTH - Const.PLATFORM_WIDTH), y, nextType(y), root);
     }
 
@@ -31,23 +28,16 @@ public class Generator {
             return type;
     }
 
-    //TODO alter
+
     public static int randomiseForType(double upper_bound){
         double prob = Math.random() * upper_bound;
-        System.out.println(prob);
-        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[0]) {
-            System.out.println(0);
-            return 0;
-        }
-        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[0] + Const.PROBABILITIES_OF_PLATFORM_TYPES[1]) {
-            System.out.println(1);
-            return 1;
-        }
-        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[0] + Const.PROBABILITIES_OF_PLATFORM_TYPES[1] + Const.PROBABILITIES_OF_PLATFORM_TYPES[2]) {
-            System.out.println(2);
-            return 2;
-        }
-        System.out.println(3);
+
+        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[0]) return 0;
+
+        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[0] + Const.PROBABILITIES_OF_PLATFORM_TYPES[1]) return 1;
+
+        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[0] + Const.PROBABILITIES_OF_PLATFORM_TYPES[1] + Const.PROBABILITIES_OF_PLATFORM_TYPES[2]) return 2;
+
         return 3;
     }
 }
