@@ -30,7 +30,7 @@ public class Layer {
     public static void move(){
         if(!hasPivot()) return;
         Layer pivot = getPivot();
-        if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET) moveOnce();
+        if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) moveOnce();
          else {
             shift(Const.LOWER_PLATFORM_OFFSET - pivot.getY());
             pivot.setPivot(false);

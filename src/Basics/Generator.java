@@ -32,11 +32,14 @@ public class Generator {
     public static int randomiseForType(double upper_bound){
         double prob = Math.random() * upper_bound;
 
-        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[0]) return 0;
+        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][0]) return 0;
 
-        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[0] + Const.PROBABILITIES_OF_PLATFORM_TYPES[1]) return 1;
+        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][0] +
+                  Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][1]) return 1;
 
-        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[0] + Const.PROBABILITIES_OF_PLATFORM_TYPES[1] + Const.PROBABILITIES_OF_PLATFORM_TYPES[2]) return 2;
+        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][0] +
+                  Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][1] +
+                  Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][2]) return 2;
 
         return 3;
     }

@@ -12,13 +12,14 @@ public class Platform extends ImageView {
     private static Game root;
     private Detector detector;
     private int type, crackedCounter = 0;
-    private double horizontal_speed = Const.HORIZONTAL_SPEED * Math.pow(-1, new Random().nextInt());
+    private double horizontal_speed;
 
     public Platform(double x, double y, int type, Game root) {
         super();
         setType(type);
         this.root = root;
         this.type = type;
+        horizontal_speed = Const.HORIZONTAL_SPEED[Game.getLvl() - 1] * Math.pow(-1, new Random().nextInt());
         detector = new Detector((x), (y), (getImage().getWidth()), this);
         root.getChildren().add(detector);
         setTranslateX(x);
