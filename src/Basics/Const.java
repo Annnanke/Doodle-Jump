@@ -34,7 +34,7 @@ public class Const {
         public static final double PLATFORM_V = DOODLER_V0_Y;
         public static final double[] LAYER_HEIGHT = {PLATFORM_HEIGHT + 36, PLATFORM_HEIGHT + 86};
         public static final int LOWER_PLATFORM_OFFSET = STAGE_HEIGHT - 100;
-
+        public static final double[] PROBABILITIES_OF_PLATFORM_TYPES = {0.5, 0.25, 0.05, 0.2}; //{DEFAULT, MOVING, TRAMPOLINE, CRACKED}
 
 
 
@@ -50,6 +50,9 @@ public class Const {
 
         public static final Image PLATFORM_1_BROKEN = new Image(new File("src/Images/platform1_broken.png").toURI().toString()
                 ,PLATFORM_WIDTH, PLATFORM_HEIGHT, true, true);
+
+        public static final Image PLATFORM_1_POST_BROKEN = new Image(new File("src/Images/post_brokenpallet1.png").toURI().toString()
+                ,100, 37, true, true);
 
         public static final Image TRAMPOLINE = new Image(new File("src/Images/trampoline.png").toURI().toString()
                 ,PLATFORM_WIDTH, PLATFORM_HEIGHT, true, true);

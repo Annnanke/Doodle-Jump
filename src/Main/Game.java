@@ -102,11 +102,35 @@ public class Game extends Pane {
                             && player.getSpeed_y() < 0
                             && player.isMoving()
             ) {
-            player.setSpeed_y(Const.DOODLER_V0_Y);
-            if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
-                p.setPivot(true);
-                landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
-            }
+                switch (p.getPlatform().getType()){
+                    case Platform.DEFAULT:
+                        player.setSpeed_y(Const.DOODLER_V0_Y);
+                        if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
+                            p.setPivot(true);
+                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+                        }
+                        break;
+                    case Platform.MOVING:
+                        player.setSpeed_y(Const.DOODLER_V0_Y);
+                        if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
+                            p.setPivot(true);
+                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+                        }
+                        break;
+                    case Platform.TRAMPOLINE:
+                        //TODO change for trampoline jump
+                        player.setSpeed_y(Const.DOODLER_V0_Y);
+                        if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
+                            p.setPivot(true);
+                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+
+                        }
+                        break;
+                    case Platform.CRACKED:
+                        p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN);
+                        break;
+                }
+
         }
         }
     }

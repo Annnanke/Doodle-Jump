@@ -38,10 +38,10 @@ public class Layer {
     }
 
     public static void generateWhenPassed(){
-        System.out.println(top.getY());
         for(Layer l : all)
             if(l.getY() >= Const.STAGE_HEIGHT) {
                 l.setY(getTop().getY() - Const.LAYER_HEIGHT[root.getLvl() - 1]);
+                l.getPlatform().setType(Generator.nextType(l.getPlatformY()));
                 top = l;
             }
     }
@@ -73,6 +73,10 @@ public class Layer {
 
     public double getPlatformY(){
         return p.getTranslateY();
+    }
+
+    public Platform getPlatform() {
+        return p;
     }
 
     public static Layer getTop(){

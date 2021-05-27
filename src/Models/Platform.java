@@ -12,6 +12,22 @@ public class Platform extends ImageView {
 
     public Platform(double x, double y, int type, Game root) {
         super();
+        setType(type);
+        this.root = root;
+        this.type = type;
+        detector = new Detector((x), (y), (getImage().getWidth()), this);
+        root.getChildren().add(detector);
+        setTranslateX(x);
+        setTranslateY(y);
+        root.getChildren().add(this);
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
         switch (type){
             case 0 :
                 setImage(Const.PLATFORM_1);
@@ -26,17 +42,6 @@ public class Platform extends ImageView {
                 setImage(Const.PLATFORM_1_BROKEN);
                 break;
         }
-        this.root = root;
-        this.type = type;
-        detector = new Detector((x), (y), (getImage().getWidth()), this);
-        root.getChildren().add(detector);
-        setTranslateX(x);
-        setTranslateY(y);
-        root.getChildren().add(this);
-    }
-
-    public int getType() {
-        return type;
     }
 
     public void moveDetector(){
@@ -49,10 +54,10 @@ public class Platform extends ImageView {
         return detector;
     }
 
-    public static final int DEFAULT = 0;
-    public static final int MOVING = 1;
-    public static final int TRAMPOLINE = 2;
-    public static final int CRACKED = 3; // must always be the last
+    public static final int DEFAULT = 0;//---50%
+    public static final int MOVING = 1;//---20%
+    public static final int TRAMPOLINE = 2;//---10%
+    public static final int CRACKED = 3; // must always be the last ---20%
 
 
 }
