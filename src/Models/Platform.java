@@ -1,6 +1,7 @@
 package Models;
 import Basics.Const;
 import Basics.Detector;
+import Basics.Layer;
 import Main.Game;
 import javafx.scene.image.ImageView;
 
@@ -8,7 +9,7 @@ public class Platform extends ImageView {
 
     private static Game root;
     private Detector detector;
-    private int type;
+    private int type, crackedCounter = 0;
 
     public Platform(double x, double y, int type, Game root) {
         super();
@@ -42,6 +43,16 @@ public class Platform extends ImageView {
                 setImage(Const.PLATFORM_1_BROKEN);
                 break;
         }
+    }
+
+    public static void removePostCracked(){
+        for(Layer l : Layer.getAll())
+        if(l.getPlatform().getType() == CRACKED && l.getPlatform().getImage() == Const.PLATFORM_1_POST_BROKEN)
+            l.getPlatform().disposeOfPostCracked();
+    }
+
+    public void disposeOfPostCracked(){
+        if(++crackedCounter > Const.POST_CRACKED_TIME_OF_EΧΙSTENCE) setImage(null);
     }
 
     public void moveDetector(){

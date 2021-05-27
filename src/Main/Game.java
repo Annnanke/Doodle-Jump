@@ -61,6 +61,7 @@ public class Game extends Pane {
         platformsMovement();
         checkForCollision();
         Layer.generateWhenPassed();
+        removeDead();
     }
 
     public void setScene(Scene scene) {
@@ -88,7 +89,9 @@ public class Game extends Pane {
         });
     }
 
-
+    private void removeDead(){
+        Platform.removePostCracked();
+    }
 
     public void add(ImageView im){
         if(!getChildren().contains(im)) getChildren().add(im);

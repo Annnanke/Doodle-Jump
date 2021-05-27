@@ -35,7 +35,7 @@ public class Const {
         public static final double[] LAYER_HEIGHT = {PLATFORM_HEIGHT + 36, PLATFORM_HEIGHT + 86};
         public static final int LOWER_PLATFORM_OFFSET = STAGE_HEIGHT - 100;
         public static final double[] PROBABILITIES_OF_PLATFORM_TYPES = {0.5, 0.25, 0.05, 0.2}; //{DEFAULT, MOVING, TRAMPOLINE, CRACKED}
-
+        public static final int POST_CRACKED_TIME_OF_EΧΙSTENCE = 30;
 
 
         //IMAGES
