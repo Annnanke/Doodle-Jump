@@ -2,10 +2,8 @@ package Basics;
 
 import Main.Game;
 import Models.Platform;
-import javafx.scene.image.Image;
 import javafx.scene.shape.Line;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Layer {
     private Platform p;
@@ -29,19 +27,35 @@ public class Layer {
         root.getChildren().add(visualiser);
     }
 
-//    private boolean hasTwoPivots(){
-//
-//    }
-
     public static void move(){
 
         if(!hasPivot()) return;
         Layer pivot = getPivot();
-        switch (pivot.getPlatform().getType()){
+
+        //if type of pivot is changed and it's no longer accepted as pretype-pivot (esp. trampoline)
+        if(pivot.isModified()){
+            switch (pivot.getPretype()){
+
+                case Platform.TRAMPOLINE :
+                    if(trampoline_height < Const.STAGE_HEIGHT && speed > 0) {
+                        trampoline_height += speed;
+                        moveOnce();
+                    }
+                    else {
+                        trampoline_height = 0;
+                        //shift(Const.LOWER_PLATFORM_OFFSET - pivot.getY());
+                        pivot.setPivot(false);
+                    }
+                    return;
+
+            }
+        }
+
+        //Ordinary each-type moving
+        switch (pivot.getType()){
 
             case Platform.TRAMPOLINE:
                 if(trampoline_height < Const.STAGE_HEIGHT && speed > 0) {
-                    //System.out.println(root.getPlayer().getSpeed_y());
                     trampoline_height += speed;
                     moveOnce();
                 }
@@ -49,20 +63,16 @@ public class Layer {
                     trampoline_height = 0;
                     //shift(Const.LOWER_PLATFORM_OFFSET - pivot.getY());
                     pivot.setPivot(false);
-                    System.out.println("1). No longer a pivot");
                 }
                 break;
 
             default:
-                if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) {
-                    //System.out.println("1 : " + root.getPlayer().getSpeed_y());
-                    moveOnce();
-                }
+                if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) moveOnce();
+
                 else {
-                    //System.out.println("2 : " + root.getPlayer().getSpeed_y());
-                    shift(Const.LOWER_PLATFORM_OFFSET - pivot.getY());
+                    System.out.println("shifted");
+                   // shift(Const.LOWER_PLATFORM_OFFSET - pivot.getY());
                     pivot.setPivot(false);
-                    System.out.println("No longer a pivot");
                 }
                 break;
         }
@@ -75,8 +85,8 @@ public class Layer {
                 //TODO regard the case when trampoline jump leads to cycling round all the time
                 // the pivot-trampoline should change position and type but still be regarded as the same trampoline
                 // in the move() method of this class!!!!!!!!!
-                if(!(l.getPlatform().getType() == Platform.TRAMPOLINE && l.isPivot()))
-                l.getPlatform().setType(Generator.nextType(l.getPlatformY()));
+                //if(!(l.getType() == Platform.TRAMPOLINE && l.isPivot()))
+                l.setType(Generator.nextType(l.getPlatformY()));
                 top = l;
             }
     }
@@ -86,6 +96,7 @@ public class Layer {
         speed += Const.GRAVITY;
     }
 
+    //TODO remove shift method
     private static void shift(double l){
         for (Layer lay : all) lay.setY(lay.getY() + l);
     }
@@ -100,6 +111,23 @@ public class Layer {
         p.moveDetector();
         visualiser.setStartY(y);
         visualiser.setEndY(y);
+    }
+
+    public boolean isModified(){
+        return getPlatform().isModified();
+    }
+
+
+    public void setType(int type){
+        getPlatform().setType(type);
+    }
+
+    public int getPretype(){
+        return getPlatform().getPretype();
+    }
+
+    public int getType(){
+        return getPlatform().getType();
     }
 
     public double getY() {

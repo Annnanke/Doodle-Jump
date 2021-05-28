@@ -11,7 +11,7 @@ public class Platform extends ImageView {
 
     private static Game root;
     private Detector detector;
-    private int type, crackedCounter = 0;
+    private int type, pretype, crackedCounter = 0;
     private double horizontal_speed;
 
     public Platform(double x, double y, int type, Game root) {
@@ -32,6 +32,7 @@ public class Platform extends ImageView {
     }
 
     public void setType(int type) {
+        this.pretype = this.type;
         this.type = type;
         switch (type){
             case 0 :
@@ -47,6 +48,14 @@ public class Platform extends ImageView {
                 setImage(Const.PLATFORM_1_BROKEN);
                 break;
         }
+    }
+
+    public int getPretype() {
+        return pretype;
+    }
+
+    public boolean isModified(){
+        return type != pretype;
     }
 
     public static void removePostCracked(){
