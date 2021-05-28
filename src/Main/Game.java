@@ -132,9 +132,22 @@ public class Game extends Pane {
                         }
                         break;
                     case Platform.TRAMPOLINE :
-                        player.setSpeed_y(Const.TRAMPOLINE_V_0);
-                        p.setPivot(true);
-                        landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+                        if(p.getAdditionalDetector().getBoundsInParent().intersects(player.getDetector().getBoundsInParent())) {
+                            System.out.println("Intersects");
+                            p.setMissedTrampoline(false);
+                            player.setSpeed_y(Const.TRAMPOLINE_V_0);
+                            p.setPivot(true);
+                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+                        } else {
+                            System.out.println("No intersection");
+                            p.setMissedTrampoline(true);
+                            player.setSpeed_y(Const.DOODLER_V0_Y);
+                            if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
+                                p.setPivot(true);
+                                landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+                            }
+                        }
+
                         break;
                     case Platform.CRACKED:
                         p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN);

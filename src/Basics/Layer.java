@@ -11,7 +11,7 @@ public class Layer {
     private static Game root = new Game();
     private double y;
     private static double speed = 0;
-    private boolean pivot;
+    private boolean pivot, missedTrampoline = false;
     private Line visualiser;
     private static Layer top;
     private static double trampoline_height = 0;
@@ -37,6 +37,20 @@ public class Layer {
             switch (pivot.getPretype()){
 
                 case Platform.TRAMPOLINE :
+
+                    //when jumped not on the spring of the trampoline and it should be an ordinary jump
+                    if(pivot.isMissedTrampoline()){
+                        if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) {
+                            moveOnce();
+                            return;
+                        }
+                        else {
+                            pivot.setPivot(false);
+                            return;
+                        }
+                    }
+
+                    //ordinary trampoline jump
                     if(trampoline_height < Const.STAGE_HEIGHT && speed > 0) {
                         trampoline_height += speed;
                         moveOnce();
@@ -55,13 +69,26 @@ public class Layer {
         switch (pivot.getType()){
 
             case Platform.TRAMPOLINE:
+
+                //when jumped not on the spring of the trampoline and it should be an ordinary jump
+                if(pivot.isMissedTrampoline()){
+                    if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) {
+                        moveOnce();
+                        return;
+                    }
+                    else {
+                        pivot.setPivot(false);
+                        return;
+                    }
+                }
+
+                //ordinary trampoline jump
                 if(trampoline_height < Const.STAGE_HEIGHT && speed > 0) {
                     trampoline_height += speed;
                     moveOnce();
                 }
                 else {
                     trampoline_height = 0;
-                    //shift(Const.LOWER_PLATFORM_OFFSET - pivot.getY());
                     pivot.setPivot(false);
                 }
                 break;
@@ -88,6 +115,14 @@ public class Layer {
                 l.setType(Generator.nextType(l.getPlatformY()));
                 top = l;
             }
+    }
+
+    public void setMissedTrampoline(boolean missedTrampline) {
+        this.missedTrampoline = missedTrampline;
+    }
+
+    public boolean isMissedTrampoline() {
+        return missedTrampoline;
     }
 
     private static void moveOnce(){

@@ -49,8 +49,8 @@ public class Platform extends ImageView {
                 break;
             case 2 :
                 setImage(Const.TRAMPOLINE);
-                additionalDetector = new Detector( getTranslateX() + getImage().getWidth() * (0.4), getTranslateY(),
-                        0.2 * getImage().getWidth(), this);
+                additionalDetector = new Detector( getTranslateX() + getImage().getWidth() * (0.45), getTranslateY(),
+                        0.15 * getImage().getWidth(), this);
 
                 additionalDetector.setFill(Color.RED);
                 root.getChildren().add(additionalDetector);
@@ -97,7 +97,7 @@ public class Platform extends ImageView {
         detector.setX(getTranslateX());
         detector.setY(getTranslateY());
         if(additionalDetector != null){
-            additionalDetector.setX(getTranslateX() + getImage().getWidth()*(0.4));
+            additionalDetector.setX(getTranslateX() + getImage().getWidth()*(0.45));
             additionalDetector.setY(getTranslateY());
         }
     }
