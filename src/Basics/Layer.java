@@ -70,7 +70,6 @@ public class Layer {
                 if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) moveOnce();
 
                 else {
-                    System.out.println("shifted");
                    // shift(Const.LOWER_PLATFORM_OFFSET - pivot.getY());
                     pivot.setPivot(false);
                 }
@@ -103,6 +102,10 @@ public class Layer {
 
     public Detector getDetector(){
         return p.getDetector();
+    }
+
+    public Detector getAdditionalDetector(){
+        return p.getAdditionalDetector();
     }
 
     public void setY(double y) {

@@ -24,7 +24,7 @@ public class Const {
         public static final double DOODLER_HEIGHT_OF_JUMP = -DOODLER_V0_Y * DOODLER_V0_Y / (2 * GRAVITY);
 
         //DETECTORS
-        public static final double DETECTOR_OPACITY = 0;
+        public static final double DETECTOR_OPACITY = 1;
         public static final double DETECTOR_HEIGHT = 8 ;
 
 
@@ -33,7 +33,7 @@ public class Const {
         public static final int PLATFORM_HEIGHT = 12;
         public static final double PLATFORM_V = DOODLER_V0_Y;
         public static final double[] LAYER_HEIGHT = {PLATFORM_HEIGHT + 36, PLATFORM_HEIGHT + 86};
-        public static final int LOWER_PLATFORM_OFFSET = STAGE_HEIGHT - 100;
+        public static final int LOWER_PLATFORM_OFFSET = STAGE_HEIGHT - 150;
         public static final double[][] PROBABILITIES_OF_PLATFORM_TYPES = {{0.5, 0.15, 0.05, 0.3}}; //{DEFAULT, MOVING, TRAMPOLINE, CRACKED}
         public static final int POST_CRACKED_TIME_OF_LIFE = 30;
         public static final double[] HORIZONTAL_SPEED = {2}; //only for moving platforms

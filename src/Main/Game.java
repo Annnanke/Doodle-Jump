@@ -133,22 +133,16 @@ public class Game extends Pane {
                         break;
                     case Platform.TRAMPOLINE :
                         player.setSpeed_y(Const.TRAMPOLINE_V_0);
-                        //if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
-                            p.setPivot(true);
-                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
-                       // }
+                        p.setPivot(true);
+                        landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
                         break;
                     case Platform.CRACKED:
                         p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN);
                         break;
                 }
 
+            }
         }
-        }
-    }
-
-    private void trampolineJump(Layer l){
-
     }
 
     private void doodlersMovement(){

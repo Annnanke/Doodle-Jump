@@ -18,7 +18,8 @@ public class Doodler extends ImageView {
         super(Const.CAT_NORMAL);
         setTranslateX(x);
         setTranslateY(y);
-        detector = new Detector((int)(x + getImage().getWidth()/3), (int)(y + Const.DOODLER_HEIGHT - 7), (int)(getImage().getWidth() * 0.5), this);
+        detector = new Detector((int)(x + getImage().getWidth()/3), (int)(y + Const.DOODLER_HEIGHT - 7),
+                                (int)(getImage().getWidth() * 0.5), this);
         root.getChildren().add(detector);
         speed_x = Const.DOODLER_V0_X;
         speed_y = Const.DOODLER_V0_Y;
