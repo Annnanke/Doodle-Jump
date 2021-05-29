@@ -60,7 +60,6 @@ public class Layer {
 
                 //ordinary trampoline jump
                 if(trampoline_height < Const.STAGE_HEIGHT && speed > Const.MIN_SPEED_FOR_JUMP) {
-                    System.out.println(pivot.getY());
                     trampoline_height += speed;
                     moveOnce();
                 }

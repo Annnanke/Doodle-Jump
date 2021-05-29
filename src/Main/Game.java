@@ -9,6 +9,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -41,6 +42,9 @@ public class Game extends Pane {
 
         background = new ImageView(Const.BACKGROUND);
         add(background);
+
+        Line level = new Line(0, Const.LOWER_PLATFORM_OFFSET, Const.STAGE_WIDTH, Const.LOWER_PLATFORM_OFFSET);
+        getChildren().add(level);
 
         Layer.setRoot(this);
 
@@ -102,8 +106,8 @@ public class Game extends Pane {
         for (Layer p : Layer.all) {
             if (
                     player.getDetector().getBoundsInParent().intersects(p.getDetector().getBoundsInParent())
-                            && player.getSpeed_y() < 0
-                            && player.isMoving()
+                    && player.getSpeed_y() < 0
+                    && player.isMoving()
             ) {
                 switch (p.getPlatform().getType()){
 
@@ -118,10 +122,14 @@ public class Game extends Pane {
                         if(p.getAdditionalDetector().getBoundsInParent().intersects(player.getDetector().getBoundsInParent())) {
                             p.setMissedTrampoline(false);
                             player.setSpeed_y(Const.TRAMPOLINE_V_0);
-
+                            if(p.getPlatformY() > Const.LOWER_PLATFORM_OFFSET) {
+                                landingSpeed = Math.sqrt(-2 * Const.GRAVITY * (p.getPlatformY() - Const.LOWER_PLATFORM_OFFSET));
+                            }
+                            else landingSpeed = 0;
                             p.setPivot(true);
                             landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
                         } else {
+                            landingSpeed = 0;
                             p.setMissedTrampoline(true);
                             player.setSpeed_y(Const.DOODLER_V0_Y);
                             if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
@@ -148,7 +156,7 @@ public class Game extends Pane {
 
     private void landingMovement(){
         landing -= landingSpeed;
-        landingSpeed += Const.GRAVITY;
+        if(landingSpeed + Const.GRAVITY > 0) landingSpeed += Const.GRAVITY;
     }
 
     private void platformsMovement(){
@@ -157,7 +165,7 @@ public class Game extends Pane {
 
         //vertical movement
         if(Layer.hasPivot()) {
-//            if((Layer.pivotIsTrampoline() || Layer.pivotIsAcceptedAsTrampoline()) ) landingMovement();
+            if((Layer.getPivot().getPivotType() == Layer.PIVOT_TRAMPOLINE) ) landingMovement();
             player.setTranslateY(landing);
             player.setMoving(false);
         } else player.setMoving(true);
