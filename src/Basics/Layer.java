@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Layer {
     private Platform p;
     public static ArrayList<Layer> all = new ArrayList<>();
-    private static Game root = new Game();
+    private static Game root;
     private double y;
     private static double speed = 0;
     private boolean pivot, missedTrampoline = false;
@@ -113,11 +113,7 @@ public class Layer {
     public static void generateWhenPassed(){
         for(Layer l : all)
             if(l.getY() >= Const.STAGE_HEIGHT) {
-                l.setY(getTop().getY() - Const.LAYER_HEIGHT[root.getLvl() - 1]);
-                //TODO regard the case when trampoline jump leads to cycling round all the time
-                // the pivot-trampoline should change position and type but still be regarded as the same trampoline
-                // in the move() method of this class!!!!!!!!!
-                //if(!(l.getType() == Platform.TRAMPOLINE && l.isPivot()))
+                l.setY(getTop().getY() - Const.LAYER_HEIGHT[Game.getLvl() - 1]);
                 l.setType(Generator.nextType(l.getPlatformY()));
                 top = l;
             }
@@ -239,7 +235,7 @@ public class Layer {
         Layer.root = root;
     }
 
-    public static final double offset = (Const.LAYER_HEIGHT[root.getLvl() - 1] - Const.PLATFORM_HEIGHT)/2;
+    public static final double offset = (Const.LAYER_HEIGHT[Game.getLvl() - 1] - Const.PLATFORM_HEIGHT)/2;
     public static final int NOT_A_PIVOT = -1;
     public static final int PIVOT_JUMP = 0;
     public static final int PIVOT_TRAMPOLINE = 1;
