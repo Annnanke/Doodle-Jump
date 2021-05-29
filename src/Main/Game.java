@@ -106,24 +106,7 @@ public class Game extends Pane {
                             && player.isMoving()
             ) {
                 switch (p.getPlatform().getType()){
-//                    case Platform.DEFAULT:
-//                        player.setSpeed_y(Const.DOODLER_V0_Y);
-//                        if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
-//                            p.setPivot(true);
-//                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
-//                        }
-//                        break;
-//                    case Platform.MOVING:
-//                        player.setSpeed_y(Const.DOODLER_V0_Y);
-//                        if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
-//                            p.setPivot(true);
-//                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
-//                        }
-//                        break;
-//                    case Platform.TRAMPOLINE:
-//                        //TODO change for trampoline jump
-//                        trampolineJump(p);
-//                        break;
+
                     default:
                         player.setSpeed_y(Const.DOODLER_V0_Y);
                         if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
@@ -133,13 +116,12 @@ public class Game extends Pane {
                         break;
                     case Platform.TRAMPOLINE :
                         if(p.getAdditionalDetector().getBoundsInParent().intersects(player.getDetector().getBoundsInParent())) {
-                            System.out.println("Intersects");
                             p.setMissedTrampoline(false);
                             player.setSpeed_y(Const.TRAMPOLINE_V_0);
+
                             p.setPivot(true);
                             landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
                         } else {
-                            System.out.println("No intersection");
                             p.setMissedTrampoline(true);
                             player.setSpeed_y(Const.DOODLER_V0_Y);
                             if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
@@ -164,12 +146,18 @@ public class Game extends Pane {
         player.verticalMovement();
     }
 
+    private void landingMovement(){
+        landing -= landingSpeed;
+        landingSpeed += Const.GRAVITY;
+    }
+
     private void platformsMovement(){
         //horizontal movement
         Platform.moveAllMovingHorizontally();
 
         //vertical movement
         if(Layer.hasPivot()) {
+//            if((Layer.pivotIsTrampoline() || Layer.pivotIsAcceptedAsTrampoline()) ) landingMovement();
             player.setTranslateY(landing);
             player.setMoving(false);
         } else player.setMoving(true);
@@ -184,5 +172,5 @@ public class Game extends Pane {
         return player;
     }
 
-    private double landing;
+    private double landing, landingSpeed = 0;
 }

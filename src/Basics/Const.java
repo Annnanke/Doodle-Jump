@@ -22,9 +22,10 @@ public class Const {
         public static final double PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_RIGHT = 0.7;
         public static final double PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_LEFT = 1 - PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_RIGHT;
         public static final double DOODLER_HEIGHT_OF_JUMP = -DOODLER_V0_Y * DOODLER_V0_Y / (2 * GRAVITY);
+        public static final double MIN_SPEED_FOR_JUMP = 3; //doodler can't jump when his speed_y is less then this value
 
         //DETECTORS
-        public static final double DETECTOR_OPACITY = 1;
+        public static final double DETECTOR_OPACITY = 0;
         public static final double DETECTOR_HEIGHT = 8 ;
 
 

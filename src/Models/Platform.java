@@ -12,8 +12,9 @@ public class Platform extends ImageView {
 
     private static Game root;
     private Detector additionalDetector, detector;
-    private int type, pretype, crackedCounter = 0;
+    private int type, crackedCounter = 0;
     private double horizontal_speed;
+
 
     public Platform(double x, double y, int type, Game root) {
         super();
@@ -34,20 +35,19 @@ public class Platform extends ImageView {
 
     public void setType(int type) {
 
-        this.pretype = this.type;
         this.type = type;
         switch (type){
-            case 0 :
+            case DEFAULT :
                 root.getChildren().remove(additionalDetector);
                 additionalDetector = null;
                 setImage(Const.PLATFORM_1);
                 break;
-            case 1 :
+            case MOVING :
                 root.getChildren().remove(additionalDetector);
                 additionalDetector = null;
                 setImage(Const.PLATFORM_1);
                 break;
-            case 2 :
+            case TRAMPOLINE :
                 setImage(Const.TRAMPOLINE);
                 additionalDetector = new Detector( getTranslateX() + getImage().getWidth() * (0.45), getTranslateY(),
                         0.15 * getImage().getWidth(), this);
@@ -55,7 +55,7 @@ public class Platform extends ImageView {
                 additionalDetector.setFill(Color.RED);
                 root.getChildren().add(additionalDetector);
                 break;
-            case 3 :
+            case CRACKED :
                 root.getChildren().remove(additionalDetector);
                 additionalDetector = null;
                 setImage(Const.PLATFORM_1_BROKEN);
@@ -63,13 +63,6 @@ public class Platform extends ImageView {
         }
     }
 
-    public int getPretype() {
-        return pretype;
-    }
-
-    public boolean isModified(){
-        return type != pretype;
-    }
 
     public static void removePostCracked(){
         for(Layer l : Layer.getAll())
@@ -93,6 +86,8 @@ public class Platform extends ImageView {
 
     }
 
+
+
     public void moveDetector(){
         detector.setX(getTranslateX());
         detector.setY(getTranslateY());
@@ -115,6 +110,5 @@ public class Platform extends ImageView {
     public static final int MOVING = 1;//---20%
     public static final int TRAMPOLINE = 2;//---10%
     public static final int CRACKED = 3; // must always be the last ---20%
-
 
 }

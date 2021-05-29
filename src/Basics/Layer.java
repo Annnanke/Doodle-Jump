@@ -16,6 +16,7 @@ public class Layer {
     private static Layer top;
     private static double trampoline_height = 0;
 
+
     public Layer(double y){
         this.y = y;
         p = Generator.nextPlatform(y + offset);
@@ -32,47 +33,22 @@ public class Layer {
         if(!hasPivot()) return;
         Layer pivot = getPivot();
 
-        //if type of pivot is changed and it's no longer accepted as pretype-pivot (esp. trampoline)
-        if(pivot.isModified()){
-            switch (pivot.getPretype()){
 
-                case Platform.TRAMPOLINE :
+        switch (pivot.getPivotType()){
 
-                    //when jumped not on the spring of the trampoline and it should be an ordinary jump
-                    if(pivot.isMissedTrampoline()){
-                        if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) {
-                            moveOnce();
-                            return;
-                        }
-                        else {
-                            pivot.setPivot(false);
-                            return;
-                        }
-                    }
+            case PIVOT_JUMP :
+                if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > Const.MIN_SPEED_FOR_JUMP) {
+                    moveOnce();
 
-                    //ordinary trampoline jump
-                    if(trampoline_height < Const.STAGE_HEIGHT && speed > 0) {
-                        trampoline_height += speed;
-                        moveOnce();
-                    }
-                    else {
-                        trampoline_height = 0;
-                        //shift(Const.LOWER_PLATFORM_OFFSET - pivot.getY());
-                        pivot.setPivot(false);
-                    }
-                    return;
+                }
+                else pivot.setPivot(false);
 
-            }
-        }
+                return;
 
-        //Ordinary each-type moving
-        switch (pivot.getType()){
-
-            case Platform.TRAMPOLINE:
-
+            case PIVOT_TRAMPOLINE :
                 //when jumped not on the spring of the trampoline and it should be an ordinary jump
                 if(pivot.isMissedTrampoline()){
-                    if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) {
+                    if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > Const.MIN_SPEED_FOR_JUMP) {
                         moveOnce();
                         return;
                     }
@@ -83,7 +59,8 @@ public class Layer {
                 }
 
                 //ordinary trampoline jump
-                if(trampoline_height < Const.STAGE_HEIGHT && speed > 0) {
+                if(trampoline_height < Const.STAGE_HEIGHT && speed > Const.MIN_SPEED_FOR_JUMP) {
+                    System.out.println(pivot.getY());
                     trampoline_height += speed;
                     moveOnce();
                 }
@@ -91,17 +68,47 @@ public class Layer {
                     trampoline_height = 0;
                     pivot.setPivot(false);
                 }
-                break;
+                return;
 
-            default:
-                if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) moveOnce();
-
-                else {
-                   // shift(Const.LOWER_PLATFORM_OFFSET - pivot.getY());
-                    pivot.setPivot(false);
-                }
-                break;
         }
+
+
+//        //Ordinary each-type moving
+//        switch (pivot.getType()){
+//
+//            case Platform.TRAMPOLINE:
+//
+//                //when jumped not on the spring of the trampoline and it should be an ordinary jump
+//                if(pivot.isMissedTrampoline()){
+//                    if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) {
+//                        moveOnce();
+//                        return;
+//                    }
+//                    else {
+//                        pivot.setPivot(false);
+//                        return;
+//                    }
+//                }
+//
+//                //ordinary trampoline jump
+//                if(trampoline_height < Const.STAGE_HEIGHT && speed > 0) {
+//                    trampoline_height += speed;
+//                    moveOnce();
+//                }
+//                else {
+//                    trampoline_height = 0;
+//                    pivot.setPivot(false);
+//                }
+//                break;
+//
+//            default:
+//                if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) moveOnce();
+//
+//                else {
+//                    pivot.setPivot(false);
+//                }
+//                break;
+//        }
     }
 
     public static void generateWhenPassed(){
@@ -116,6 +123,8 @@ public class Layer {
                 top = l;
             }
     }
+
+
 
     public void setMissedTrampoline(boolean missedTrampline) {
         this.missedTrampoline = missedTrampline;
@@ -151,17 +160,9 @@ public class Layer {
         visualiser.setEndY(y);
     }
 
-    public boolean isModified(){
-        return getPlatform().isModified();
-    }
-
 
     public void setType(int type){
         getPlatform().setType(type);
-    }
-
-    public int getPretype(){
-        return getPlatform().getPretype();
     }
 
     public int getType(){
@@ -205,22 +206,34 @@ public class Layer {
         return all;
     }
 
+    public int getPivotType() {
+        return pivotType;
+    }
 
+    /**
+     * setter for both pivot and pivotType
+     * @param pivot
+     */
     public void setPivot(boolean pivot) {
         this.pivot = pivot;
-//        if(pivot) speed = Const.PLATFORM_V;
-//        else speed = 0;
+
 
         if(pivot){
             switch (getPlatform().getType()){
+                case Platform.TRAMPOLINE :
+                    speed = missedTrampoline? Const.PLATFORM_V : Const.TRAMPOLINE_V_0;
+                    pivotType = PIVOT_TRAMPOLINE;
+                    break;
+                case Platform.CRACKED:
+                    speed = 0;
+                    pivotType = PIVOT_CRACKED;
+                    break;
                 default :
                     speed = Const.PLATFORM_V;
-                    break;
-                case Platform.TRAMPOLINE :
-                    speed = Const.TRAMPOLINE_V_0;
+                    pivotType = PIVOT_JUMP;
                     break;
             }
-        } else speed = 0;
+        } else pivotType = NOT_A_PIVOT;
     }
 
     public static void setRoot(Game root) {
@@ -228,4 +241,9 @@ public class Layer {
     }
 
     public static final double offset = (Const.LAYER_HEIGHT[root.getLvl() - 1] - Const.PLATFORM_HEIGHT)/2;
+    public static final int NOT_A_PIVOT = -1;
+    public static final int PIVOT_JUMP = 0;
+    public static final int PIVOT_TRAMPOLINE = 1;
+    public static final int PIVOT_CRACKED = 2;
+    private static int pivotType = NOT_A_PIVOT;
 }
