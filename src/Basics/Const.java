@@ -26,7 +26,7 @@ public class Const {
 
         //DETECTORS
         public static final double DETECTOR_OPACITY = 0;
-        public static final double DETECTOR_HEIGHT = 8 ;
+        public static final double DETECTOR_HEIGHT = 10 ;
 
 
         //PLATFORM
@@ -47,25 +47,44 @@ public class Const {
 
 
         //IMAGES
-        public static final Image CAT_NORMAL = new Image(new File("src/Images/cat_normal.png").toURI().toString(),
-                DOODLER_WIDTH, DOODLER_HEIGHT, true, true);
+        public static final int CHOSEN_CHARACTER = 0;
+        public static final Image[] CHARACTER_NORMAL = {new Icon("src/Images/cat_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT),
+                                                        new Icon("src/Images/cat_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT),
+                                                        new Icon("src/Images/cat_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT)};
 
-        public static final Image CAT_NORMAL_REFL = new Image(new File("src/Images/cat_normal_refl.png").toURI().toString(),
-                DOODLER_WIDTH, DOODLER_HEIGHT, true, true);
+        public static final Image[] CHARACTER_NORMAL_REFL = {new Icon("src/Images/cat_normal_refl.png", DOODLER_WIDTH, DOODLER_HEIGHT),
+                                                       new Icon("src/Images/cat_normal_refl.png", DOODLER_WIDTH, DOODLER_HEIGHT),
+                                                       new Icon("src/Images/cat_normal_refl.png", DOODLER_WIDTH, DOODLER_HEIGHT)};
 
-        public static final Image PLATFORM_1 = new Image(new File("src/Images/platform1.png").toURI().toString()
-                ,PLATFORM_WIDTH, PLATFORM_HEIGHT, true, true);
+        public static final Image[] PLATFORM_1 = {new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                  new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                  new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                  new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                  new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT)};
 
-        public static final Image PLATFORM_1_BROKEN = new Image(new File("src/Images/platform1_broken.png").toURI().toString()
-                ,PLATFORM_WIDTH, PLATFORM_HEIGHT, true, true);
+        public static final Image[] PLATFORM_1_BROKEN = {new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                         new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                         new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                         new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                         new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT)};
 
-        public static final Image PLATFORM_1_POST_BROKEN = new Image(new File("src/Images/post_brokenpallet1.png").toURI().toString()
-                ,100, 37, true, true);
+        public static final Image[] PLATFORM_1_POST_BROKEN = {new Icon("src/Images/post_brokenpallet1.png",100, 37),
+                                                              new Icon("src/Images/post_brokenpallet1.png",100, 37),
+                                                              new Icon("src/Images/post_brokenpallet1.png",100, 37),
+                                                              new Icon("src/Images/post_brokenpallet1.png",100, 37),
+                                                              new Icon("src/Images/post_brokenpallet1.png",100, 37)};
 
-        public static final Image TRAMPOLINE = new Image(new File("src/Images/trampoline.png").toURI().toString()
-                ,PLATFORM_WIDTH, PLATFORM_HEIGHT, true, true);
+        public static final Image[] TRAMPOLINE = {new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                  new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                  new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                  new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                                                  new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT)};
 
-        public static final Image BACKGROUND = new Image(new File("src/Images/background.jpg").toURI().toString());
+        public static final Image[] BACKGROUND = {new Icon("src/Images/background.jpg"),
+                                                  new Icon("src/Images/background.jpg"),
+                                                  new Icon("src/Images/background.jpg"),
+                                                  new Icon("src/Images/background.jpg"),
+                                                  new Icon("src/Images/background.jpg")};
     }
 
 

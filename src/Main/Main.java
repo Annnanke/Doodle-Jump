@@ -9,7 +9,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Game game = new Game(1);
+        Game game = new Game(4);
         Scene scene = new Scene(game, Const.STAGE_WIDTH, Const.STAGE_HEIGHT);
         game.setScene(scene);
         primaryStage.setScene(scene);

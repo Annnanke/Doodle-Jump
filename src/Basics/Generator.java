@@ -22,9 +22,16 @@ public class Generator {
     }
 
     public static int nextType(double y){
-        int type = randomiseForType(1 );//all except for cracked
-        for(Layer l : all)
-            if(Math.abs(l.getPlatformY() - Const.PLATFORM_HEIGHT - y) < Const.DOODLER_HEIGHT_OF_JUMP) type = randomiseForType(1); //all
+
+        int type = randomiseForType(1 - Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][Platform.CRACKED]);//all except for cracked
+        for(Layer l : all) {
+
+            if (Math.abs(l.getPlatformY() - (y - 2*Layer.offset - Const.PLATFORM_HEIGHT)) < Const.DOODLER_HEIGHT_OF_JUMP
+                && l.getPlatform().getType() != Platform.CRACKED
+                && l.getPlatformY() != y) {
+                type = randomiseForType(1); //all
+            }
+        }
             return type;
     }
 
@@ -32,14 +39,14 @@ public class Generator {
     public static int randomiseForType(double upper_bound){
         double prob = Math.random() * upper_bound;
 
-        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][0]) return 0;
+        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][Platform.DEFAULT]) return 0;
 
-        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][0] +
-                  Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][1]) return 1;
+        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][Platform.DEFAULT] +
+                  Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][Platform.MOVING]) return 1;
 
-        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][0] +
-                  Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][1] +
-                  Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][2]) return 2;
+        if(prob < Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][Platform.DEFAULT] +
+                  Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][Platform.MOVING] +
+                  Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][Platform.TRAMPOLINE]) return 2;
 
         return 3;
     }

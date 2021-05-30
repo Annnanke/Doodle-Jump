@@ -40,17 +40,17 @@ public class Platform extends ImageView {
             case DEFAULT :
                 root.getChildren().remove(additionalDetector);
                 additionalDetector = null;
-                setImage(Const.PLATFORM_1);
+                setImage(Const.PLATFORM_1[Game.getLvl() - 1]);
                 break;
             case MOVING :
                 root.getChildren().remove(additionalDetector);
                 additionalDetector = null;
-                setImage(Const.PLATFORM_1);
+                setImage(Const.PLATFORM_1[Game.getLvl() - 1]);
                 break;
             case TRAMPOLINE :
-                setImage(Const.TRAMPOLINE);
-                additionalDetector = new Detector( getTranslateX() + getImage().getWidth() * (0.45), getTranslateY(),
-                        0.15 * getImage().getWidth(), this);
+                setImage(Const.TRAMPOLINE[Game.getLvl()]);
+                additionalDetector = new Detector( getTranslateX() + getImage().getWidth() * (0.4), getTranslateY(),
+                        0.2 * getImage().getWidth(), this);
 
                 additionalDetector.setFill(Color.RED);
                 root.getChildren().add(additionalDetector);
@@ -58,7 +58,7 @@ public class Platform extends ImageView {
             case CRACKED :
                 root.getChildren().remove(additionalDetector);
                 additionalDetector = null;
-                setImage(Const.PLATFORM_1_BROKEN);
+                setImage(Const.PLATFORM_1_BROKEN[Game.getLvl() - 1]);
                 break;
         }
     }
@@ -66,7 +66,7 @@ public class Platform extends ImageView {
 
     public static void removePostCracked(){
         for(Layer l : Layer.getAll())
-        if(l.getPlatform().getType() == CRACKED && l.getPlatform().getImage() == Const.PLATFORM_1_POST_BROKEN)
+        if(l.getPlatform().getType() == CRACKED && l.getPlatform().getImage() == Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1])
             l.getPlatform().disposeOfPostCracked();
     }
 

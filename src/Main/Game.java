@@ -30,8 +30,6 @@ public class Game extends Pane {
         init();
     }
 
-    public Game(){lvl = 1;}
-
     private void init(){
         setWidth(Const.STAGE_WIDTH);
         setHeight(Const.STAGE_HEIGHT);
@@ -40,10 +38,11 @@ public class Game extends Pane {
         moving_left = false;
         moving_right = false;
 
-        background = new ImageView(Const.BACKGROUND);
+        background = new ImageView(Const.BACKGROUND[getLvl()]);
         add(background);
 
         Line level = new Line(0, Const.LOWER_PLATFORM_OFFSET, Const.STAGE_WIDTH, Const.LOWER_PLATFORM_OFFSET);
+        level.setOpacity(Const.DETECTOR_OPACITY);
         getChildren().add(level);
 
         Layer.setRoot(this);
@@ -140,7 +139,7 @@ public class Game extends Pane {
 
                         break;
                     case Platform.CRACKED:
-                        p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN);
+                        p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1]);
                         break;
                 }
 

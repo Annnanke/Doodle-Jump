@@ -15,7 +15,7 @@ public class Doodler extends ImageView {
     private boolean moving = true;
 
     public Doodler(double x, double y, Game root) {
-        super(Const.CAT_NORMAL);
+        super(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
         setTranslateX(x);
         setTranslateY(y);
         detector = new Detector((int)(x + getImage().getWidth()/3), (int)(y + Const.DOODLER_HEIGHT - 7),
@@ -28,7 +28,7 @@ public class Doodler extends ImageView {
 
 
     public void moveLeft(){
-        setImage(Const.CAT_NORMAL_REFL);
+        setImage(Const.CHARACTER_NORMAL_REFL[Const.CHOSEN_CHARACTER]);
         if(getTranslateX() - speed_x >= -Const.PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_RIGHT*Const.DOODLER_WIDTH) {
             setTranslateX(getTranslateX() - speed_x);
             detector.setX(getTranslateX() + getImage().getWidth() - getImage().getWidth()/3 - detector.getWidth());
@@ -39,7 +39,7 @@ public class Doodler extends ImageView {
     }
 
     public void moveRight(){
-        setImage(Const.CAT_NORMAL);
+        setImage(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
         if(getTranslateX() + speed_x + Const.PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_LEFT*Const.DOODLER_WIDTH <= Const.STAGE_WIDTH) {
             setTranslateX(getTranslateX() + speed_x);
             detector.setX(getTranslateX() + getImage().getWidth()/3);
