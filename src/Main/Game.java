@@ -38,7 +38,7 @@ public class Game extends Pane {
         moving_left = false;
         moving_right = false;
 
-        background = new ImageView(Const.BACKGROUND[getLvl()]);
+        background = new ImageView(Const.BACKGROUND[getLvl() - 1]);
         add(background);
 
         Line level = new Line(0, Const.LOWER_PLATFORM_OFFSET, Const.STAGE_WIDTH, Const.LOWER_PLATFORM_OFFSET);

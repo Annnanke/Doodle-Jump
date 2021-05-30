@@ -48,7 +48,7 @@ public class Platform extends ImageView {
                 setImage(Const.PLATFORM_1[Game.getLvl() - 1]);
                 break;
             case TRAMPOLINE :
-                setImage(Const.TRAMPOLINE[Game.getLvl()]);
+                setImage(Const.TRAMPOLINE[Game.getLvl() - 1]);
                 additionalDetector = new Detector( getTranslateX() + getImage().getWidth() * (0.4), getTranslateY(),
                         0.2 * getImage().getWidth(), this);
 
