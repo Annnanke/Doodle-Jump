@@ -1,5 +1,6 @@
-package sample;
+package GUI;
 
+import Basics.Const;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,7 @@ public static Stage menuStage;
        Image icon = new Image("Images/cat_jump.png");
         menuStage.setTitle("DoodleJump");
         menuStage.getIcons().add(icon);
-        menuStage.setScene(new Scene(rootD,500,700));
+        menuStage.setScene(new Scene(rootD, Const.STAGE_WIDTH,Const.STAGE_HEIGHT));
         menuStage.setX(100);
         menuStage.setY(50);
         menuStage.show();
@@ -26,7 +27,7 @@ public static Stage menuStage;
     }
     public void play(ActionEvent e) throws Exception {
         Parent rootD = FXMLLoader.load(getClass().getResource("lvlchooser.fxml"));
-        menuStage.setScene(new Scene(rootD,500,700));
+        menuStage.setScene(new Scene(rootD,Const.STAGE_WIDTH,Const.STAGE_HEIGHT));
         menuStage.setX(100);
         menuStage.setY(50);
         menuStage.show();

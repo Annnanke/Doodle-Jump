@@ -7,7 +7,7 @@ import java.io.File;
 
 public class Icon extends Image {
 
-    public Icon(String file, int width, int height){
+    public Icon(String file, double width, double height){
         super(new File(file).toURI().toString(), width, height, true, true);
     }
 

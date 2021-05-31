@@ -1,6 +1,7 @@
 package Basics;
 
 import Main.Game;
+import Models.Layer;
 import Models.Platform;
 
 import java.util.ArrayList;

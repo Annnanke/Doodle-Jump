@@ -1,11 +1,8 @@
 package Models;
 
 import Basics.Const;
-import Basics.Detector;
 import Main.Game;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Rectangle;
 
 
 public class Doodler extends ImageView {

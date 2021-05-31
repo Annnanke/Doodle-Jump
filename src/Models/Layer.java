@@ -1,7 +1,8 @@
-package Basics;
+package Models;
 
+import Basics.Const;
+import Basics.Generator;
 import Main.Game;
-import Models.Platform;
 import javafx.scene.shape.Line;
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class Layer {
         all.add(this);
         if(top == null) top = this;
         else if(top.getY() > getY()) top = this;
-        visualiser = new Line(0,y,Const.STAGE_WIDTH,y);
+        visualiser = new Line(0,y, Const.STAGE_WIDTH,y);
         visualiser.setOpacity(Const.DETECTOR_OPACITY);
         root.getChildren().add(visualiser);
     }
@@ -72,54 +73,25 @@ public class Layer {
         }
 
 
-//        //Ordinary each-type moving
-//        switch (pivot.getType()){
-//
-//            case Platform.TRAMPOLINE:
-//
-//                //when jumped not on the spring of the trampoline and it should be an ordinary jump
-//                if(pivot.isMissedTrampoline()){
-//                    if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) {
-//                        moveOnce();
-//                        return;
-//                    }
-//                    else {
-//                        pivot.setPivot(false);
-//                        return;
-//                    }
-//                }
-//
-//                //ordinary trampoline jump
-//                if(trampoline_height < Const.STAGE_HEIGHT && speed > 0) {
-//                    trampoline_height += speed;
-//                    moveOnce();
-//                }
-//                else {
-//                    trampoline_height = 0;
-//                    pivot.setPivot(false);
-//                }
-//                break;
-//
-//            default:
-//                if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > 0) moveOnce();
-//
-//                else {
-//                    pivot.setPivot(false);
-//                }
-//                break;
-//        }
     }
 
     public static void generateWhenPassed(){
         for(Layer l : all)
             if(l.getY() >= Const.STAGE_HEIGHT) {
+                l.setDetectable(true);
                 l.setY(getTop().getY() - Const.LAYER_HEIGHT[Game.getLvl() - 1]);
                 l.setType(Generator.nextType(l.getPlatformY()));
                 top = l;
-            }
+            } else if(l.getPlatform().getTranslateY() >= Const.STAGE_HEIGHT) l.getPlatform().setDetectable(false);
     }
 
+    public boolean isDetectable(){
+        return getPlatform().isDetectable();
+    }
 
+    public void setDetectable(boolean t){
+        getPlatform().setDetectable(t);
+    }
 
     public void setMissedTrampoline(boolean missedTrampline) {
         this.missedTrampoline = missedTrampline;
@@ -130,13 +102,9 @@ public class Layer {
     }
 
     private static void moveOnce(){
+        Game.getScorebar().addPoints((int)speed);
         for(Layer l : all) l.setY(l.getY() + speed);
         speed += Const.GRAVITY;
-    }
-
-    //TODO remove shift method
-    private static void shift(double l){
-        for (Layer lay : all) lay.setY(lay.getY() + l);
     }
 
     public Detector getDetector(){

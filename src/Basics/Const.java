@@ -46,6 +46,11 @@ public class Const {
         public static final double TRAMPOLINE_V_0 = Math.sqrt(-2 * GRAVITY * STAGE_HEIGHT);
 
 
+        //SCORE BAR
+
+        public static final double SCOREBAR_WIDTH = STAGE_WIDTH;
+        public static final double SCOREBAR_HEIGHT = STAGE_HEIGHT * 0.08;
+
         //IMAGES
         public static final int CHOSEN_CHARACTER = 0;
         public static final Image[] CHARACTER_NORMAL = {new Icon("src/Images/cat_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT),
@@ -85,6 +90,8 @@ public class Const {
                                                   new Icon("src/Images/background.jpg"),
                                                   new Icon("src/Images/background.jpg"),
                                                   new Icon("src/Images/background.jpg")};
+
+        public static final Image PAUSE = new Icon("src/Images/pause.png", Const.SCOREBAR_WIDTH * 0.05, Const.SCOREBAR_WIDTH * 0.05);
     }
 
 

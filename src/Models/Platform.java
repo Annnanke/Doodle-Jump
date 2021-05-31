@@ -1,7 +1,5 @@
 package Models;
 import Basics.Const;
-import Basics.Detector;
-import Basics.Layer;
 import Main.Game;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -14,6 +12,7 @@ public class Platform extends ImageView {
     private Detector additionalDetector, detector;
     private int type, crackedCounter = 0;
     private double horizontal_speed;
+    private boolean detectable;
 
 
     public Platform(double x, double y, int type, Game root) {
@@ -25,6 +24,7 @@ public class Platform extends ImageView {
         setType(type);
         horizontal_speed = Const.HORIZONTAL_SPEED[Game.getLvl() - 1] * Math.pow(-1, new Random().nextInt());
         detector = new Detector((x), (y), (getImage().getWidth()), this);
+        detectable = true;
         root.getChildren().add(detector);
         root.getChildren().add(this);
     }
@@ -97,6 +97,13 @@ public class Platform extends ImageView {
         }
     }
 
+    public boolean isDetectable(){
+        return detectable;
+    }
+
+    public void setDetectable(boolean d){
+        detectable = d;
+    }
 
     public Detector getDetector() {
         return detector;

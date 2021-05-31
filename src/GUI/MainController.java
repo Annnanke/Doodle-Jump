@@ -1,6 +1,4 @@
-package sample;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+package GUI;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 

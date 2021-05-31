@@ -2,17 +2,15 @@ package Main;
 
 import Basics.Const;
 import Basics.Generator;
-import Basics.Layer;
+import Models.Layer;
 import Models.Doodler;
 import Models.Platform;
+import Models.ScoreBar;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 
 public class Game extends Pane {
@@ -23,6 +21,7 @@ public class Game extends Pane {
     private Scene scene = new Scene(new Pane());
     public AnimationTimer timer;
     private ImageView background;
+    private static ScoreBar scorebar;
 
     public Game(int lvl){
         super();
@@ -51,12 +50,17 @@ public class Game extends Pane {
 
         Generator.generatePlatforms();
 
+        scorebar = new ScoreBar();
+        getChildren().add(scorebar);
+
         timer = new AnimationTimer() {
             @Override
             public void handle(long l) {update();}
         };
 
         timer.start();
+
+
     }
 
     private void update(){
@@ -107,6 +111,7 @@ public class Game extends Pane {
                     player.getDetector().getBoundsInParent().intersects(p.getDetector().getBoundsInParent())
                     && player.getSpeed_y() < 0
                     && player.isMoving()
+                    && p.isDetectable()
             ) {
                 switch (p.getPlatform().getType()){
 
@@ -169,6 +174,10 @@ public class Game extends Pane {
             player.setMoving(false);
         } else player.setMoving(true);
         Layer.move();
+    }
+
+    public static ScoreBar getScorebar(){
+        return scorebar;
     }
 
     public static int getLvl() {
