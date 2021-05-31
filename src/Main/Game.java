@@ -10,7 +10,6 @@ import javafx.animation.AnimationTimer;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -50,7 +49,7 @@ public class Game extends Pane {
         add(background);
 
         try {
-            lossPanel = new FXMLLoader().load(getClass().getResource("LossPanel.fxml"));
+            lossPanel = new FXMLLoader().load(getClass().getResource("../GUI/LossPanel.fxml"));
             lossPanel.setTranslateY(Const.HEIGHT_OF_LOSS_FALL);
         } catch (IOException e) {
             e.printStackTrace();
@@ -127,11 +126,16 @@ public class Game extends Pane {
 
     }
 
+
     private boolean loss = false;
 
+    @FXML private Text scoText;
+
+    @FXML
     public boolean checkForLoss(){
         if(player.getTranslateY() + Const.DOODLER_HEIGHT > Const.STAGE_HEIGHT || loss){
             loss = true;
+            if(getChildren().contains(scorebar)) getChildren().remove(scorebar);
             if(!getChildren().contains(lossPanel))getChildren().add(lossPanel);
 
             if(lossPanel.getTranslateY() + lossPanel.getHeight() + player.getSpeed_y() > Const.STAGE_HEIGHT) {
@@ -142,8 +146,7 @@ public class Game extends Pane {
                 loss = false;
                 timer.stop();
 
-
-                    //scoreText.setText("Ted");
+                //scoText.setText("rew");
 
 
             }
