@@ -1,5 +1,6 @@
 package Basics;
 
+import Main.Game;
 import javafx.scene.image.Image;
 
 import java.io.File;
@@ -10,6 +11,7 @@ public class Const {
         //STAGE
         public static final int STAGE_WIDTH = 500;
         public static final int STAGE_HEIGHT = 700;
+
 
         //GRAVITY
         public static final double GRAVITY = -0.45;
@@ -45,6 +47,8 @@ public class Const {
         public static final double[] HORIZONTAL_SPEED = {2, 2, 2, 2, 2}; //only for moving platforms
         public static final double TRAMPOLINE_V_0 = Math.sqrt(-2 * GRAVITY * STAGE_HEIGHT);
 
+        //GAME GENERAL:
+        public static final double HEIGHT_OF_LOSS_FALL = 2*STAGE_HEIGHT + 2*LAYER_HEIGHT[Game.getLvl() - 1];
 
         //SCORE BAR
 
@@ -92,6 +96,8 @@ public class Const {
                                                   new Icon("src/Images/background.jpg")};
 
         public static final Image PAUSE = new Icon("src/Images/pause.png", Const.SCOREBAR_WIDTH * 0.05, Const.SCOREBAR_WIDTH * 0.05);
+
+        //public static final Image GROUND = new Icon("src/Images/ground.png",Const.STAGE_WIDTH, Const.STAGE_WIDTH*385/1201);
     }
 
 

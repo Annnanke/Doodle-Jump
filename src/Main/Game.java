@@ -7,10 +7,17 @@ import Models.Doodler;
 import Models.Platform;
 import Models.ScoreBar;
 import javafx.animation.AnimationTimer;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
+
+import java.io.IOException;
 
 
 public class Game extends Pane {
@@ -22,6 +29,8 @@ public class Game extends Pane {
     public AnimationTimer timer;
     private ImageView background;
     private static ScoreBar scorebar;
+    private Pane lossPanel;
+
 
     public Game(int lvl){
         super();
@@ -39,6 +48,13 @@ public class Game extends Pane {
 
         background = new ImageView(Const.BACKGROUND[getLvl() - 1]);
         add(background);
+
+        try {
+            lossPanel = new FXMLLoader().load(getClass().getResource("LossPanel.fxml"));
+            lossPanel.setTranslateY(Const.HEIGHT_OF_LOSS_FALL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Line level = new Line(0, Const.LOWER_PLATFORM_OFFSET, Const.STAGE_WIDTH, Const.LOWER_PLATFORM_OFFSET);
         level.setOpacity(Const.DETECTOR_OPACITY);
@@ -64,6 +80,8 @@ public class Game extends Pane {
     }
 
     private void update(){
+        checkForVictory();
+        if(checkForLoss()) return;
         doodlersMovement();
         platformsMovement();
         checkForCollision();
@@ -85,6 +103,7 @@ public class Game extends Pane {
         });
 
         this.scene.setOnKeyReleased(e -> {
+
             switch (e.getCode()){
                 case LEFT:
                     moving_left = false;
@@ -104,6 +123,34 @@ public class Game extends Pane {
         if(!getChildren().contains(im)) getChildren().add(im);
     }
 
+    public void checkForVictory(){
+
+    }
+
+    private boolean loss = false;
+
+    public boolean checkForLoss(){
+        if(player.getTranslateY() + Const.DOODLER_HEIGHT > Const.STAGE_HEIGHT || loss){
+            loss = true;
+            if(!getChildren().contains(lossPanel))getChildren().add(lossPanel);
+
+            if(lossPanel.getTranslateY() + lossPanel.getHeight() + player.getSpeed_y() > Const.STAGE_HEIGHT) {
+                for (Layer l : Layer.all) l.getPlatform().setTranslateY(l.getPlatformY() + player.getSpeed_y());
+                lossPanel.setTranslateY(lossPanel.getTranslateY() + player.getSpeed_y());
+            } else {
+                lossPanel.setTranslateY(Const.STAGE_HEIGHT - lossPanel.getHeight());
+                loss = false;
+                timer.stop();
+
+
+                    //scoreText.setText("Ted");
+
+
+            }
+            return true;
+        }
+        return false;
+    }
 
     private void checkForCollision(){
         for (Layer p : Layer.all) {
