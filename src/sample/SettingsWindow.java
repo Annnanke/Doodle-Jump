@@ -8,21 +8,25 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Settings extends Application {
+import static sample.Menu.style;
+
+public class SettingsWindow extends Application {
     public static Stage aStage;
+    public static Scene settingsScene;
     @FXML
-    private RadioButton soundOn, soundOff, themeCoffee, themeMilk;
+    public RadioButton soundOn, soundOff, themeCoffee, themeMilk;
 
     public static void stageSetting(Stage newStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Settings.class.getResource("settings.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SettingsWindow.class.getResource("settings.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root1));
+        settingsScene = new Scene(root1);
+        settingsScene.getStylesheets().add(style);
+        stage.setScene(settingsScene);
         Image iconSettings = new Image("Images/settings_icon.png");
         stage.getIcons().add(iconSettings);
         stage.setX(100);
@@ -54,10 +58,10 @@ public class Settings extends Application {
         }
         if(themeMilk.isSelected()){
             System.out.println("It's Milk");
-            Menu.style = this.getClass().getResource("LightStyling.css").toExternalForm();
+            style = this.getClass().getResource("LightStyling.css").toExternalForm();
         }
         if(themeCoffee.isSelected()){
-            Menu.style = this.getClass().getResource("DarkStyling.css").toExternalForm();
+            style = this.getClass().getResource("DarkStyling.css").toExternalForm();
         }
     }
 }
