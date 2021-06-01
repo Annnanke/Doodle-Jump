@@ -1,27 +1,22 @@
 package Models;
 
 import Basics.Const;
-import Basics.Detector;
 import Main.Game;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Rectangle;
 
 
 public class Doodler extends ImageView {
 
-    private double x, y;
     private double speed_x, speed_y;
     private Detector detector;
     private boolean moving = true;
 
     public Doodler(double x, double y, Game root) {
-        super(Const.CAT_NORMAL);
-        this.x = x;
-        this.y = y;
+        super(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
         setTranslateX(x);
         setTranslateY(y);
-        detector = new Detector((int)(x + getImage().getWidth()/3), (int)(y + Const.DOODLER_HEIGHT - 7), (int)(getImage().getWidth() * 0.5), this);
+        detector = new Detector((int)(x + getImage().getWidth()/3), (int)(y + Const.DOODLER_HEIGHT - 7),
+                                (int)(getImage().getWidth() * 0.5), this);
         root.getChildren().add(detector);
         speed_x = Const.DOODLER_V0_X;
         speed_y = Const.DOODLER_V0_Y;
@@ -30,7 +25,7 @@ public class Doodler extends ImageView {
 
 
     public void moveLeft(){
-        setImage(Const.CAT_NORMAL_REFL);
+        setImage(Const.CHARACTER_NORMAL_REFL[Const.CHOSEN_CHARACTER]);
         if(getTranslateX() - speed_x >= -Const.PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_RIGHT*Const.DOODLER_WIDTH) {
             setTranslateX(getTranslateX() - speed_x);
             detector.setX(getTranslateX() + getImage().getWidth() - getImage().getWidth()/3 - detector.getWidth());
@@ -41,7 +36,7 @@ public class Doodler extends ImageView {
     }
 
     public void moveRight(){
-        setImage(Const.CAT_NORMAL);
+        setImage(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
         if(getTranslateX() + speed_x + Const.PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_LEFT*Const.DOODLER_WIDTH <= Const.STAGE_WIDTH) {
             setTranslateX(getTranslateX() + speed_x);
             detector.setX(getTranslateX() + getImage().getWidth()/3);

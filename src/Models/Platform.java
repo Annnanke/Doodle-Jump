@@ -1,135 +1,121 @@
 package Models;
 import Basics.Const;
-import Basics.Detector;
 import Main.Game;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
 
 import java.util.Random;
 
 public class Platform extends ImageView {
 
-    private double x, y;
-    private  double speed_y;
     private static Game root;
-    private boolean pivot;
-    private Detector detector;
+    private Detector additionalDetector, detector;
+    private int type, crackedCounter = 0;
+    private double horizontal_speed;
+    private boolean detectable;
 
-    public Platform(double x, double y, Game root) {
-        super(Const.PLATFORM_1);
-        this.x = x;
-        this.y = y;
+
+    public Platform(double x, double y, int type, Game root) {
+        super();
         this.root = root;
-        detector = new Detector((x), (y), (getImage().getWidth()), this);
-        root.getChildren().add(detector);
-        speed_y = Const.PLATFORM_V;
+        this.type = type;
         setTranslateX(x);
         setTranslateY(y);
+        setType(type);
+        horizontal_speed = Const.HORIZONTAL_SPEED[Game.getLvl() - 1] * Math.pow(-1, new Random().nextInt());
+        detector = new Detector((x), (y), (getImage().getWidth()), this);
+        detectable = true;
+        root.getChildren().add(detector);
         root.getChildren().add(this);
     }
 
-//    public void moveDown(int lvl){
-//
-//        if(!root.hasPivot()) return;
-//        if(!pivot){
-//        setTranslateY(getTranslateY() + speed_y);
-//        moveDetector();
-//        speed_y += Const.GRAVITY;
-//
-////        if(getTranslateY() - (Const.LAYER_HEIGHT[lvl] - Const.PLATFORM_HEIGHT)/2 >= Const.STAGE_HEIGHT) {
-////            setTranslateX(new Random().nextInt(Const.STAGE_WIDTH - Const.DOODLER_WIDTH));
-////            setTranslateY((Const.LAYER_HEIGHT[lvl] - Const.PLATFORM_HEIGHT)/2 - Const.LAYER_HEIGHT[lvl]);
-////            moveDetector();
-////        }
-//        }
-//        else {
-//            if(getTranslateY() < Const.LOWER_PLATFORM_OFFSET) {
-//                setTranslateY(getTranslateY() + speed_y);
-//                moveDetector();
-//                for(Platform p : root.getPlatforms()) p.speed_y = Const.PLATFORM_V;
-//            }
-////            else if(getTranslateY() + speed_y >= Const.LOWER_PLATFORM_OFFSET) {
-////                setTranslateY(Const.LOWER_PLATFORM_OFFSET);
-////                moveDetector();
-////                pivot = false;
-////                for(Platform p : root.getPlatforms()) p.speed_y = Const.PLATFORM_V;
-////            }
-//            else {
-//                pivot = false;
-//                for(Platform p : root.getPlatforms()) p.speed_y = Const.PLATFORM_V;
-//            }
-//        }
-//    }
+    public int getType() {
+        return type;
+    }
 
-    public void moveDown(int lvl){
+    public void setType(int type) {
 
-        if(!root.hasPivot()) return;
-        if(!pivot){
-            setTranslateY(getTranslateY() + speed_y);
-            moveDetector();
-            speed_y += Const.GRAVITY;
-        } else {
-            if(getTranslateY() + speed_y < Const.LOWER_PLATFORM_OFFSET) {
-                System.out.println(getTranslateY() + speed_y + " - offset = " + Const.LOWER_PLATFORM_OFFSET);
-                setTranslateY(getTranslateY() + speed_y);
-                moveDetector();
-                speed_y += Const.GRAVITY;
-                if(speed_y <= 0){
-                    moveToOffset();
-                    pivot = false;
-                    for(Platform p : root.getPlatforms()) p.speed_y = Const.PLATFORM_V;
-                }
-            } else {
-                System.out.println(getTranslateY() + speed_y + " - offset = " + Const.LOWER_PLATFORM_OFFSET);
-                moveToOffset();
-                pivot = false;
-                for(Platform p : root.getPlatforms()) p.speed_y = Const.PLATFORM_V;
-            }
+        this.type = type;
+        switch (type){
+            case DEFAULT :
+                root.getChildren().remove(additionalDetector);
+                additionalDetector = null;
+                setImage(Const.PLATFORM_1[Game.getLvl() - 1]);
+                break;
+            case MOVING :
+                root.getChildren().remove(additionalDetector);
+                additionalDetector = null;
+                setImage(Const.PLATFORM_1[Game.getLvl() - 1]);
+                break;
+            case TRAMPOLINE :
+                setImage(Const.TRAMPOLINE[Game.getLvl() - 1]);
+                additionalDetector = new Detector( getTranslateX() + getImage().getWidth() * (0.4), getTranslateY(),
+                        0.2 * getImage().getWidth(), this);
+
+                additionalDetector.setFill(Color.RED);
+                root.getChildren().add(additionalDetector);
+                break;
+            case CRACKED :
+                root.getChildren().remove(additionalDetector);
+                additionalDetector = null;
+                setImage(Const.PLATFORM_1_BROKEN[Game.getLvl() - 1]);
+                break;
         }
     }
 
-    private void moveToOffset(){
-        for (Platform p : root.getPlatforms()) {
-            p.setTranslateY(p.getTranslateY() + Const.LOWER_PLATFORM_OFFSET - getTranslateY() - speed_y);
-            p.moveDetector();
-        }
-        setTranslateY(Const.LOWER_PLATFORM_OFFSET);
-        moveDetector();
+
+    public static void removePostCracked(){
+        for(Layer l : Layer.getAll())
+        if(l.getPlatform().getType() == CRACKED && l.getPlatform().getImage() == Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1])
+            l.getPlatform().disposeOfPostCracked();
     }
 
-    public static void generateWhenPassed(int lvl){
-        for (Platform p : root.getPlatforms())
-            if(p.getTranslateY() - (Const.LAYER_HEIGHT[lvl] - Const.PLATFORM_HEIGHT)/2 >= Const.STAGE_HEIGHT) {
-                p.setTranslateX(new Random().nextInt(Const.STAGE_WIDTH - Const.DOODLER_WIDTH));
-                p.setTranslateY((Const.LAYER_HEIGHT[lvl] - Const.PLATFORM_HEIGHT)/2 - Const.LAYER_HEIGHT[lvl]);
-                p.moveDetector();
-                //p.speed_y = Const.PLATFORM_V;
+    public void disposeOfPostCracked(){
+        if(++crackedCounter > Const.POST_CRACKED_TIME_OF_LIFE) setImage(null);
+    }
+
+    public static void moveAllMovingHorizontally(){
+        for(Layer l : Layer.getAll())
+            if(l.getPlatform().getType() == MOVING) {
+                if(l.getPlatform().getTranslateX() + Const.PLATFORM_WIDTH + l.getPlatform().horizontal_speed > Const.STAGE_WIDTH ||
+                   l.getPlatform().getTranslateX() + l.getPlatform().horizontal_speed < 0 ) l.getPlatform().horizontal_speed *= -1;
+                l.getPlatform().setTranslateX(l.getPlatform().getTranslateX() + l.getPlatform().horizontal_speed);
+                l.getPlatform().moveDetector();
             }
 
 
     }
 
-    private void moveDetector(){
+
+
+    public void moveDetector(){
         detector.setX(getTranslateX());
         detector.setY(getTranslateY());
+        if(additionalDetector != null){
+            additionalDetector.setX(getTranslateX() + getImage().getWidth()*(0.45));
+            additionalDetector.setY(getTranslateY());
+        }
     }
 
-    public void setPivot(boolean pivot) {
-        this.pivot = pivot;
+    public boolean isDetectable(){
+        return detectable;
     }
 
-    public boolean isPivot() {
-        return pivot;
+    public void setDetectable(boolean d){
+        detectable = d;
     }
 
     public Detector getDetector() {
         return detector;
     }
 
-
-
-    public double getSpeed_y() {
-        return speed_y;
+    public Detector getAdditionalDetector() {
+        return additionalDetector;
     }
+
+    public static final int DEFAULT = 0;//---50%
+    public static final int MOVING = 1;//---20%
+    public static final int TRAMPOLINE = 2;//---10%
+    public static final int CRACKED = 3; // must always be the last ---20%
+
 }

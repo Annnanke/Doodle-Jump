@@ -1,25 +1,27 @@
 package Main;
 
 import Basics.Const;
+import Basics.Generator;
+import Models.Layer;
 import Models.Doodler;
 import Models.Platform;
+import Models.ScoreBar;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-
-import java.util.ArrayList;
-import java.util.Random;
+import javafx.scene.shape.Line;
 
 
 public class Game extends Pane {
 
-    private int lvl;
+    private static int lvl;
     private boolean moving_left, moving_right, isRunning;
     private Doodler player;
     private Scene scene = new Scene(new Pane());
-    private ArrayList<Platform> platforms;
+    public AnimationTimer timer;
     private ImageView background;
+    private static ScoreBar scorebar;
 
     public Game(int lvl){
         super();
@@ -35,29 +37,38 @@ public class Game extends Pane {
         moving_left = false;
         moving_right = false;
 
-        background = new ImageView(Const.BACKGROUND);
+        background = new ImageView(Const.BACKGROUND[getLvl() - 1]);
         add(background);
 
-        platforms = new ArrayList<>();
+        Line level = new Line(0, Const.LOWER_PLATFORM_OFFSET, Const.STAGE_WIDTH, Const.LOWER_PLATFORM_OFFSET);
+        level.setOpacity(Const.DETECTOR_OPACITY);
+        getChildren().add(level);
+
+        Layer.setRoot(this);
 
         player = new Doodler((Const.STAGE_WIDTH - Const.DOODLER_WIDTH)/2,Const.LOWER_PLATFORM_OFFSET - Const.DOODLER_HEIGHT, this);
 
-        generatePlatforms();
+        Generator.generatePlatforms();
 
-        AnimationTimer timer = new AnimationTimer() {
+        scorebar = new ScoreBar();
+        getChildren().add(scorebar);
+
+        timer = new AnimationTimer() {
             @Override
             public void handle(long l) {update();}
         };
 
         timer.start();
+
+
     }
 
     private void update(){
         doodlersMovement();
         platformsMovement();
         checkForCollision();
-        Platform.generateWhenPassed(lvl - 1);
-
+        Layer.generateWhenPassed();
+        removeDead();
     }
 
     public void setScene(Scene scene) {
@@ -85,51 +96,59 @@ public class Game extends Pane {
         });
     }
 
-    private void generatePlatforms(){
-  /*
-        double half_delta = (Const.LAYER_HEIGHT[lvl - 1] - Const.PLATFORM_HEIGHT)/2;
-        for(double start = Const.STAGE_HEIGHT - Const.LAYER_HEIGHT[lvl - 1]; start >= 0; start -= Const.LAYER_HEIGHT[lvl - 1])
-            add(new Platform(new Random().nextInt(Const.STAGE_WIDTH - Const.PLATFORM_WIDTH), start + half_delta, this));
-*/
-        double half_delta = (Const.LAYER_HEIGHT[lvl - 1] - Const.PLATFORM_HEIGHT)/2;
-        int N = (int) (Const.STAGE_HEIGHT / Const.LAYER_HEIGHT[lvl - 1]);
-        for (int i = N; i >= 0; i--) {
-            add(new Platform(new Random().nextInt(Const.STAGE_WIDTH - Const.PLATFORM_WIDTH),
-                    (i - 1) * Const.LAYER_HEIGHT[lvl - 1] + half_delta, this));
-
-
-        }
-    }
-
-    public ArrayList<Platform> getPlatforms(){
-        return platforms;
+    private void removeDead(){
+        Platform.removePostCracked();
     }
 
     public void add(ImageView im){
         if(!getChildren().contains(im)) getChildren().add(im);
-        if(im.getClass() == Platform.class) platforms.add((Platform) im);
     }
 
-    public void remove(ImageView im){
-        if(getChildren().contains(im)) getChildren().remove(im);
-        if(im.getClass() == Platform.class) platforms.remove((Platform) im);
-    }
 
     private void checkForCollision(){
-        for (Platform p : platforms) {
+        for (Layer p : Layer.all) {
             if (
                     player.getDetector().getBoundsInParent().intersects(p.getDetector().getBoundsInParent())
-                            //TODO better intersection
-           // player.getDetector().intersection(p.getDetector())
-                            && player.getSpeed_y() < 0
-                            && player.isMoving()
+                    && player.getSpeed_y() < 0
+                    && player.isMoving()
+                    && p.isDetectable()
             ) {
-            player.setSpeed_y(Const.DOODLER_V0_Y);
-            if(p.getTranslateY() < Const.LOWER_PLATFORM_OFFSET) {
-                p.setPivot(true);
-                landing = p.getTranslateY() - Const.DOODLER_HEIGHT;
+                switch (p.getPlatform().getType()){
+
+                    default:
+                        player.setSpeed_y(Const.DOODLER_V0_Y);
+                        if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
+                            p.setPivot(true);
+                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+                        }
+                        break;
+                    case Platform.TRAMPOLINE :
+                        if(p.getAdditionalDetector().getBoundsInParent().intersects(player.getDetector().getBoundsInParent())) {
+                            p.setMissedTrampoline(false);
+                            player.setSpeed_y(Const.TRAMPOLINE_V_0);
+                            if(p.getPlatformY() > Const.LOWER_PLATFORM_OFFSET) {
+                                landingSpeed = Math.sqrt(-2 * Const.GRAVITY * (p.getPlatformY() - Const.LOWER_PLATFORM_OFFSET));
+                            }
+                            else landingSpeed = 0;
+                            p.setPivot(true);
+                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+                        } else {
+                            landingSpeed = 0;
+                            p.setMissedTrampoline(true);
+                            player.setSpeed_y(Const.DOODLER_V0_Y);
+                            if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
+                                p.setPivot(true);
+                                landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+                            }
+                        }
+
+                        break;
+                    case Platform.CRACKED:
+                        p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1]);
+                        break;
+                }
+
             }
-        }
         }
     }
 
@@ -139,19 +158,35 @@ public class Game extends Pane {
         player.verticalMovement();
     }
 
+    private void landingMovement(){
+        landing -= landingSpeed;
+        if(landingSpeed + Const.GRAVITY > 0) landingSpeed += Const.GRAVITY;
+    }
+
     private void platformsMovement(){
-        if(hasPivot()) {
+        //horizontal movement
+        Platform.moveAllMovingHorizontally();
+
+        //vertical movement
+        if(Layer.hasPivot()) {
+            if((Layer.getPivot().getPivotType() == Layer.PIVOT_TRAMPOLINE) ) landingMovement();
             player.setTranslateY(landing);
             player.setMoving(false);
         } else player.setMoving(true);
-        for (Platform moving_platform : platforms) moving_platform.moveDown(lvl - 1);
+        Layer.move();
     }
 
-    public boolean hasPivot(){
-        for(Platform p : platforms) if(p.isPivot()) return true;
-        return false;
+    public static ScoreBar getScorebar(){
+        return scorebar;
     }
 
+    public static int getLvl() {
+        return lvl;
+    }
 
-    private double landing;
+    public Doodler getPlayer() {
+        return player;
+    }
+
+    private double landing, landingSpeed = 0;
 }
