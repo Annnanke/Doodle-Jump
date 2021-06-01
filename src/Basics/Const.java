@@ -7,11 +7,9 @@ import java.io.File;
 
 public class Const {
 
-
         //STAGE
         public static final int STAGE_WIDTH = 500;
         public static final int STAGE_HEIGHT = 700;
-
 
         //GRAVITY
         public static final double GRAVITY = -0.45;
@@ -46,9 +44,11 @@ public class Const {
         public static final int POST_CRACKED_TIME_OF_LIFE = 30;
         public static final double[] HORIZONTAL_SPEED = {2, 2, 2, 2, 2}; //only for moving platforms
         public static final double TRAMPOLINE_V_0 = Math.sqrt(-2 * GRAVITY * STAGE_HEIGHT);
+        public static final double VICTORY_SPEED_OF_GOLDEN_PLATFORM = -2;
 
         //GAME GENERAL:
         public static final double HEIGHT_OF_LOSS_FALL = 2*STAGE_HEIGHT + 2*LAYER_HEIGHT[Game.getLvl() - 1];
+        public static final int HEIGHT_1 = 1000;
 
         //SCORE BAR
 
@@ -88,6 +88,12 @@ public class Const {
                                                   new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
                                                   new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
                                                   new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT)};
+
+        public static final Image[] GOLDEN = {new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6),
+                                              new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6),
+                                              new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6),
+                                              new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6),
+                                              new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6)};
 
         public static final Image[] BACKGROUND = {new Icon("src/Images/background.jpg"),
                                                   new Icon("src/Images/background.jpg"),

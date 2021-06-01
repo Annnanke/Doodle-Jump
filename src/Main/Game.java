@@ -8,13 +8,20 @@ import Models.Platform;
 import Models.ScoreBar;
 import javafx.animation.AnimationTimer;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+import javafx.util.converter.NumberStringConverter;
+
 
 import java.io.IOException;
 
@@ -29,6 +36,7 @@ public class Game extends Pane {
     private ImageView background;
     private static ScoreBar scorebar;
     private Pane lossPanel;
+    private boolean won = false;
 
 
     public Game(int lvl){
@@ -93,11 +101,12 @@ public class Game extends Pane {
         this.scene.setOnKeyPressed(e -> {
             switch (e.getCode()){
                 case LEFT:
-                    moving_left = true;
+                    if(!won) moving_left = true;
                     break;
                 case RIGHT:
-                    moving_right = true;
+                    if(!won) moving_right = true;
                     break;
+
             }
         });
 
@@ -129,9 +138,10 @@ public class Game extends Pane {
 
     private boolean loss = false;
 
-    @FXML private Text scoText;
 
     @FXML
+    public Label scoreLabel;
+
     public boolean checkForLoss(){
         if(player.getTranslateY() + Const.DOODLER_HEIGHT > Const.STAGE_HEIGHT || loss){
             loss = true;
@@ -146,9 +156,9 @@ public class Game extends Pane {
                 loss = false;
                 timer.stop();
 
-                //scoText.setText("rew");
 
 
+                //scoreLabel.textProperty().bind(Bindings.convert(scorebar.getPoints().valueProperty()));
             }
             return true;
         }
@@ -192,6 +202,16 @@ public class Game extends Pane {
                             }
                         }
 
+
+                        break;
+                    case Platform.GOLDEN:
+                        won = true;
+                        player.setSpeed_y(Const.DOODLER_V0_Y);
+                        if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
+                            p.setPivot(true);
+                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+                        }
+
                         break;
                     case Platform.CRACKED:
                         p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1]);
@@ -214,6 +234,14 @@ public class Game extends Pane {
     }
 
     private void platformsMovement(){
+        //victory movement
+        if(won)
+            for(Layer l : Layer.all)
+                if(l.getType() == Platform.GOLDEN && l.getPlatform().getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM >= 0) {
+                    l.getPlatform().setTranslateX(l.getPlatform().getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM);
+                    player.setTranslateX(player.getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM);
+                }
+
         //horizontal movement
         Platform.moveAllMovingHorizontally();
 

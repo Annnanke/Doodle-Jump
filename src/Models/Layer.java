@@ -40,10 +40,8 @@ public class Layer {
             case PIVOT_JUMP :
                 if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > Const.MIN_SPEED_FOR_JUMP) {
                     moveOnce();
-
                 }
                 else pivot.setPivot(false);
-
                 return;
 
             case PIVOT_TRAMPOLINE :
@@ -69,20 +67,26 @@ public class Layer {
                     pivot.setPivot(false);
                 }
                 return;
-
         }
-
-
     }
 
     public static void generateWhenPassed(){
+        if(hasGoldenPlatform()) return;
         for(Layer l : all)
             if(l.getY() >= Const.STAGE_HEIGHT) {
                 l.setDetectable(true);
                 l.setY(getTop().getY() - Const.LAYER_HEIGHT[Game.getLvl() - 1]);
-                l.setType(Generator.nextType(l.getPlatformY()));
+                if(Const.LOWER_PLATFORM_OFFSET - l.getPlatformY() >= Const.HEIGHT_1 - Game.getScorebar().getPoints())
+                    l.setType(Platform.GOLDEN);
+                else l.setType(Generator.nextType(l.getPlatformY()));
                 top = l;
             } else if(l.getPlatform().getTranslateY() >= Const.STAGE_HEIGHT) l.getPlatform().setDetectable(false);
+    }
+
+    public static boolean hasGoldenPlatform(){
+        for(Layer l : all)
+            if(l.getType() == Platform.GOLDEN) return true;
+            return false;
     }
 
     public boolean isDetectable(){
@@ -114,6 +118,7 @@ public class Layer {
     public Detector getAdditionalDetector(){
         return p.getAdditionalDetector();
     }
+
 
     public void setY(double y) {
         this.y = y;

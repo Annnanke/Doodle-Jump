@@ -60,6 +60,11 @@ public class Platform extends ImageView {
                 additionalDetector = null;
                 setImage(Const.PLATFORM_1_BROKEN[Game.getLvl() - 1]);
                 break;
+            case GOLDEN:
+                root.getChildren().remove(additionalDetector);
+                additionalDetector = null;
+                setImage(Const.GOLDEN[Game.getLvl() - 1]);
+                break;
         }
     }
 
@@ -117,5 +122,6 @@ public class Platform extends ImageView {
     public static final int MOVING = 1;//---20%
     public static final int TRAMPOLINE = 2;//---10%
     public static final int CRACKED = 3; // must always be the last ---20%
+    public static final int GOLDEN = 10;
 
 }
