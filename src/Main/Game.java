@@ -173,15 +173,17 @@ public class Game extends Pane {
                     && player.isMoving()
                     && p.isDetectable()
             ) {
+                if(p.getPlatform().isStable()) player.setJumpImage(p.getPlatform().getType());
                 switch (p.getPlatform().getType()){
 
-                    default:
+                    default :
                         player.setSpeed_y(Const.DOODLER_V0_Y);
                         if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
                             p.setPivot(true);
                             landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
                         }
                         break;
+
                     case Platform.TRAMPOLINE :
                         if(p.getAdditionalDetector().getBoundsInParent().intersects(player.getDetector().getBoundsInParent())) {
                             p.setMissedTrampoline(false);
@@ -201,21 +203,30 @@ public class Game extends Pane {
                                 landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
                             }
                         }
-
-
                         break;
-                    case Platform.GOLDEN:
+
+                    case Platform.GOLDEN :
                         won = true;
                         player.setSpeed_y(Const.DOODLER_V0_Y);
                         if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
                             p.setPivot(true);
                             landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
                         }
-
                         break;
-                    case Platform.CRACKED:
+
+                    case Platform.CRACKED :
                         p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1]);
                         break;
+
+                        case Platform.JETPACKED :
+                            player.setSpeed_y(Const.JETPACK_V_0);
+                            if(p.getPlatformY() > Const.LOWER_PLATFORM_OFFSET) {
+                                landingSpeed = Math.sqrt(-2 * Const.GRAVITY * (p.getPlatformY() - Const.LOWER_PLATFORM_OFFSET));
+                            }
+                            else landingSpeed = 0;
+                            p.setPivot(true);
+                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+                            break;
                 }
 
             }
@@ -247,7 +258,8 @@ public class Game extends Pane {
 
         //vertical movement
         if(Layer.hasPivot()) {
-            if((Layer.getPivot().getPivotType() == Layer.PIVOT_TRAMPOLINE) ) landingMovement();
+            if((Layer.getPivot().getPivotType() == Layer.PIVOT_TRAMPOLINE
+                || Layer.getPivot().getPivotType() == Layer.PIVOT_JETPACK) ) landingMovement();
             player.setTranslateY(landing);
             player.setMoving(false);
         } else player.setMoving(true);
@@ -262,9 +274,6 @@ public class Game extends Pane {
         return lvl;
     }
 
-    public Doodler getPlayer() {
-        return player;
-    }
 
     private double landing, landingSpeed = 0;
 }

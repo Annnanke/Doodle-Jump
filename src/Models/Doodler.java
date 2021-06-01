@@ -25,7 +25,7 @@ public class Doodler extends ImageView {
 
 
     public void moveLeft(){
-        setImage(Const.CHARACTER_NORMAL_REFL[Const.CHOSEN_CHARACTER]);
+        setScaleX(-1);
         if(getTranslateX() - speed_x >= -Const.PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_RIGHT*Const.DOODLER_WIDTH) {
             setTranslateX(getTranslateX() - speed_x);
             detector.setX(getTranslateX() + getImage().getWidth() - getImage().getWidth()/3 - detector.getWidth());
@@ -35,8 +35,19 @@ public class Doodler extends ImageView {
         }
     }
 
+    public void setJumpImage(int type){
+        switch (type){
+            default :
+                setImage(Const.CHARACTER_JUMP[Const.CHOSEN_CHARACTER]);
+                break;
+            case Platform.JETPACKED :
+                setImage(Const.CHARACTER_WITH_JETPACK[Const.CHOSEN_CHARACTER]);
+                break;
+        }
+    }
+
     public void moveRight(){
-        setImage(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
+        setScaleX(1);
         if(getTranslateX() + speed_x + Const.PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_LEFT*Const.DOODLER_WIDTH <= Const.STAGE_WIDTH) {
             setTranslateX(getTranslateX() + speed_x);
             detector.setX(getTranslateX() + getImage().getWidth()/3);
@@ -49,6 +60,7 @@ public class Doodler extends ImageView {
         setTranslateY(getTranslateY() - speed_y);
         detector.setY(getTranslateY() + Const.DOODLER_HEIGHT - 7);
         speed_y += Const.GRAVITY;
+        if(Math.abs(speed_y) < 1) setImage(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
     }
 
     public double getSpeed_y() {

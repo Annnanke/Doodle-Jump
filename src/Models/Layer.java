@@ -15,7 +15,7 @@ public class Layer {
     private boolean pivot, missedTrampoline = false;
     private Line visualiser;
     private static Layer top;
-    private static double trampoline_height = 0;
+    private static double passed_height = 0;
 
 
     public Layer(double y){
@@ -56,14 +56,24 @@ public class Layer {
                         return;
                     }
                 }
-
                 //ordinary trampoline jump
-                if(trampoline_height < Const.STAGE_HEIGHT && speed > Const.MIN_SPEED_FOR_JUMP) {
-                    trampoline_height += speed;
+                if(passed_height < Const.TRAMPOLINE_HEIGHT && speed > Const.MIN_SPEED_FOR_JUMP) {
+                    passed_height += speed;
                     moveOnce();
                 }
                 else {
-                    trampoline_height = 0;
+                    passed_height = 0;
+                    pivot.setPivot(false);
+                }
+                return;
+
+            case PIVOT_JETPACK :
+                if(passed_height < Const.JETPACK_HEIGHT && speed > Const.MIN_SPEED_FOR_JUMP) {
+                    passed_height += speed;
+                    moveOnce();
+                }
+                else {
+                    passed_height = 0;
                     pivot.setPivot(false);
                 }
                 return;
@@ -196,6 +206,10 @@ public class Layer {
                     speed = 0;
                     pivotType = PIVOT_CRACKED;
                     break;
+                    case Platform.JETPACKED :
+                        speed = Const.JETPACK_V_0;
+                        pivotType = PIVOT_JETPACK;
+                        break;
                 default :
                     speed = Const.PLATFORM_V;
                     pivotType = PIVOT_JUMP;
@@ -213,5 +227,6 @@ public class Layer {
     public static final int PIVOT_JUMP = 0;
     public static final int PIVOT_TRAMPOLINE = 1;
     public static final int PIVOT_CRACKED = 2;
+    public static final int PIVOT_JETPACK = 3;
     private static int pivotType = NOT_A_PIVOT;
 }
