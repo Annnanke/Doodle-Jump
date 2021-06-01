@@ -1,5 +1,9 @@
 package sample;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -16,5 +20,13 @@ public class LevelChooserController {
         levelView.setImage(lvl3Image);
         levelView.setImage(lvl4Image);
         levelView.setImage(lvl5Image);
+    }
+    public void lvl1(ActionEvent e) throws Exception {
+        /*//Parent rootD = FXMLLoader.load(getClass().getResource("lvlchooser.fxml"));
+        Menu.menuStage.setScene(Main.Main.scene);
+        Menu.menuStage.setX(100);
+        Menu.menuStage.setY(50);
+        Menu.menuStage.show();*/
+
     }
 }

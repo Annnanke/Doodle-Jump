@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Main">
+<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Menu">
    <children>
       <ImageView fitHeight="92.0" fitWidth="419.0" layoutX="52.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,17 +23,17 @@
             <Font size="25.0" />
          </font>
       </Button>
-      <Button layoutX="123.0" layoutY="360.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="254.0" text="Settings">
+      <Button layoutX="123.0" layoutY="360.0" mnemonicParsing="false" onAction="#settings" prefHeight="78.0" prefWidth="254.0" text="Settings">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button layoutX="123.0" layoutY="271.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="254.0" text="Shop">
+      <Button layoutX="123.0" layoutY="271.0" mnemonicParsing="false" onAction="#shop" prefHeight="78.0" prefWidth="254.0" text="Shop">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button layoutX="123.0" layoutY="449.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="254.0" text="Exit">
+      <Button layoutX="123.0" layoutY="449.0" mnemonicParsing="false" onAction="#exit" prefHeight="78.0" prefWidth="254.0" text="Exit">
          <font>
             <Font size="25.0" />
          </font>

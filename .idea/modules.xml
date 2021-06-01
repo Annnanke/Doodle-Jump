@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Doodle-Jump.iml" filepath="$PROJECT_DIR$/Doodle-Jump.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../javafx-sdk-11.0.2/untitled1.iml" filepath="$PROJECT_DIR$/../javafx-sdk-11.0.2/untitled1.iml" />
     </modules>
   </component>
 </project>
