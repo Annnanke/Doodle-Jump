@@ -52,4 +52,8 @@ public class ScoreBar extends Pane {
         score.setText("SCORE : " + this.points);
     }
 
+    public void setPoints(int points) {
+        this.points = points;
+        score.setText("SCORE: " + this.points);
+    }
 }

@@ -2,26 +2,17 @@ package Main;
 
 import Basics.Const;
 import Basics.Generator;
+import GUI.LossPanelController;
 import Models.Layer;
 import Models.Doodler;
 import Models.Platform;
 import Models.ScoreBar;
 import javafx.animation.AnimationTimer;
-
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
-import javafx.scene.text.Text;
-import javafx.util.converter.NumberStringConverter;
-
 
 import java.io.IOException;
 
@@ -35,7 +26,7 @@ public class Game extends Pane {
     public AnimationTimer timer;
     private ImageView background;
     private static ScoreBar scorebar;
-    private Pane lossPanel;
+    private Pane lossPanel, victoryPanel;
     private boolean won = false;
 
 
@@ -56,12 +47,7 @@ public class Game extends Pane {
         background = new ImageView(Const.BACKGROUND[getLvl() - 1]);
         add(background);
 
-        try {
-            lossPanel = new FXMLLoader().load(getClass().getResource("../GUI/LossPanel.fxml"));
-            lossPanel.setTranslateY(Const.HEIGHT_OF_LOSS_FALL);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
         Line level = new Line(0, Const.LOWER_PLATFORM_OFFSET, Const.STAGE_WIDTH, Const.LOWER_PLATFORM_OFFSET);
         level.setOpacity(Const.DETECTOR_OPACITY);
@@ -87,7 +73,7 @@ public class Game extends Pane {
     }
 
     private void update(){
-        checkForVictory();
+        //if(checkForVictory()) return;
         if(checkForLoss()) return;
         doodlersMovement();
         platformsMovement();
@@ -130,23 +116,30 @@ public class Game extends Pane {
     public void add(ImageView im){
         if(!getChildren().contains(im)) getChildren().add(im);
     }
-
-    public void checkForVictory(){
-
-    }
+//
+//    public boolean checkForVictory(){
+//        if(!won) return false;
+//
+//
+//    }
 
 
     private boolean loss = false;
 
 
-    @FXML
-    public Label scoreLabel;
-
     public boolean checkForLoss(){
         if(player.getTranslateY() + Const.DOODLER_HEIGHT > Const.STAGE_HEIGHT || loss){
             loss = true;
             if(getChildren().contains(scorebar)) getChildren().remove(scorebar);
-            if(!getChildren().contains(lossPanel))getChildren().add(lossPanel);
+            if(!getChildren().contains(lossPanel)){
+                try {
+                    lossPanel = new FXMLLoader().load(getClass().getResource("../GUI/LossPanel.fxml"));
+                    lossPanel.setTranslateY(Const.HEIGHT_OF_LOSS_FALL);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                getChildren().add(lossPanel);
+            }
 
             if(lossPanel.getTranslateY() + lossPanel.getHeight() + player.getSpeed_y() > Const.STAGE_HEIGHT) {
                 for (Layer l : Layer.all) l.getPlatform().setTranslateY(l.getPlatformY() + player.getSpeed_y());
@@ -156,9 +149,6 @@ public class Game extends Pane {
                 loss = false;
                 timer.stop();
 
-
-
-                //scoreLabel.textProperty().bind(Bindings.convert(scorebar.getPoints().valueProperty()));
             }
             return true;
         }
@@ -205,8 +195,12 @@ public class Game extends Pane {
                         }
                         break;
 
+                        //VICTORY:
                     case Platform.GOLDEN :
                         won = true;
+                        if(getScorebar().getPoints() < Const.HEIGHT_1) getScorebar().setPoints(Const.HEIGHT_1);
+                        getChildren().remove(scorebar);
+                        player.setScaleX(1);
                         player.setSpeed_y(Const.DOODLER_V0_Y);
                         if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
                             p.setPivot(true);
@@ -248,9 +242,32 @@ public class Game extends Pane {
         //victory movement
         if(won)
             for(Layer l : Layer.all)
-                if(l.getType() == Platform.GOLDEN && l.getPlatform().getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM >= 0) {
+                if(l.getType() == Platform.GOLDEN && l.getPlatform().getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM >= Const.VICTORY_POSITION_X) {
                     l.getPlatform().setTranslateX(l.getPlatform().getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM);
                     player.setTranslateX(player.getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM);
+                    if(Math.abs(l.getPlatform().getTranslateX() + Const.PLATFORM_WIDTH/2 - Const.DOODLER_WIDTH/2 - player.getTranslateX()) >= Const.VICTORY_SHIFT_SPEED)
+                        player.setTranslateX(player.getTranslateX() + Math.signum(l.getPlatform().getTranslateX() + Const.PLATFORM_WIDTH/2 - Const.DOODLER_WIDTH/2 - player.getTranslateX())*Const.VICTORY_SHIFT_SPEED);
+                } else if(l.getPlatform().getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM < Const.VICTORY_POSITION_X) {
+                    if(victoryPanel == null){
+                        try {
+                            victoryPanel = FXMLLoader.load(getClass().getResource("../GUI/VictoryPanel.fxml"));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    if(!getChildren().contains(victoryPanel)){
+                        victoryPanel.setTranslateY(Layer.getGoldenPlatform().getTranslateY() - 1.5*Const.STAGE_HEIGHT);
+                        getChildren().add(victoryPanel);
+                    }
+
+
+
+                    if(victoryPanel.getTranslateY() < 0) {
+                        for (Layer p : Layer.all)
+                            if (p.getType() != Platform.GOLDEN) p.setY(p.getY() + Const.VICTORY_DOWN_SPEED);
+                        victoryPanel.setTranslateY(victoryPanel.getTranslateY() + Const.VICTORY_DOWN_SPEED);
+                    }
                 }
 
         //horizontal movement

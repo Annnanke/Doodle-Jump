@@ -23,6 +23,8 @@ public class Const {
         public static final double PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_LEFT = 1 - PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_RIGHT;
         public static final double DOODLER_HEIGHT_OF_JUMP = -DOODLER_V0_Y * DOODLER_V0_Y / (2 * GRAVITY);
         public static final double MIN_SPEED_FOR_JUMP = 3; //doodler can't jump when his speed_y is less then this value
+        public static final double VICTORY_SHIFT_SPEED = 3;
+        public static final double VICTORY_DOWN_SPEED = 3;
 
         //DETECTORS
         public static final double DETECTOR_OPACITY = 0;
@@ -52,7 +54,8 @@ public class Const {
 
         //GAME GENERAL:
         public static final double HEIGHT_OF_LOSS_FALL = 2*STAGE_HEIGHT + 2*LAYER_HEIGHT[Game.getLvl() - 1];
-        public static final int HEIGHT_1 = 100000;
+        public static final int HEIGHT_1 = 1000;
+        public static final int VICTORY_POSITION_X = 50;
 
         //SCORE BAR
 
@@ -60,7 +63,7 @@ public class Const {
         public static final double SCOREBAR_HEIGHT = STAGE_HEIGHT * 0.08;
 
         //IMAGES
-        public static final int CHOSEN_CHARACTER = 2;
+        public static final int CHOSEN_CHARACTER = 0;
         public static final Image[] CHARACTER_NORMAL = {new Icon("src/Images/cat_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT),
                                                         new Icon("src/Images/cosmo_normal.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
                                                         new Icon("src/Images/ghost_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT)};

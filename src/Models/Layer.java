@@ -188,13 +188,18 @@ public class Layer {
         return pivotType;
     }
 
+    public static Platform getGoldenPlatform(){
+        for(Layer l : all)
+            if(l.getType() == Platform.GOLDEN) return l.getPlatform();
+            return null;
+    }
+
     /**
      * setter for both pivot and pivotType
      * @param pivot
      */
     public void setPivot(boolean pivot) {
         this.pivot = pivot;
-
 
         if(pivot){
             switch (getPlatform().getType()){
@@ -206,10 +211,10 @@ public class Layer {
                     speed = 0;
                     pivotType = PIVOT_CRACKED;
                     break;
-                    case Platform.JETPACKED :
-                        speed = Const.JETPACK_V_0;
-                        pivotType = PIVOT_JETPACK;
-                        break;
+                case Platform.JETPACKED :
+                    speed = Const.JETPACK_V_0;
+                    pivotType = PIVOT_JETPACK;
+                    break;
                 default :
                     speed = Const.PLATFORM_V;
                     pivotType = PIVOT_JUMP;
