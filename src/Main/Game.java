@@ -7,6 +7,7 @@ import Models.Layer;
 import Models.Doodler;
 import Models.Platform;
 import Models.ScoreBar;
+import Monsters.Monster;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -78,6 +79,7 @@ public class Game extends Pane {
         doodlersMovement();
         platformsMovement();
         checkForCollision();
+        monsterMovement();
         Layer.generateWhenPassed();
         removeDead();
     }
@@ -116,16 +118,9 @@ public class Game extends Pane {
     public void add(ImageView im){
         if(!getChildren().contains(im)) getChildren().add(im);
     }
-//
-//    public boolean checkForVictory(){
-//        if(!won) return false;
-//
-//
-//    }
 
 
     private boolean loss = false;
-
 
     public boolean checkForLoss(){
         if(player.getTranslateY() + Const.DOODLER_HEIGHT > Const.STAGE_HEIGHT || loss){
@@ -283,6 +278,10 @@ public class Game extends Pane {
         Layer.move();
     }
 
+    private static void monsterMovement(){
+        for(Monster m : Monster.monsters) m.move();
+    }
+
     public static ScoreBar getScorebar(){
         return scorebar;
     }
@@ -290,7 +289,6 @@ public class Game extends Pane {
     public static int getLvl() {
         return lvl;
     }
-
 
     private double landing, landingSpeed = 0;
 }

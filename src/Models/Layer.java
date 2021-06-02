@@ -3,6 +3,8 @@ package Models;
 import Basics.Const;
 import Basics.Generator;
 import Main.Game;
+import Monsters.Monster;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import java.util.ArrayList;
 
@@ -12,10 +14,11 @@ public class Layer {
     private static Game root;
     private double y;
     private static double speed = 0;
-    private boolean pivot, missedTrampoline = false;
+    private boolean pivot, missedTrampoline = false, toDisappear = false;
     private Line visualiser;
     private static Layer top;
     private static double passed_height = 0;
+    private ImageView connectedImage;
 
 
     public Layer(double y){
@@ -80,17 +83,49 @@ public class Layer {
         }
     }
 
+    private static boolean monster = false;
+    private static int monsterCounter = 0;
+
     public static void generateWhenPassed(){
         if(hasGoldenPlatform()) return;
+        removeAllToDisappear();
+        if(monster) {
+            new Monster(getTop().getY() - 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], Generator.randomiseMonster(0,1,2,3),root);
+            monsterCounter++;
+            monster = false;
+        }
         for(Layer l : all)
             if(l.getY() >= Const.STAGE_HEIGHT) {
                 l.setDetectable(true);
                 l.setY(getTop().getY() - Const.LAYER_HEIGHT[Game.getLvl() - 1]);
                 if(Const.LOWER_PLATFORM_OFFSET - l.getPlatformY() >= Const.HEIGHT_1 - Game.getScorebar().getPoints())
                     l.setType(Platform.GOLDEN);
-                else l.setType(Generator.nextType(l.getPlatformY()));
+                else {
+                    l.setType(Generator.nextType(l.getPlatformY()));
+                    if(Math.random() < Const.PROBABILITY_OF_MONSTER_APPEARANCE[Game.getLvl() - 1] && monsterCounter == 0) monster = true;
+                }
                 top = l;
             } else if(l.getPlatform().getTranslateY() >= Const.STAGE_HEIGHT) l.getPlatform().setDetectable(false);
+    }
+
+    private static void removeAllToDisappear(){
+        if(!hasOnesToDisappear()) return;
+        Layer toRemove = null;
+        for (Layer l : all) if(l.getY() >= Const.STAGE_HEIGHT && l.isToDisappear()) toRemove = l;
+        if(toRemove == null) return;
+        all.remove(toRemove);
+        root.getChildren().remove(toRemove.getPlatform());
+        root.getChildren().remove(toRemove.getPlatform().getDetector());
+        if(toRemove.getConnectedImage() != null) {
+            toRemove.setConnectedImage(null);
+            monsterCounter--;
+            Monster.monsters.remove(Monster.indexOf(toRemove));
+        }
+    }
+
+    private static boolean hasOnesToDisappear(){
+        for(Layer l : all) if(l.isToDisappear()) return true;
+        return false;
     }
 
     public static boolean hasGoldenPlatform(){
@@ -117,7 +152,10 @@ public class Layer {
 
     private static void moveOnce(){
         Game.getScorebar().addPoints((int)speed);
-        for(Layer l : all) l.setY(l.getY() + speed);
+        for(Layer l : all) {
+            l.setY(l.getY() + speed);
+            if(l.getConnectedImage() != null) l.getConnectedImage().setTranslateY(l.getConnectedImage().getTranslateY() + speed);
+        }
         speed += Const.GRAVITY;
     }
 
@@ -129,6 +167,21 @@ public class Layer {
         return p.getAdditionalDetector();
     }
 
+    public boolean isToDisappear() {
+        return toDisappear;
+    }
+
+    public void setToDisappear(boolean toDisappear) {
+        this.toDisappear = toDisappear;
+    }
+
+    public  void setConnectedImage(ImageView connectedImage) {
+        this.connectedImage = connectedImage;
+    }
+
+    public ImageView getConnectedImage() {
+        return connectedImage;
+    }
 
     public void setY(double y) {
         this.y = y;

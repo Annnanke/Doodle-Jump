@@ -35,8 +35,8 @@ public class Const {
         public static final int PLATFORM_WIDTH = 60;
         public static final int PLATFORM_HEIGHT = 12;
         public static final double PLATFORM_V = DOODLER_V0_Y;
-        public static final double[] LAYER_HEIGHT = {PLATFORM_HEIGHT + 36, PLATFORM_HEIGHT + 36, PLATFORM_HEIGHT + 200, PLATFORM_HEIGHT + 200
-                                                     , PLATFORM_HEIGHT + 200};
+        public static final double[] LAYER_HEIGHT = {PLATFORM_HEIGHT + 36, PLATFORM_HEIGHT + 100, PLATFORM_HEIGHT + 100, PLATFORM_HEIGHT + 100
+                                                     , PLATFORM_HEIGHT + 100};
         public static final int LOWER_PLATFORM_OFFSET = STAGE_HEIGHT - 150;
         public static final double[][] PROBABILITIES_OF_PLATFORM_TYPES = {{0.5, 0.1, 0.05, 0.3, 0},
                                                                           {0.5, 0.15, 0.04, 0.3, 0.01},
@@ -54,8 +54,14 @@ public class Const {
 
         //GAME GENERAL:
         public static final double HEIGHT_OF_LOSS_FALL = 2*STAGE_HEIGHT + 2*LAYER_HEIGHT[Game.getLvl() - 1];
-        public static final int HEIGHT_1 = 1000;
+        public static final int HEIGHT_1 = 60000;
         public static final int VICTORY_POSITION_X = 50;
+
+        //MONSTERS
+        public static final double[] PROBABILITY_OF_MONSTER_APPEARANCE = {0.1, 0.1, 0.01, 0.01, 0.01};
+        public static final double[][] MONSTER_TYPE_PROBABILITY = {{0.25,0.25,0.25,0.25}, {0.25,0.25,0.25,0.25}, {0.25,0.25,0.25,0.25}, {0.25,0.25,0.25,0.25}, {0.25,0.25,0.25,0.25}};
+        public static final double[] BAT_SPEED_X = {2,2,2,2,2};
+        public static final double[] DRAGON_SPEED_X = {2,2,2,2,2};
 
         //SCORE BAR
 
@@ -111,6 +117,11 @@ public class Const {
                                                   new Icon("src/Images/background.jpg"),
                                                   new Icon("src/Images/background.jpg"),
                                                   new Icon("src/Images/background.jpg")};
+
+        public static final Image[] MONSTERS =  {new Icon("src/Images/monster2.gif", 1.2*Const.LAYER_HEIGHT[Game.getLvl()], 1.2*Const.LAYER_HEIGHT[Game.getLvl()]),
+                                                 new Icon("src/Images/monster1.gif", Const.LAYER_HEIGHT[Game.getLvl()], Const.LAYER_HEIGHT[Game.getLvl()]),
+                                                 new Icon("src/Images/monster3.gif", 1.6*Const.LAYER_HEIGHT[Game.getLvl()], 1.6*Const.LAYER_HEIGHT[Game.getLvl()]),
+                                                 new Icon("src/Images/hole.png", 1.2*Const.LAYER_HEIGHT[Game.getLvl()], 1.2*Const.LAYER_HEIGHT[Game.getLvl()])};
 
         public static final Image JETPACK = new Icon("src/Images/jackpack_on_platform.png", PLATFORM_WIDTH*4, PLATFORM_HEIGHT*4);
 

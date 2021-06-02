@@ -7,12 +7,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LossPanelController">
    <children>
-      <ImageView fitHeight="170.0" fitWidth="500.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="351.0" fitWidth="519.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Images/ground.png" />
+            <Image url="@../Images/loss_cloud.png" />
          </image>
       </ImageView>
       <Label layoutX="177.0" layoutY="27.0" text="SCORE" textFill="RED">

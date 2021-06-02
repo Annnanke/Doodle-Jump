@@ -115,6 +115,12 @@ public class Platform extends ImageView {
         if(type == JETPACKED) setTranslateY(getTranslateY() - 40);
     }
 
+    public void remove(){
+        root.getChildren().remove(this);
+        root.getChildren().remove(getDetector());
+        setDetectable(false);
+    }
+
     public boolean isDetectable(){
         return detectable;
     }
