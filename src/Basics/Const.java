@@ -27,7 +27,7 @@ public class Const {
         public static final double VICTORY_DOWN_SPEED = 3;
 
         //DETECTORS
-        public static final double DETECTOR_OPACITY = 0;
+        public static final double DETECTOR_OPACITY = 1;
         public static final double DETECTOR_HEIGHT = 10 ;
 
 
@@ -59,7 +59,11 @@ public class Const {
 
         //MONSTERS
         public static final double[] PROBABILITY_OF_MONSTER_APPEARANCE = {0.1, 0.1, 0.01, 0.01, 0.01};
-        public static final double[][] MONSTER_TYPE_PROBABILITY = {{0.25,0.25,0.25,0.25}, {0.25,0.25,0.25,0.25}, {0.25,0.25,0.25,0.25}, {0.25,0.25,0.25,0.25}, {0.25,0.25,0.25,0.25}};
+        public static final double[][] MONSTER_TYPE_PROBABILITY = {{0.25,0.25,0.25,0.25},
+                                                                   {0.25,0.25,0.25,0.25},
+                                                                   {0.25,0.25,0.25,0.25},
+                                                                   {0.25,0.25,0.25,0.25},
+                                                                   {0.25,0.25,0.25,0.25}};
         public static final double[] BAT_SPEED_X = {2,2,2,2,2};
         public static final double[] DRAGON_SPEED_X = {2,2,2,2,2};
 
@@ -118,10 +122,10 @@ public class Const {
                                                   new Icon("src/Images/background.jpg"),
                                                   new Icon("src/Images/background.jpg")};
 
-        public static final Image[] MONSTERS =  {new Icon("src/Images/monster2.gif", 1.2*Const.LAYER_HEIGHT[Game.getLvl()], 1.2*Const.LAYER_HEIGHT[Game.getLvl()]),
-                                                 new Icon("src/Images/monster1.gif", Const.LAYER_HEIGHT[Game.getLvl()], Const.LAYER_HEIGHT[Game.getLvl()]),
-                                                 new Icon("src/Images/monster3.gif", 1.6*Const.LAYER_HEIGHT[Game.getLvl()], 1.6*Const.LAYER_HEIGHT[Game.getLvl()]),
-                                                 new Icon("src/Images/hole.png", 1.2*Const.LAYER_HEIGHT[Game.getLvl()], 1.2*Const.LAYER_HEIGHT[Game.getLvl()])};
+        public static final Image[] MONSTERS =  {new Icon("src/Images/monster2.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
+                                                 new Icon("src/Images/monster1.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl()]),
+                                                 new Icon("src/Images/monster3.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
+                                                 new Icon("src/Images/hole.png", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1])};
 
         public static final Image JETPACK = new Icon("src/Images/jackpack_on_platform.png", PLATFORM_WIDTH*4, PLATFORM_HEIGHT*4);
 

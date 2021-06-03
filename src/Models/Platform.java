@@ -118,6 +118,7 @@ public class Platform extends ImageView {
     public void remove(){
         root.getChildren().remove(this);
         root.getChildren().remove(getDetector());
+        if(getAdditionalDetector() != null) root.getChildren().remove(getAdditionalDetector());
         setDetectable(false);
     }
 

@@ -25,14 +25,15 @@ public class Monster extends LayerGroup {
         l2 = new Layer(y + Const.LAYER_HEIGHT[Game.getLvl() - 1]);
         l1.setToDisappear(true);
         l2.setToDisappear(true);
-        l1.getPlatform().setDetectable(false);
-        l2.getPlatform().setDetectable(false);
+        l1.getPlatform().remove();
+        l2.getPlatform().remove();
         add(l1);
         add(l2);
 
 
         this.type = type;
-
+                l1.getPlatform().remove();
+                l2.getPlatform().remove();
         iv =  new ImageView(Const.MONSTERS[type]);
         iv.setTranslateY(y);
         iv.setTranslateX(new Random().nextInt((int) (Const.STAGE_WIDTH - iv.getImage().getWidth())));
@@ -44,20 +45,15 @@ public class Monster extends LayerGroup {
                 break;
             case MOVING_BAT:
                 speed_x = Const.BAT_SPEED_X[Game.getLvl() - 1];
-                l1.getPlatform().remove();
-                l2.getPlatform().remove();
+
                 iv.setScaleX(-1);
                 break;
             case MOVING_DRAGON:
                 speed_x = Const.DRAGON_SPEED_X[Game.getLvl() - 1];
-                l1.getPlatform().remove();
-                l2.getPlatform().remove();
                 iv.setScaleX(-1);
                 break;
             case BLACK_HOLE :
                 speed_x = 0;
-                l1.getPlatform().remove();
-                l2.getPlatform().remove();
                 break;
         }
         root.add(iv);
