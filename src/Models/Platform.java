@@ -60,6 +60,19 @@ public class Platform extends ImageView {
                 additionalDetector = null;
                 setImage(Const.PLATFORM_1_BROKEN[Game.getLvl() - 1]);
                 break;
+
+            case JETPACKED :
+                root.getChildren().remove(additionalDetector);
+                additionalDetector = null;
+                setTranslateY(getTranslateY() - 35);
+                setImage(Const.JETPACK);
+                break;
+
+            case GOLDEN:
+                root.getChildren().remove(additionalDetector);
+                additionalDetector = null;
+                setImage(Const.GOLDEN[Game.getLvl() - 1]);
+                break;
         }
     }
 
@@ -87,6 +100,9 @@ public class Platform extends ImageView {
     }
 
 
+    public boolean isStable(){
+        return type != CRACKED;
+    }
 
     public void moveDetector(){
         detector.setX(getTranslateX());
@@ -95,6 +111,15 @@ public class Platform extends ImageView {
             additionalDetector.setX(getTranslateX() + getImage().getWidth()*(0.45));
             additionalDetector.setY(getTranslateY());
         }
+
+        if(type == JETPACKED) setTranslateY(getTranslateY() - 40);
+    }
+
+    public void remove(){
+        root.getChildren().remove(this);
+        root.getChildren().remove(getDetector());
+        if(getAdditionalDetector() != null) root.getChildren().remove(getAdditionalDetector());
+        setDetectable(false);
     }
 
     public boolean isDetectable(){
@@ -113,9 +138,11 @@ public class Platform extends ImageView {
         return additionalDetector;
     }
 
-    public static final int DEFAULT = 0;//---50%
-    public static final int MOVING = 1;//---20%
-    public static final int TRAMPOLINE = 2;//---10%
-    public static final int CRACKED = 3; // must always be the last ---20%
+    public static final int DEFAULT = 0;
+    public static final int MOVING = 1;
+    public static final int TRAMPOLINE = 2;
+    public static final int CRACKED = 3;
+    public static final int JETPACKED = 4;
+    public static final int GOLDEN = 10;
 
 }

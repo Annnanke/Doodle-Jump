@@ -1,4 +1,4 @@
-package Models;
+package Monsters;
 import Main.Game;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
