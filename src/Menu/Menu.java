@@ -1,4 +1,4 @@
-package sample;
+package Menu;
 
 import Basics.Const;
 import Main.Game;
@@ -11,14 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import java.io.File;
 
-import static sample.Shop.bagOfMagic;
-import static sample.Shop.coins;
-import static sample.Sounds.audioPlayer;
+import static Menu.Shop.bagOfMagic;
+import static Menu.Shop.coins;
 
 
 public class Menu extends Application {

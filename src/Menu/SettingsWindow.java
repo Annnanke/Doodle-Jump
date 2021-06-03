@@ -1,4 +1,4 @@
-package sample;
+package Menu;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -12,10 +12,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static sample.Menu.soundStatus;
-import static sample.Menu.style;
-import static sample.Menu.shopStyle;
-import static sample.Sounds.audioPlayer;
+import static Menu.Menu.soundStatus;
+import static Menu.Menu.style;
+import static Menu.Menu.shopStyle;
 
 public class SettingsWindow extends Application {
     public static Stage aStage;

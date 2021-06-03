@@ -1,4 +1,4 @@
-package sample;
+package Menu;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

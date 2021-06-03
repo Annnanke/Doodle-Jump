@@ -1,14 +1,10 @@
-package sample;
+package Menu;
+
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-
-public class MainController {
-    ImageView menuView;
-    Image menuImage = new Image(getClass().getResourceAsStream("Images/menu_cat.gif"));
-    Image titleImage = new Image(getClass().getResourceAsStream("Images/title.gif"));
+public class LevelChooserController {
     ImageView levelView;
     Image lvl1Image = new Image(getClass().getResourceAsStream("Images/lvl1.png"));
     Image lvl2Image = new Image(getClass().getResourceAsStream("Images/lvl2.png"));
@@ -16,12 +12,18 @@ public class MainController {
     Image lvl4Image = new Image(getClass().getResourceAsStream("Images/lvl4.png"));
     Image lvl5Image = new Image(getClass().getResourceAsStream("Images/lvl5.png"));
     public void displayMImage(){
-        menuView.setImage(menuImage);
-        menuView.setImage(titleImage);
         levelView.setImage(lvl1Image);
         levelView.setImage(lvl2Image);
         levelView.setImage(lvl3Image);
         levelView.setImage(lvl4Image);
         levelView.setImage(lvl5Image);
+    }
+    public void lvl1(ActionEvent e) throws Exception {
+        /*//Parent rootD = FXMLLoader.load(getClass().getResource("lvlchooser.fxml"));
+        Menu.menuStage.setScene(Main.Main.scene);
+        Menu.menuStage.setX(100);
+        Menu.menuStage.setY(50);
+        Menu.menuStage.show();*/
+
     }
 }

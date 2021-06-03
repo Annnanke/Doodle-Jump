@@ -1,4 +1,4 @@
-package sample;
+package Menu;
 
 public class Shop {
     public static int coins = 10000;

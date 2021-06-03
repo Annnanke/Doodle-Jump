@@ -1,11 +1,11 @@
-package sample;
+package Menu;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 
-import static sample.Menu.soundStatus;
+import static Menu.Menu.soundStatus;
 
 public class Sounds {
     public static  MediaPlayer audioPlayer;
