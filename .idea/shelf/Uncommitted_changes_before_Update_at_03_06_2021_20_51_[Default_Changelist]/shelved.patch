@@ -1,0 +1,284 @@
+Index: src/sample/Pause.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/Pause.java b/src/Menu/Pause.java
+rename from src/sample/Pause.java
+rename to src/Menu/Pause.java
+--- a/src/sample/Pause.java	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/Pause.java	(date 1622742674372)
+@@ -1,4 +1,4 @@
+-package sample;
++package Menu;
+ 
+ import javafx.application.Application;
+ import javafx.fxml.FXMLLoader;
+Index: src/sample/shop.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/shop.fxml b/src/Menu/shop.fxml
+rename from src/sample/shop.fxml
+rename to src/Menu/shop.fxml
+--- a/src/sample/shop.fxml	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/shop.fxml	(date 1622742674396)
+@@ -8,7 +8,7 @@
+ <?import javafx.scene.shape.Line?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane prefHeight="703.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Menu">
++<AnchorPane prefHeight="703.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.Menu">
+    <children>
+       <ImageView fitHeight="135.0" fitWidth="116.0" layoutX="47.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+Index: src/sample/SettingsWindow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/SettingsWindow.java b/src/Menu/SettingsWindow.java
+rename from src/sample/SettingsWindow.java
+rename to src/Menu/SettingsWindow.java
+--- a/src/sample/SettingsWindow.java	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/SettingsWindow.java	(date 1622742674286)
+@@ -1,4 +1,4 @@
+-package sample;
++package Menu;
+ 
+ import javafx.application.Application;
+ import javafx.event.ActionEvent;
+@@ -12,10 +12,9 @@
+ 
+ import java.io.IOException;
+ 
+-import static sample.Menu.soundStatus;
+-import static sample.Menu.style;
+-import static sample.Menu.shopStyle;
+-import static sample.Sounds.audioPlayer;
++import static Menu.Menu.soundStatus;
++import static Menu.Menu.style;
++import static Menu.Menu.shopStyle;
+ 
+ public class SettingsWindow extends Application {
+     public static Stage aStage;
+Index: src/sample/MainController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/MainController.java b/src/Menu/MainController.java
+rename from src/sample/MainController.java
+rename to src/Menu/MainController.java
+--- a/src/sample/MainController.java	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/MainController.java	(date 1622742674359)
+@@ -1,6 +1,4 @@
+-package sample;
+-import javafx.event.ActionEvent;
+-import javafx.fxml.FXML;
++package Menu;
+ import javafx.scene.image.Image;
+ import javafx.scene.image.ImageView;
+ 
+Index: src/sample/Menu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/Menu.java b/src/Menu/Menu.java
+rename from src/sample/Menu.java
+rename to src/Menu/Menu.java
+--- a/src/sample/Menu.java	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/Menu.java	(date 1622742674337)
+@@ -1,4 +1,4 @@
+-package sample;
++package Menu;
+ 
+ import Basics.Const;
+ import Main.Game;
+@@ -11,14 +11,10 @@
+ import javafx.scene.control.Label;
+ import javafx.scene.control.RadioButton;
+ import javafx.scene.image.Image;
+-import javafx.scene.media.Media;
+-import javafx.scene.media.MediaPlayer;
+ import javafx.stage.Stage;
+-import java.io.File;
+ 
+-import static sample.Shop.bagOfMagic;
+-import static sample.Shop.coins;
+-import static sample.Sounds.audioPlayer;
++import static Menu.Shop.bagOfMagic;
++import static Menu.Shop.coins;
+ 
+ 
+ public class Menu extends Application {
+Index: src/sample/Sounds.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/Sounds.java b/src/Menu/Sounds.java
+rename from src/sample/Sounds.java
+rename to src/Menu/Sounds.java
+--- a/src/sample/Sounds.java	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/Sounds.java	(date 1622742674408)
+@@ -1,11 +1,11 @@
+-package sample;
++package Menu;
+ 
+ import javafx.scene.media.Media;
+ import javafx.scene.media.MediaPlayer;
+ 
+ import java.io.File;
+ 
+-import static sample.Menu.soundStatus;
++import static Menu.Menu.soundStatus;
+ 
+ public class Sounds {
+     public static  MediaPlayer audioPlayer;
+Index: src/sample/Shop.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/Shop.java b/src/Menu/Shop.java
+rename from src/sample/Shop.java
+rename to src/Menu/Shop.java
+--- a/src/sample/Shop.java	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/Shop.java	(date 1622742674430)
+@@ -1,4 +1,4 @@
+-package sample;
++package Menu;
+ 
+ public class Shop {
+     public static int coins = 10000;
+Index: src/sample/pause.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/pause.fxml b/src/Menu/pause.fxml
+rename from src/sample/pause.fxml
+rename to src/Menu/pause.fxml
+--- a/src/sample/pause.fxml	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/pause.fxml	(date 1622742674301)
+@@ -4,7 +4,7 @@
+ <?import javafx.scene.layout.AnchorPane?>
+ 
+ 
+-<AnchorPane prefHeight="202.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Pause">
++<AnchorPane prefHeight="202.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.Pause">
+    <children>
+       <Button layoutX="157.0" layoutY="31.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="86.0" text="Unpause" />
+       <Button layoutX="157.0" layoutY="88.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="86.0" text="Menu" />
+Index: src/sample/settingsMenu.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/settingsMenu.fxml b/src/Menu/settingsMenu.fxml
+rename from src/sample/settingsMenu.fxml
+rename to src/Menu/settingsMenu.fxml
+--- a/src/sample/settingsMenu.fxml	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/settingsMenu.fxml	(date 1622742674311)
+@@ -9,7 +9,7 @@
+ <?import javafx.scene.layout.AnchorPane?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Menu">
++<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.Menu">
+    <children>
+       <Label layoutX="64.0" layoutY="237.0" prefHeight="38.0" prefWidth="85.0" text="Sound">
+          <font>
+Index: src/sample/settings.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/settings.fxml b/src/Menu/settings.fxml
+rename from src/sample/settings.fxml
+rename to src/Menu/settings.fxml
+--- a/src/sample/settings.fxml	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/settings.fxml	(date 1622742674349)
+@@ -7,7 +7,7 @@
+ <?import javafx.scene.layout.AnchorPane?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane prefHeight="320.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SettingsWindow">
++<AnchorPane prefHeight="320.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.SettingsWindow">
+    <children>
+       <Label layoutX="61.0" layoutY="76.0" prefHeight="38.0" prefWidth="85.0" text="Sound">
+          <font>
+Index: src/sample/LevelChooserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/LevelChooserController.java b/src/Menu/LevelChooserController.java
+rename from src/sample/LevelChooserController.java
+rename to src/Menu/LevelChooserController.java
+--- a/src/sample/LevelChooserController.java	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/LevelChooserController.java	(date 1622742674384)
+@@ -1,9 +1,6 @@
+-package sample;
++package Menu;
+ 
+ import javafx.event.ActionEvent;
+-import javafx.fxml.FXMLLoader;
+-import javafx.scene.Parent;
+-import javafx.scene.Scene;
+ import javafx.scene.image.Image;
+ import javafx.scene.image.ImageView;
+ 
+Index: src/sample/main.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/main.fxml b/src/Menu/main.fxml
+rename from src/sample/main.fxml
+rename to src/Menu/main.fxml
+--- a/src/sample/main.fxml	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/main.fxml	(date 1622742674440)
+@@ -6,7 +6,7 @@
+ <?import javafx.scene.layout.AnchorPane?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Menu">
++<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.Menu">
+    <children>
+       <ImageView fitHeight="92.0" fitWidth="419.0" layoutX="52.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+Index: src/sample/lvlchooser.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/lvlchooser.fxml b/src/Menu/lvlchooser.fxml
+rename from src/sample/lvlchooser.fxml
+rename to src/Menu/lvlchooser.fxml
+--- a/src/sample/lvlchooser.fxml	(revision 9e374e72f6568db9cf31a4c78bcf3cb9d0997b5c)
++++ b/src/Menu/lvlchooser.fxml	(date 1622742674323)
+@@ -6,7 +6,7 @@
+ <?import javafx.scene.layout.AnchorPane?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Menu">
++<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.Menu">
+    <children>
+       <ImageView fitHeight="112.0" fitWidth="124.0" layoutX="28.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+diff --git a/src/sample/LightStyling.css b/src/Menu/LightStyling.css
+rename from src/sample/LightStyling.css
+rename to src/Menu/LightStyling.css
+diff --git a/src/sample/shopDarkStyling.css b/src/Menu/shopDarkStyling.css
+rename from src/sample/shopDarkStyling.css
+rename to src/Menu/shopDarkStyling.css
+diff --git a/src/sample/shopLightStyling.css b/src/Menu/shopLightStyling.css
+rename from src/sample/shopLightStyling.css
+rename to src/Menu/shopLightStyling.css
+diff --git a/src/sample/DarkStyling.css b/src/Menu/DarkStyling.css
+rename from src/sample/DarkStyling.css
+rename to src/Menu/DarkStyling.css
