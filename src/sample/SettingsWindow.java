@@ -12,13 +12,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static sample.Menu.soundStatus;
 import static sample.Menu.style;
+import static sample.Menu.shopStyle;
+import static sample.Sounds.audioPlayer;
 
 public class SettingsWindow extends Application {
     public static Stage aStage;
     public static Scene settingsScene;
     @FXML
-    public RadioButton soundOn, soundOff, themeCoffee, themeMilk;
+    public static RadioButton soundOn, soundOff, themeCoffee, themeMilk;
 
     public static void stageSetting(Stage newStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SettingsWindow.class.getResource("settings.fxml"));
@@ -50,18 +53,23 @@ public class SettingsWindow extends Application {
     }
 
     public void getSoundAndTheme(ActionEvent e) throws Exception {
+        Sounds.playSoundButton();
         if(soundOn.isSelected()){
             System.out.println("It's ON");
+            soundStatus = 1;
         }
         if(soundOff.isSelected()){
-            System.out.println("It's OFF");
+            soundStatus = 2;
         }
+
         if(themeMilk.isSelected()){
             System.out.println("It's Milk");
             style = this.getClass().getResource("LightStyling.css").toExternalForm();
+            shopStyle = this.getClass().getResource("shopLightStyling.css").toExternalForm();
         }
         if(themeCoffee.isSelected()){
             style = this.getClass().getResource("DarkStyling.css").toExternalForm();
+            shopStyle = this.getClass().getResource("shopDarkStyling.css").toExternalForm();
         }
     }
 }
