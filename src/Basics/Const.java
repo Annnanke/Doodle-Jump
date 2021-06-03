@@ -27,7 +27,7 @@ public class Const {
         public static final double VICTORY_DOWN_SPEED = 3;
 
         //DETECTORS
-        public static final double DETECTOR_OPACITY = 1;
+        public static final double DETECTOR_OPACITY = 0;
         public static final double DETECTOR_HEIGHT = 10 ;
 
 
@@ -73,7 +73,7 @@ public class Const {
         public static final double SCOREBAR_HEIGHT = STAGE_HEIGHT * 0.08;
 
         //IMAGES
-        public static final int CHOSEN_CHARACTER = 0;
+        public static final int CHOSEN_CHARACTER = 2;
         public static final Image[] CHARACTER_NORMAL = {new Icon("src/Images/cat_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT),
                                                         new Icon("src/Images/cosmo_normal.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
                                                         new Icon("src/Images/ghost_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT)};
@@ -83,8 +83,12 @@ public class Const {
                                                       new Icon("src/Images/ghost_jump.png", DOODLER_WIDTH + 15, DOODLER_HEIGHT + 15)};
 
         public static final Image[] CHARACTER_WITH_JETPACK = {new Icon("src/Images/cat_fly.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
-                                                      new Icon("src/Images/cosmo_fly.png", DOODLER_WIDTH, DOODLER_HEIGHT),
-                                                      new Icon("src/Images/ghost_fly.png", DOODLER_WIDTH + 10, DOODLER_HEIGHT + 10)};
+                                                              new Icon("src/Images/cosmo_fly.png", DOODLER_WIDTH, DOODLER_HEIGHT),
+                                                              new Icon("src/Images/ghost_fly.png", DOODLER_WIDTH + 10, DOODLER_HEIGHT + 10)};
+
+        public static final Image[] CHARACTER_LAYS = {new Icon("src/Images/cat_lays.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
+                                                      new Icon("src/Images/cosmo_lays.png", DOODLER_WIDTH, DOODLER_HEIGHT),
+                                                      new Icon("src/Images/ghost_lays.png", DOODLER_WIDTH + 10, DOODLER_HEIGHT + 10)};
 
         public static final Image[] PLATFORM_1 = {new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
                                                   new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
@@ -123,8 +127,8 @@ public class Const {
                                                   new Icon("src/Images/background.jpg")};
 
         public static final Image[] MONSTERS =  {new Icon("src/Images/monster2.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
-                                                 new Icon("src/Images/monster1.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl()]),
-                                                 new Icon("src/Images/monster3.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
+                                                 new Icon("src/Images/monster1.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
+                                                 new Icon("src/Images/monster3.gif", 6*Const.LAYER_HEIGHT[Game.getLvl() - 1], 6*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
                                                  new Icon("src/Images/hole.png", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1])};
 
         public static final Image JETPACK = new Icon("src/Images/jackpack_on_platform.png", PLATFORM_WIDTH*4, PLATFORM_HEIGHT*4);
@@ -132,7 +136,6 @@ public class Const {
         public static final Image PAUSE = new Icon("src/Images/pause.png", Const.SCOREBAR_WIDTH * 0.05, Const.SCOREBAR_WIDTH * 0.05);
 
 
-        //public static final Image GROUND = new Icon("src/Images/ground.png",Const.STAGE_WIDTH, Const.STAGE_WIDTH*385/1201);
     }
 
 

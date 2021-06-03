@@ -5,6 +5,9 @@ import Main.Game;
 import Models.Layer;
 import Models.LayerGroup;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -16,6 +19,7 @@ public class Monster extends LayerGroup {
     private int type;
     private ImageView iv;
     private double speed_x;
+    private Shape detector;
 
     public Monster(double y, int type, Game root) {
         super(2);
@@ -40,22 +44,42 @@ public class Monster extends LayerGroup {
 
         switch (type){
             case STATIONARY :
+                detector = new Circle();
+                ((Circle) detector).setRadius(iv.getImage().getWidth()/2);
+                detector.setTranslateX(iv.getTranslateX() + ((Circle) detector).getRadius());
+                detector.setTranslateY(iv.getTranslateY() + ((Circle) detector).getRadius() + 17);
                 speed_x = 0;
                 if(iv.getTranslateX() + iv.getImage().getWidth()/2 > Const.STAGE_WIDTH/2) iv.setScaleX(-1);
                 break;
             case MOVING_BAT:
+                detector = new Rectangle();
+                ((Rectangle) detector).setWidth(iv.getImage().getWidth() - 30);
+                ((Rectangle) detector).setHeight(iv.getImage().getHeight() - 60);
+                detector.setTranslateX(iv.getTranslateX() + 15);
+                detector.setTranslateY(iv.getTranslateY() + 30);
                 speed_x = Const.BAT_SPEED_X[Game.getLvl() - 1];
-
                 iv.setScaleX(-1);
                 break;
             case MOVING_DRAGON:
+                detector = new Rectangle();
+                ((Rectangle) detector).setWidth(iv.getImage().getWidth() - 70);
+                ((Rectangle) detector).setHeight(iv.getImage().getHeight() - 60);
+                detector.setTranslateX(iv.getTranslateX() + 35);
+                detector.setTranslateY(iv.getTranslateY() + 30);
                 speed_x = Const.DRAGON_SPEED_X[Game.getLvl() - 1];
                 iv.setScaleX(-1);
                 break;
             case BLACK_HOLE :
+                detector = new Circle();
+                ((Circle) detector).setRadius(iv.getImage().getWidth()/2);
+                detector.setTranslateX(iv.getTranslateX() + ((Circle) detector).getRadius());
+                detector.setTranslateY(iv.getTranslateY() + ((Circle) detector).getRadius());
                 speed_x = 0;
                 break;
         }
+        detector.setOpacity(Const.DETECTOR_OPACITY);
+        l1.getConnectedShapes().add(detector);
+        root.getChildren().add(detector);
         root.add(iv);
         l1.setConnectedImage(iv);
     }
@@ -63,15 +87,48 @@ public class Monster extends LayerGroup {
     public void move(){
         if(iv.getTranslateX() + speed_x < Const.STAGE_WIDTH - iv.getImage().getWidth() && iv.getTranslateX() + speed_x > 0){
             iv.setTranslateX(iv.getTranslateX() + speed_x);
+            detector.setTranslateX(detector.getTranslateX() + speed_x);
         } else {
             iv.setScaleX(iv.getScaleX() * (-1));
             speed_x *= -1;
         }
     }
 
+    public ImageView getIv() {
+        return iv;
+    }
+
     public static int indexOf(Layer l){
         for(Monster m : monsters) if(m.getL1().equals(l) || m.getL2().equals(l)) return monsters.indexOf(m);
         return -1;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public void setIv(ImageView iv) {
+        this.iv = iv;
+    }
+
+    public double getSpeed_x() {
+        return speed_x;
+    }
+
+    public void setSpeed_x(double speed_x) {
+        this.speed_x = speed_x;
+    }
+
+    public void setDetector(Shape detector) {
+        this.detector = detector;
+    }
+
+    public Shape getDetector(){
+        return detector;
     }
 
     public Layer getL1() {

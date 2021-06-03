@@ -3,12 +3,14 @@ package Models;
 import Basics.Const;
 import Main.Game;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Rectangle;
 
 
 public class Doodler extends ImageView {
 
     private double speed_x, speed_y;
     private Detector detector;
+    private Rectangle generalDetector;
     private boolean moving = true;
 
     public Doodler(double x, double y, Game root) {
@@ -18,6 +20,10 @@ public class Doodler extends ImageView {
         detector = new Detector((int)(x + getImage().getWidth()/3), (int)(y + Const.DOODLER_HEIGHT - 7),
                                 (int)(getImage().getWidth() * 0.5), this);
         root.getChildren().add(detector);
+
+        generalDetector = new Rectangle(x + 20,y,getImage().getWidth() - 30, getImage().getHeight());
+        generalDetector.setOpacity(Const.DETECTOR_OPACITY);
+        root.getChildren().add(generalDetector);
         speed_x = Const.DOODLER_V0_X;
         speed_y = Const.DOODLER_V0_Y;
         root.getChildren().add(this);
@@ -30,6 +36,7 @@ public class Doodler extends ImageView {
             setTranslateX(getTranslateX() - speed_x);
             detector.setX(getTranslateX() + getImage().getWidth() - getImage().getWidth()/3 - detector.getWidth());
             detector.setWidth(detector.getWidth());
+            generalDetector.setX(getTranslateX() + 20);
         } else {
             setTranslateX(Const.STAGE_WIDTH - Const.PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_LEFT*Const.DOODLER_WIDTH);
         }
@@ -51,6 +58,7 @@ public class Doodler extends ImageView {
         if(getTranslateX() + speed_x + Const.PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_LEFT*Const.DOODLER_WIDTH <= Const.STAGE_WIDTH) {
             setTranslateX(getTranslateX() + speed_x);
             detector.setX(getTranslateX() + getImage().getWidth()/3);
+            generalDetector.setX(getTranslateX() + 20);
         } else {
             setTranslateX(-Const.PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_RIGHT*Const.DOODLER_WIDTH);
         }
@@ -59,8 +67,15 @@ public class Doodler extends ImageView {
     public void verticalMovement(){
         setTranslateY(getTranslateY() - speed_y);
         detector.setY(getTranslateY() + Const.DOODLER_HEIGHT - 7);
+        if(getImage() == Const.CHARACTER_NORMAL[Game.getLvl() - 1]) generalDetector.setY(getTranslateY());
+        else if(getImage() == Const.CHARACTER_JUMP[Game.getLvl() - 1]) generalDetector.setY(getTranslateY() + 20);
+        else generalDetector.setY(getTranslateY());
         speed_y += Const.GRAVITY;
         if(Math.abs(speed_y) < 1) setImage(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
+    }
+
+    public Rectangle getGeneralDetector() {
+        return generalDetector;
     }
 
     public double getSpeed_y() {

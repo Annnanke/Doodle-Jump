@@ -6,6 +6,8 @@ import Main.Game;
 import Monsters.Monster;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Shape;
+
 import java.util.ArrayList;
 
 public class Layer {
@@ -19,6 +21,7 @@ public class Layer {
     private static Layer top;
     private static double passed_height = 0;
     private ImageView connectedImage;
+    private ArrayList<Shape> connectedShapes = new ArrayList<>();
 
 
     public Layer(double y){
@@ -102,7 +105,10 @@ public class Layer {
                     l.setType(Platform.GOLDEN);
                 else {
                     l.setType(Generator.nextType(l.getPlatformY()));
-                    if(Math.random() < Const.PROBABILITY_OF_MONSTER_APPEARANCE[Game.getLvl() - 1] && monsterCounter == 0) monster = true;
+                    if(Math.random() < Const.PROBABILITY_OF_MONSTER_APPEARANCE[Game.getLvl() - 1]
+                            && monsterCounter == 0
+                            && isReachable(getTop().getY() - 2*Const.LAYER_HEIGHT[Game.getLvl() - 1] + offset + Const.PLATFORM_HEIGHT))
+                        monster = true;
                 }
                 top = l;
             } else if(l.getPlatform().getTranslateY() >= Const.STAGE_HEIGHT) l.getPlatform().setDetectable(false);
@@ -134,6 +140,14 @@ public class Layer {
             return false;
     }
 
+    public static boolean isReachable(double height){
+        for(Layer l : all)
+            if(Math.abs(l.getPlatformY() - height) < Const.DOODLER_HEIGHT_OF_JUMP
+                    && l.getPlatformY() > height
+                    && l.getPlatform().isStable()) return true;
+            return false;
+    }
+
     public boolean isDetectable(){
         return getPlatform().isDetectable();
     }
@@ -155,6 +169,7 @@ public class Layer {
         for(Layer l : all) {
             l.setY(l.getY() + speed);
             if(l.getConnectedImage() != null) l.getConnectedImage().setTranslateY(l.getConnectedImage().getTranslateY() + speed);
+            for(Shape s : l.connectedShapes) s.setTranslateY(s.getTranslateY() + speed);
         }
         speed += Const.GRAVITY;
     }
@@ -191,6 +206,9 @@ public class Layer {
         visualiser.setEndY(y);
     }
 
+    public ArrayList<Shape> getConnectedShapes() {
+        return connectedShapes;
+    }
 
     public void setType(int type){
         getPlatform().setType(type);

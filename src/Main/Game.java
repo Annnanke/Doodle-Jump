@@ -94,7 +94,9 @@ public class Game extends Pane {
                 case RIGHT:
                     if(!won) moving_right = true;
                     break;
-
+                case P :
+                    timer.stop();
+                    break;
             }
         });
 
@@ -106,6 +108,9 @@ public class Game extends Pane {
                     break;
                 case RIGHT:
                     moving_right = false;
+                    break;
+                case P :
+                    timer.start();
                     break;
             }
         });
@@ -125,6 +130,7 @@ public class Game extends Pane {
     public boolean checkForLoss(){
         if(player.getTranslateY() + Const.DOODLER_HEIGHT > Const.STAGE_HEIGHT || loss){
             loss = true;
+            player.setSpeed_y(-10);
             if(getChildren().contains(scorebar)) getChildren().remove(scorebar);
             if(!getChildren().contains(lossPanel)){
                 try {
@@ -139,10 +145,13 @@ public class Game extends Pane {
             if(lossPanel.getTranslateY() + lossPanel.getHeight() + player.getSpeed_y() > Const.STAGE_HEIGHT) {
                 for (Layer l : Layer.all) l.getPlatform().setTranslateY(l.getPlatformY() + player.getSpeed_y());
                 lossPanel.setTranslateY(lossPanel.getTranslateY() + player.getSpeed_y());
+                player.setTranslateY(player.getTranslateY() + player.getSpeed_y() + 3);
+                for (Monster m : Monster.monsters) m.getIv().setTranslateY(m.getIv().getTranslateY() + player.getSpeed_y());
             } else {
                 lossPanel.setTranslateY(Const.STAGE_HEIGHT - lossPanel.getHeight());
                 loss = false;
-                timer.stop();
+                if(player.getTranslateY() < Const.STAGE_HEIGHT) player.setTranslateY(player.getTranslateY() - 1.5*player.getSpeed_y());
+                else timer.stop();
 
             }
             return true;
@@ -219,6 +228,27 @@ public class Game extends Pane {
                 }
 
             }
+        }
+
+
+        for(Monster m : Monster.monsters){
+
+            if(player.getGeneralDetector().getBoundsInParent().intersects(m.getDetector().getBoundsInParent())){
+
+                switch (m.getType()){
+                    case Monster.BLACK_HOLE :
+                        player.setSpeed_y(-7);
+                        player.setImage(Const.CHARACTER_LAYS[Const.CHOSEN_CHARACTER]);
+                        loss = true;
+                        break;
+                    default:
+                        player.setSpeed_y(-10);
+                        player.setImage(Const.CHARACTER_LAYS[Const.CHOSEN_CHARACTER]);
+                        loss = true;
+                        break;
+                }
+            }
+
         }
     }
 
