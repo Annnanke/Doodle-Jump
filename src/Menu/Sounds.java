@@ -14,7 +14,7 @@ public class Sounds {
     public static  MediaPlayer audioPlayer3;
     public static  MediaPlayer audioPlayer4;
     public static void playSoundButton() {
-        File audioFile = new File("C:\\Users\\Ann\\Videos\\Doodle-Jump\\src\\buttonSound.wav");
+        File audioFile = new File("src\\buttonSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
         audioPlayer = new MediaPlayer(audio);
         if (soundStatus != 2) {
@@ -22,7 +22,7 @@ public class Sounds {
         }
     }
     public static void playSoundVictory() {
-        File audioFile = new File("C:\\Users\\Ann\\Videos\\Doodle-Jump\\src\\victorySound.wav");
+        File audioFile = new File("src\\victorySound.wav");
         Media audio = new Media(audioFile.toURI().toString());
         audioPlayer1 = new MediaPlayer(audio);
         if (soundStatus != 2) {
@@ -30,15 +30,25 @@ public class Sounds {
         }
     }
     public static void playSoundGameOver() {
-        File audioFile = new File("C:\\Users\\Ann\\Videos\\Doodle-Jump\\src\\gameOverSound.wav");
+        File audioFile = new File("src\\gameOverSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
         audioPlayer2 = new MediaPlayer(audio);
         if (soundStatus != 2) {
             audioPlayer2.play();
         }
     }
+
+    public static void playSoundSuperJump() {
+        File audioFile = new File("src\\superJumpSound.wav");
+        Media audio = new Media(audioFile.toURI().toString());
+        audioPlayer3 = new MediaPlayer(audio);
+        if (soundStatus != 2) {
+            audioPlayer3.play();
+        }
+    }
+
     public static void playSoundCoin() {
-        File audioFile = new File("C:\\Users\\Ann\\Videos\\Doodle-Jump\\src\\coinSound.wav");
+        File audioFile = new File("src\\coinSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
         audioPlayer3 = new MediaPlayer(audio);
         if (soundStatus != 2) {
@@ -47,7 +57,7 @@ public class Sounds {
 
     }
     public static void playSoundJump() {
-        File audioFile = new File("C:\\Users\\Ann\\Videos\\Doodle-Jump\\src\\jumpSound.wav");
+        File audioFile = new File("src\\jumpSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
         audioPlayer4 = new MediaPlayer(audio);
         if (soundStatus != 2) {
@@ -55,5 +65,33 @@ public class Sounds {
         }
     }
 
+
+    public static void playSoundDiamondSound() {
+        File audioFile = new File("src\\diamondSound.wav");
+        Media audio = new Media(audioFile.toURI().toString());
+        audioPlayer4 = new MediaPlayer(audio);
+        if (soundStatus != 2) {
+            audioPlayer4.play();
+        }
+    }
+
+    public static void playSoundGunSound() {
+        File audioFile = new File("src\\gunSound.wav");
+        Media audio = new Media(audioFile.toURI().toString());
+        audioPlayer4 = new MediaPlayer(audio);
+        if (soundStatus != 2) {
+            audioPlayer4.play();
+        }
+    }
+
+
+    public static void playSoundJetSound() {
+        File audioFile = new File("src\\jetSound.wav");
+        Media audio = new Media(audioFile.toURI().toString());
+        audioPlayer4 = new MediaPlayer(audio);
+        if (soundStatus != 2) {
+            audioPlayer4.play();
+        }
+    }
 
 }

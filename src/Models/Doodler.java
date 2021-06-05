@@ -12,13 +12,15 @@ public class Doodler extends ImageView {
     private Detector detector;
     private Rectangle generalDetector;
     private boolean moving = true;
+    private Game root;
 
     public Doodler(double x, double y, Game root) {
         super(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
         setTranslateX(x);
         setTranslateY(y);
+        this.root = root;
         detector = new Detector((int)(x + getImage().getWidth()/3), (int)(y + Const.DOODLER_HEIGHT - 7),
-                                (int)(getImage().getWidth() * 0.5), this);
+                (int)(getImage().getWidth() * 0.5), this);
         root.getChildren().add(detector);
 
         generalDetector = new Rectangle(x + 20,y,getImage().getWidth() - 30, getImage().getHeight());
@@ -27,6 +29,25 @@ public class Doodler extends ImageView {
         speed_x = Const.DOODLER_V0_X;
         speed_y = Const.DOODLER_V0_Y;
         root.getChildren().add(this);
+    }
+
+
+    public void shoot(){
+        setImage(Const.CHARACTER_SHOOT[Const.CHOSEN_CHARACTER]);
+        if(getScaleX() == 1)
+            switch (Const.CHOSEN_CHARACTER){
+                case 0 -> new Bullet(getTranslateX() + getImage().getWidth() - 30, getTranslateY(), root);
+                case 1 -> new Bullet(getTranslateX() + getImage().getWidth() - 22, getTranslateY(), root);
+                case 2 -> new Bullet(getTranslateX() + getImage().getWidth() - 20, getTranslateY(), root);
+            }
+        if(getScaleX() == -1){
+            switch (Const.CHOSEN_CHARACTER){
+                case 0 -> new Bullet(getTranslateX() + 5, getTranslateY(), root);
+                case 1 -> new Bullet(getTranslateX() + 4, getTranslateY(), root);
+                case 2 -> new Bullet(getTranslateX() + 20, getTranslateY(), root);
+            }
+        }
+
     }
 
 
@@ -98,3 +119,4 @@ public class Doodler extends ImageView {
         this.moving = moving;
     }
 }
+

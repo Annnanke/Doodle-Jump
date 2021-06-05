@@ -4,6 +4,7 @@ import Basics.Const;
 import Main.Game;
 import Models.Layer;
 import Models.LayerGroup;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -14,19 +15,25 @@ import java.util.Random;
 
 public class Monster extends LayerGroup {
 
-    public static ArrayList<Monster> monsters = new ArrayList<>();
+    public static ArrayList<Monster> monsters;
+    private Game root;
     private Layer l1, l2;
     private int type;
     private ImageView iv;
     private double speed_x;
     private Shape detector;
+    private ProgressBar pb;
+    private int HP = 3;
+    private boolean toRemove = false;
 
     public Monster(double y, int type, Game root) {
         super(2);
         monsters.add(this);
+        this.root = root;
 
         l1 = new Layer(y);
         l2 = new Layer(y + Const.LAYER_HEIGHT[Game.getLvl() - 1]);
+
         l1.setToDisappear(true);
         l2.setToDisappear(true);
         l1.getPlatform().remove();
@@ -36,11 +43,19 @@ public class Monster extends LayerGroup {
 
 
         this.type = type;
-                l1.getPlatform().remove();
-                l2.getPlatform().remove();
+        l1.getPlatform().remove();
+        l2.getPlatform().remove();
         iv =  new ImageView(Const.MONSTERS[type]);
         iv.setTranslateY(y);
         iv.setTranslateX(new Random().nextInt((int) (Const.STAGE_WIDTH - iv.getImage().getWidth())));
+
+        if(type != Monster.BLACK_HOLE) {
+            pb = new ProgressBar(1);
+            l1.setConnectedProgressBar(pb);
+            root.getChildren().add(pb);
+            pb.setTranslateX(iv.getTranslateX());
+            pb.setTranslateY(iv.getTranslateY() + iv.getImage().getHeight());
+        }
 
         switch (type){
             case STATIONARY :
@@ -50,6 +65,10 @@ public class Monster extends LayerGroup {
                 detector.setTranslateY(iv.getTranslateY() + ((Circle) detector).getRadius() + 17);
                 speed_x = 0;
                 if(iv.getTranslateX() + iv.getImage().getWidth()/2 > Const.STAGE_WIDTH/2) iv.setScaleX(-1);
+                if(pb != null) {
+                    pb.setPrefWidth(iv.getImage().getWidth());
+                    pb.setPrefHeight(15);
+                }
                 break;
             case MOVING_BAT:
                 detector = new Rectangle();
@@ -59,6 +78,10 @@ public class Monster extends LayerGroup {
                 detector.setTranslateY(iv.getTranslateY() + 30);
                 speed_x = Const.BAT_SPEED_X[Game.getLvl() - 1];
                 iv.setScaleX(-1);
+                if(pb != null) {
+                    pb.setPrefWidth(iv.getImage().getWidth());
+                    pb.setPrefHeight(15);
+                }
                 break;
             case MOVING_DRAGON:
                 detector = new Rectangle();
@@ -68,6 +91,10 @@ public class Monster extends LayerGroup {
                 detector.setTranslateY(iv.getTranslateY() + 30);
                 speed_x = Const.DRAGON_SPEED_X[Game.getLvl() - 1];
                 iv.setScaleX(-1);
+                if(pb != null) {
+                    pb.setPrefWidth(iv.getImage().getWidth());
+                    pb.setPrefHeight(15);
+                }
                 break;
             case BLACK_HOLE :
                 detector = new Circle();
@@ -82,16 +109,64 @@ public class Monster extends LayerGroup {
         root.getChildren().add(detector);
         root.add(iv);
         l1.setConnectedImage(iv);
+
+    }
+
+    public static void reload(){
+        monsters = new ArrayList<>();
+    }
+
+    public void damage(){
+        double lastHP = HP;
+        HP -= Const.BULLET_DAMAGE;
+        if(HP > 0) pb.setProgress(pb.getProgress() * HP/lastHP);
+        else toRemove = true;
     }
 
     public void move(){
         if(iv.getTranslateX() + speed_x < Const.STAGE_WIDTH - iv.getImage().getWidth() && iv.getTranslateX() + speed_x > 0){
             iv.setTranslateX(iv.getTranslateX() + speed_x);
             detector.setTranslateX(detector.getTranslateX() + speed_x);
+            if(pb != null) pb.setTranslateX(pb.getTranslateX() + speed_x);
         } else {
             iv.setScaleX(iv.getScaleX() * (-1));
             speed_x *= -1;
         }
+    }
+
+    public static boolean hasOnesToRemove(){
+        for(Monster m : monsters) if(m.toRemove) return true;
+        return false;
+    }
+
+    public static Monster getFirstToRemove(){
+        for(Monster m : monsters) if(m.toRemove) return m;
+        return null;
+    }
+
+    public static void removeAllToRemove(){
+        while(hasOnesToRemove()) getFirstToRemove().totallyRemove();
+    }
+
+    public void totallyRemove(){
+        if(!toRemove) return;
+        Layer.setMonsterCounter(Layer.getMonsterCounter() - 1);
+        root.getChildren().remove(this);
+        root.getChildren().remove(pb);
+        root.getChildren().remove(iv);
+        root.getChildren().remove(detector);
+        detector = null;
+        Monster.monsters.remove(this);
+        l1.setConnectedProgressBar(null);
+        l1.setConnectedImage(null);
+    }
+
+    public ProgressBar getPb() {
+        return pb;
+    }
+
+    public void setPb(ProgressBar pb) {
+        this.pb = pb;
     }
 
     public ImageView getIv() {

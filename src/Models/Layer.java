@@ -4,6 +4,7 @@ import Basics.Const;
 import Basics.Generator;
 import Main.Game;
 import Monsters.Monster;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
@@ -12,27 +13,39 @@ import java.util.ArrayList;
 
 public class Layer {
     private Platform p;
-    public static ArrayList<Layer> all = new ArrayList<>();
+    public static ArrayList<Layer> all;
     private static Game root;
     private double y;
-    private static double speed = 0;
+    private static double speed;
     private boolean pivot, missedTrampoline = false, toDisappear = false;
     private Line visualiser;
     private static Layer top;
-    private static double passed_height = 0;
+    private static double passed_height;
     private ImageView connectedImage;
+    private ProgressBar connectedProgressBar;
     private ArrayList<Shape> connectedShapes = new ArrayList<>();
+    private static boolean monster;
+    private static int monsterCounter;
 
 
     public Layer(double y){
         this.y = y;
-        p = Generator.nextPlatform(y + offset);
+        p = Generator.nextPlatform(y + offset,root);
         all.add(this);
         if(top == null) top = this;
         else if(top.getY() > getY()) top = this;
         visualiser = new Line(0,y, Const.STAGE_WIDTH,y);
         visualiser.setOpacity(Const.DETECTOR_OPACITY);
         root.getChildren().add(visualiser);
+    }
+
+    public static void reload(){
+        all = new ArrayList<>();
+        speed = 0;
+        passed_height = 0;
+        top = null;
+        monster = false;
+        monsterCounter = 0;
     }
 
     public static void move(){
@@ -86,13 +99,21 @@ public class Layer {
         }
     }
 
-    private static boolean monster = false;
-    private static int monsterCounter = 0;
+    public static int getMonsterCounter() {
+        return monsterCounter;
+    }
+
+    public static void setMonsterCounter(int monsterCounter) {
+        Layer.monsterCounter = monsterCounter;
+    }
+
+
 
     public static void generateWhenPassed(){
         if(hasGoldenPlatform()) return;
         removeAllToDisappear();
-        if(monster) {
+        System.out.println(Monster.monsters.size());
+        if(monster && Const.HEIGHT_1 - Game.getScorebar().getPoints() > Const.STAGE_HEIGHT) {
             new Monster(getTop().getY() - 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], Generator.randomiseMonster(0,1,2,3),root);
             monsterCounter++;
             monster = false;
@@ -137,7 +158,7 @@ public class Layer {
     public static boolean hasGoldenPlatform(){
         for(Layer l : all)
             if(l.getType() == Platform.GOLDEN) return true;
-            return false;
+        return false;
     }
 
     public static boolean isReachable(double height){
@@ -145,7 +166,7 @@ public class Layer {
             if(Math.abs(l.getPlatformY() - height) < Const.DOODLER_HEIGHT_OF_JUMP
                     && l.getPlatformY() > height
                     && l.getPlatform().isStable()) return true;
-            return false;
+        return false;
     }
 
     public boolean isDetectable(){
@@ -169,6 +190,7 @@ public class Layer {
         for(Layer l : all) {
             l.setY(l.getY() + speed);
             if(l.getConnectedImage() != null) l.getConnectedImage().setTranslateY(l.getConnectedImage().getTranslateY() + speed);
+            if(l.getConnectedProgressBar() != null) l.getConnectedProgressBar().setTranslateY(l.getConnectedProgressBar().getTranslateY() + speed);
             for(Shape s : l.connectedShapes) s.setTranslateY(s.getTranslateY() + speed);
         }
         speed += Const.GRAVITY;
@@ -196,6 +218,14 @@ public class Layer {
 
     public ImageView getConnectedImage() {
         return connectedImage;
+    }
+
+    public ProgressBar getConnectedProgressBar() {
+        return connectedProgressBar;
+    }
+
+    public void setConnectedProgressBar(ProgressBar connectedProgressBar) {
+        this.connectedProgressBar = connectedProgressBar;
     }
 
     public void setY(double y) {
@@ -262,7 +292,7 @@ public class Layer {
     public static Platform getGoldenPlatform(){
         for(Layer l : all)
             if(l.getType() == Platform.GOLDEN) return l.getPlatform();
-            return null;
+        return null;
     }
 
     /**

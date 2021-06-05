@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="295e4df6-673a-4174-9d45-df87ac6ff627" name="Default Changelist" comment="" />
+    <list default="true" id="295e4df6-673a-4174-9d45-df87ac6ff627" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Images/cat_shoot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Bullet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/diamondSound.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gunSound.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jetSound.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javafx_sdk_16.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_06_2021_20_51__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_06_2021_20_51__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Doodle-Jump.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Doodle-Jump.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/LossPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/LossPanel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/lvlchooser.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/pause.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/settings.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/Images/bullet1.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/Images/bullet1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/Images/bullet2.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/Images/bullet2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/Images/ghost_shoot.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/Images/ghost_shoot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/Menu/lvlchooser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/Menu/lvlchooser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Basics/Const.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Basics/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/LevelChooserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/LossPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/LossPanel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/LossPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/LossPanelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/MainController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Pause.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Settings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/lvlchooser.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/pause.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/settings.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Images/bullet1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Images/bullet1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Images/bullet2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Images/bullet2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Images/ghost_shoot.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Images/ghost_shoot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu/Sounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Sounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu/lvlchooser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/lvlchooser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Doodler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Doodler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Layer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/LayerGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/LayerGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Platform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monsters/BlackHole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monsters/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monsters/Monster.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +79,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Ruslan" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,7 +93,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/sample" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Практика" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -53,6 +103,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Ann\Videos\Doodle-Jump\src\sample" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\IdeaProjects\Doodle-Jump\src\Images" />
+      <recent name="C:\Users\admin\IdeaProjects\Doodle-Jump\src" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Menu">
@@ -74,7 +128,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="15 (2)" />
       <option name="MAIN_CLASS_NAME" value="Menu.Menu" />
       <module name="Doodle-Jump" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Ann\Videos\javafx-sdk-16\lib&quot; --add-modules javafx.controls,javafx.media,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files (x86)\Java\javafx\javafx-sdk-16\lib&quot; --add-modules javafx.controls,javafx.media,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Menu.*" />
@@ -87,6 +141,17 @@
     </configuration>
     <configuration name="Menu1" type="Application" factoryName="Application">
       <module name="Doodle-Jump" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -111,6 +176,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622552015646</updated>
+      <workItem from="1622890932348" duration="6315000" />
     </task>
     <task id="LOCAL-00001" summary="SHOP made">
       <created>1622742421377</created>
@@ -128,6 +194,62 @@
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Ruslan" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="c33de8f2-63e5-4708-ac04-d9c9f2838cdb">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="c33de8f2-63e5-4708-ac04-d9c9f2838cdb" value="TOOL_WINDOW" />
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="SHOP made" />

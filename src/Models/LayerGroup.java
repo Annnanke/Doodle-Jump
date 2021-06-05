@@ -9,13 +9,11 @@ import java.util.ArrayList;
 public class LayerGroup {
 
     private ArrayList<Layer> layers;
-    private static ArrayList<LayerGroup> allGroups = new ArrayList<>();
     private int capacity;
 
     public LayerGroup(int capacity) {
         this.capacity = capacity;
         layers = new ArrayList<>();
-        allGroups.add(this);
     }
 
 

@@ -3,10 +3,9 @@ package Main;
 import Basics.Const;
 import Basics.Generator;
 import GUI.LossPanelController;
-import Models.Layer;
-import Models.Doodler;
-import Models.Platform;
-import Models.ScoreBar;
+import Menu.Shop;
+import Menu.Sounds;
+import Models.*;
 import Monsters.Monster;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
@@ -21,14 +20,16 @@ import java.io.IOException;
 public class Game extends Pane {
 
     private static int lvl;
-    private boolean moving_left, moving_right, isRunning;
+    private boolean moving_left, moving_right, canShoot = true, releasedTrigger = true;
     private Doodler player;
-    private Scene scene = new Scene(new Pane());
+    private Scene scene;
     public AnimationTimer timer;
     private ImageView background;
     private static ScoreBar scorebar;
     private Pane lossPanel, victoryPanel;
-    private boolean won = false;
+    private boolean won;
+    private int time = 0, start = 0;
+    private static boolean isRunning;
 
 
     public Game(int lvl){
@@ -37,11 +38,14 @@ public class Game extends Pane {
         init();
     }
 
+
     private void init(){
+
+        isRunning = true;
+
         setWidth(Const.STAGE_WIDTH);
         setHeight(Const.STAGE_HEIGHT);
 
-        isRunning = true;
         moving_left = false;
         moving_right = false;
 
@@ -49,11 +53,12 @@ public class Game extends Pane {
         add(background);
 
 
-
         Line level = new Line(0, Const.LOWER_PLATFORM_OFFSET, Const.STAGE_WIDTH, Const.LOWER_PLATFORM_OFFSET);
         level.setOpacity(Const.DETECTOR_OPACITY);
         getChildren().add(level);
 
+        Monster.reload();
+        Layer.reload();
         Layer.setRoot(this);
 
         player = new Doodler((Const.STAGE_WIDTH - Const.DOODLER_WIDTH)/2,Const.LOWER_PLATFORM_OFFSET - Const.DOODLER_HEIGHT, this);
@@ -70,14 +75,18 @@ public class Game extends Pane {
 
         timer.start();
 
+        won = false;
+        loss = false;
 
     }
 
     private void update(){
-        //if(checkForVictory()) return;
+        time++;
         if(checkForLoss()) return;
+        canShoot = time - start > Const.RATE_OF_FIRE;
         doodlersMovement();
         platformsMovement();
+        Bullet.move();
         checkForCollision();
         monsterMovement();
         Layer.generateWhenPassed();
@@ -97,6 +106,14 @@ public class Game extends Pane {
                 case P :
                     timer.stop();
                     break;
+                case SPACE :
+                    if(canShoot && releasedTrigger) {
+                        player.shoot();
+                        start = time;
+                        Sounds.playSoundGunSound();
+                        releasedTrigger = false;
+                    }
+                    break;
             }
         });
 
@@ -112,6 +129,9 @@ public class Game extends Pane {
                 case P :
                     timer.start();
                     break;
+                case SPACE:
+                    releasedTrigger = true;
+                    break;
             }
         });
     }
@@ -125,12 +145,13 @@ public class Game extends Pane {
     }
 
 
-    private boolean loss = false;
+    private boolean loss;
 
     public boolean checkForLoss(){
         if(player.getTranslateY() + Const.DOODLER_HEIGHT > Const.STAGE_HEIGHT || loss){
+            if(!loss) Sounds.playSoundGameOver();
             loss = true;
-            player.setSpeed_y(-10);
+            player.setSpeed_y(Const.DOODLER_LOSS_SPEED);
             if(getChildren().contains(scorebar)) getChildren().remove(scorebar);
             if(!getChildren().contains(lossPanel)){
                 try {
@@ -143,15 +164,24 @@ public class Game extends Pane {
             }
 
             if(lossPanel.getTranslateY() + lossPanel.getHeight() + player.getSpeed_y() > Const.STAGE_HEIGHT) {
-                for (Layer l : Layer.all) l.getPlatform().setTranslateY(l.getPlatformY() + player.getSpeed_y());
+                for (Layer l : Layer.all) {
+                    l.getPlatform().setTranslateY(l.getPlatformY() + player.getSpeed_y());
+                    l.getPlatform().moveDetector();
+                }
                 lossPanel.setTranslateY(lossPanel.getTranslateY() + player.getSpeed_y());
-                player.setTranslateY(player.getTranslateY() + player.getSpeed_y() + 3);
-                for (Monster m : Monster.monsters) m.getIv().setTranslateY(m.getIv().getTranslateY() + player.getSpeed_y());
+                player.setTranslateY(player.getTranslateY() + player.getSpeed_y() + Const.DOODLER_LOSS_SPEED*0.5);
+                for (Monster m : Monster.monsters) {
+                    m.getIv().setTranslateY(m.getIv().getTranslateY() + player.getSpeed_y());
+                    if(m.getPb() != null) m.getPb().setTranslateY(m.getPb().getTranslateY() + player.getSpeed_y());
+                }
+                for(Bullet b : Bullet.bullets) b.setTranslateY(b.getTranslateY() + player.getSpeed_y());
             } else {
                 lossPanel.setTranslateY(Const.STAGE_HEIGHT - lossPanel.getHeight());
-                loss = false;
                 if(player.getTranslateY() < Const.STAGE_HEIGHT) player.setTranslateY(player.getTranslateY() - 1.5*player.getSpeed_y());
-                else timer.stop();
+                else {
+                    timer.stop();
+                    isRunning = false;
+                }
 
             }
             return true;
@@ -163,14 +193,15 @@ public class Game extends Pane {
         for (Layer p : Layer.all) {
             if (
                     player.getDetector().getBoundsInParent().intersects(p.getDetector().getBoundsInParent())
-                    && player.getSpeed_y() < 0
-                    && player.isMoving()
-                    && p.isDetectable()
+                            && player.getSpeed_y() < 0
+                            && player.isMoving()
+                            && p.isDetectable()
             ) {
                 if(p.getPlatform().isStable()) player.setJumpImage(p.getPlatform().getType());
                 switch (p.getPlatform().getType()){
 
                     default :
+                        Sounds.playSoundJump();
                         player.setSpeed_y(Const.DOODLER_V0_Y);
                         if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
                             p.setPivot(true);
@@ -181,6 +212,7 @@ public class Game extends Pane {
                     case Platform.TRAMPOLINE :
                         if(p.getAdditionalDetector().getBoundsInParent().intersects(player.getDetector().getBoundsInParent())) {
                             p.setMissedTrampoline(false);
+                            Sounds.playSoundSuperJump();
                             player.setSpeed_y(Const.TRAMPOLINE_V_0);
                             if(p.getPlatformY() > Const.LOWER_PLATFORM_OFFSET) {
                                 landingSpeed = Math.sqrt(-2 * Const.GRAVITY * (p.getPlatformY() - Const.LOWER_PLATFORM_OFFSET));
@@ -190,6 +222,7 @@ public class Game extends Pane {
                             landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
                         } else {
                             landingSpeed = 0;
+                            Sounds.playSoundJump();
                             p.setMissedTrampoline(true);
                             player.setSpeed_y(Const.DOODLER_V0_Y);
                             if(p.getPlatformY() < Const.LOWER_PLATFORM_OFFSET) {
@@ -199,8 +232,9 @@ public class Game extends Pane {
                         }
                         break;
 
-                        //VICTORY:
+                    //VICTORY:
                     case Platform.GOLDEN :
+                        if(!won) Sounds.playSoundVictory();
                         won = true;
                         if(getScorebar().getPoints() < Const.HEIGHT_1) getScorebar().setPoints(Const.HEIGHT_1);
                         getChildren().remove(scorebar);
@@ -216,15 +250,30 @@ public class Game extends Pane {
                         p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1]);
                         break;
 
-                        case Platform.JETPACKED :
-                            player.setSpeed_y(Const.JETPACK_V_0);
-                            if(p.getPlatformY() > Const.LOWER_PLATFORM_OFFSET) {
-                                landingSpeed = Math.sqrt(-2 * Const.GRAVITY * (p.getPlatformY() - Const.LOWER_PLATFORM_OFFSET));
-                            }
-                            else landingSpeed = 0;
-                            p.setPivot(true);
-                            landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
-                            break;
+                    case Platform.JETPACKED :
+                        Sounds.playSoundJetSound();
+                        player.setSpeed_y(Const.JETPACK_V_0);
+                        if(p.getPlatformY() > Const.LOWER_PLATFORM_OFFSET) {
+                            landingSpeed = Math.sqrt(-2 * Const.GRAVITY * (p.getPlatformY() - Const.LOWER_PLATFORM_OFFSET));
+                        }
+                        else landingSpeed = 0;
+                        p.setPivot(true);
+                        landing = p.getPlatformY() - Const.DOODLER_HEIGHT;
+                        break;
+                }
+
+                //Coin pick
+                if(p.getPlatform().hasCoin() && p.getPlatform().getCoinOrDiamand().getBoundsInParent().intersects(player.getGeneralDetector().getBoundsInParent())){
+                    p.getPlatform().getCoinOrDiamand().setImage(null);
+                    p.getPlatform().setCoinOrDiamand(null);
+                    Sounds.playSoundCoin();
+                    Shop.coins += Const.COIN_PICK;
+                }
+                if(p.getPlatform().hasDiamond() && p.getPlatform().getCoinOrDiamand().getBoundsInParent().intersects(player.getGeneralDetector().getBoundsInParent())){
+                    p.getPlatform().getCoinOrDiamand().setImage(null);
+                    p.getPlatform().setCoinOrDiamand(null);
+                    Sounds.playSoundDiamondSound();
+                    Shop.diamands += Const.DIAMOND_PICK;
                 }
 
             }
@@ -237,19 +286,28 @@ public class Game extends Pane {
 
                 switch (m.getType()){
                     case Monster.BLACK_HOLE :
-                        player.setSpeed_y(-7);
+                        player.setSpeed_y(Const.DOODLER_LOSS_SPEED);
                         player.setImage(Const.CHARACTER_LAYS[Const.CHOSEN_CHARACTER]);
-                        loss = true;
                         break;
                     default:
-                        player.setSpeed_y(-10);
+                        player.setSpeed_y(Const.DOODLER_LOSS_SPEED);
                         player.setImage(Const.CHARACTER_LAYS[Const.CHOSEN_CHARACTER]);
-                        loss = true;
+
                         break;
                 }
+                if(!loss) Sounds.playSoundGameOver();
+                loss = true;
+            }
+
+            for (Bullet b : Bullet.bullets) if(b.getBoundsInParent().intersects(m.getDetector().getBoundsInParent())) {
+                if(m.getType() != Monster.BLACK_HOLE) m.damage();
+                b.setToRemove(true);
             }
 
         }
+
+        Monster.removeAllToRemove();
+        Bullet.removeAllToRemove();
     }
 
     private void doodlersMovement(){
@@ -301,11 +359,15 @@ public class Game extends Pane {
         //vertical movement
         if(Layer.hasPivot()) {
             if((Layer.getPivot().getPivotType() == Layer.PIVOT_TRAMPOLINE
-                || Layer.getPivot().getPivotType() == Layer.PIVOT_JETPACK) ) landingMovement();
+                    || Layer.getPivot().getPivotType() == Layer.PIVOT_JETPACK) ) landingMovement();
             player.setTranslateY(landing);
             player.setMoving(false);
         } else player.setMoving(true);
         Layer.move();
+    }
+
+    public static boolean isRunning() {
+        return isRunning;
     }
 
     private static void monsterMovement(){

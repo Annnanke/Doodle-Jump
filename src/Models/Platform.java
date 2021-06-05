@@ -13,6 +13,7 @@ public class Platform extends ImageView {
     private int type, crackedCounter = 0;
     private double horizontal_speed;
     private boolean detectable;
+    private ImageView coinOrDiamand;
 
 
     public Platform(double x, double y, int type, Game root) {
@@ -25,6 +26,7 @@ public class Platform extends ImageView {
         horizontal_speed = Const.HORIZONTAL_SPEED[Game.getLvl() - 1] * Math.pow(-1, new Random().nextInt());
         detector = new Detector((x), (y), (getImage().getWidth()), this);
         detectable = true;
+
         root.getChildren().add(detector);
         root.getChildren().add(this);
     }
@@ -37,17 +39,38 @@ public class Platform extends ImageView {
 
         this.type = type;
         switch (type){
+
             case DEFAULT :
+                setImage(Const.PLATFORM_1[Game.getLvl() - 1]);
+                if(Math.random() < Const.PROBABILITY_OF_COIN_OR_DIAMOND_APPEARANCE[Game.getLvl() - 1] && (type == DEFAULT || type == MOVING)){
+                    if(Math.random() < Const.DIAMOND_AND_COIN_DISTRIBUTION[Game.getLvl() - 1][0]) coinOrDiamand = new ImageView(Const.COIN);
+                    else coinOrDiamand = new ImageView(Const.DIAMOND);
+                    coinOrDiamand.setTranslateX(getTranslateX() + getImage().getWidth()/2 - coinOrDiamand.getImage().getWidth()/2);
+                    coinOrDiamand.setTranslateY(getTranslateY() - coinOrDiamand.getImage().getHeight());
+                    root.getChildren().add(coinOrDiamand);
+                }
                 root.getChildren().remove(additionalDetector);
                 additionalDetector = null;
-                setImage(Const.PLATFORM_1[Game.getLvl() - 1]);
                 break;
+
             case MOVING :
+                setImage(Const.PLATFORM_1[Game.getLvl() - 1]);
+                if(Math.random() < Const.PROBABILITY_OF_COIN_OR_DIAMOND_APPEARANCE[Game.getLvl() - 1] && (type == DEFAULT || type == MOVING)){
+                    if(Math.random() < Const.DIAMOND_AND_COIN_DISTRIBUTION[Game.getLvl() - 1][0]) coinOrDiamand = new ImageView(Const.COIN);
+                    else coinOrDiamand = new ImageView(Const.DIAMOND);
+                    coinOrDiamand.setTranslateX(getTranslateX() + getImage().getWidth()/2 - coinOrDiamand.getImage().getWidth()/2);
+                    coinOrDiamand.setTranslateY(getTranslateY() - coinOrDiamand.getImage().getHeight());
+                    root.getChildren().add(coinOrDiamand);
+                }
                 root.getChildren().remove(additionalDetector);
                 additionalDetector = null;
-                setImage(Const.PLATFORM_1[Game.getLvl() - 1]);
                 break;
+
             case TRAMPOLINE :
+                if(coinOrDiamand != null) {
+                    root.getChildren().remove(coinOrDiamand);
+                    coinOrDiamand = null;
+                }
                 setImage(Const.TRAMPOLINE[Game.getLvl() - 1]);
                 additionalDetector = new Detector( getTranslateX() + getImage().getWidth() * (0.4), getTranslateY(),
                         0.2 * getImage().getWidth(), this);
@@ -55,13 +78,22 @@ public class Platform extends ImageView {
                 additionalDetector.setFill(Color.RED);
                 root.getChildren().add(additionalDetector);
                 break;
+
             case CRACKED :
+                if(coinOrDiamand != null) {
+                    root.getChildren().remove(coinOrDiamand);
+                    coinOrDiamand = null;
+                }
                 root.getChildren().remove(additionalDetector);
                 additionalDetector = null;
                 setImage(Const.PLATFORM_1_BROKEN[Game.getLvl() - 1]);
                 break;
 
             case JETPACKED :
+                if(coinOrDiamand != null) {
+                    root.getChildren().remove(coinOrDiamand);
+                    coinOrDiamand = null;
+                }
                 root.getChildren().remove(additionalDetector);
                 additionalDetector = null;
                 setTranslateY(getTranslateY() - 35);
@@ -69,18 +101,40 @@ public class Platform extends ImageView {
                 break;
 
             case GOLDEN:
+                if(coinOrDiamand != null) {
+                    root.getChildren().remove(coinOrDiamand);
+                    coinOrDiamand = null;
+                }
                 root.getChildren().remove(additionalDetector);
+                detector.setHeight(30);
                 additionalDetector = null;
                 setImage(Const.GOLDEN[Game.getLvl() - 1]);
                 break;
         }
     }
 
+    public boolean hasDiamond(){
+        if(coinOrDiamand == null) return false;
+        return coinOrDiamand.getImage() == Const.DIAMOND;
+    }
+
+    public boolean hasCoin(){
+        if(coinOrDiamand == null) return false;
+        return coinOrDiamand.getImage() == Const.COIN;
+    }
+
+    public ImageView getCoinOrDiamand(){
+        return coinOrDiamand;
+    }
+
+    public void setCoinOrDiamand(ImageView coinOrDiamand) {
+        this.coinOrDiamand = coinOrDiamand;
+    }
 
     public static void removePostCracked(){
         for(Layer l : Layer.getAll())
-        if(l.getPlatform().getType() == CRACKED && l.getPlatform().getImage() == Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1])
-            l.getPlatform().disposeOfPostCracked();
+            if(l.getPlatform().getType() == CRACKED && l.getPlatform().getImage() == Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1])
+                l.getPlatform().disposeOfPostCracked();
     }
 
     public void disposeOfPostCracked(){
@@ -91,7 +145,7 @@ public class Platform extends ImageView {
         for(Layer l : Layer.getAll())
             if(l.getPlatform().getType() == MOVING) {
                 if(l.getPlatform().getTranslateX() + Const.PLATFORM_WIDTH + l.getPlatform().horizontal_speed > Const.STAGE_WIDTH ||
-                   l.getPlatform().getTranslateX() + l.getPlatform().horizontal_speed < 0 ) l.getPlatform().horizontal_speed *= -1;
+                        l.getPlatform().getTranslateX() + l.getPlatform().horizontal_speed < 0 ) l.getPlatform().horizontal_speed *= -1;
                 l.getPlatform().setTranslateX(l.getPlatform().getTranslateX() + l.getPlatform().horizontal_speed);
                 l.getPlatform().moveDetector();
             }
@@ -112,12 +166,19 @@ public class Platform extends ImageView {
             additionalDetector.setY(getTranslateY());
         }
 
+        if(coinOrDiamand != null){
+            coinOrDiamand.setTranslateX(getTranslateX() + getImage().getWidth()/2 - coinOrDiamand.getImage().getWidth()/2);
+            coinOrDiamand.setTranslateY(getTranslateY() - coinOrDiamand.getImage().getHeight());
+        }
+
         if(type == JETPACKED) setTranslateY(getTranslateY() - 40);
     }
 
     public void remove(){
         root.getChildren().remove(this);
         root.getChildren().remove(getDetector());
+        root.getChildren().remove(coinOrDiamand);
+        coinOrDiamand = null;
         if(getAdditionalDetector() != null) root.getChildren().remove(getAdditionalDetector());
         setDetectable(false);
     }

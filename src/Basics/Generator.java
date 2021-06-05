@@ -11,32 +11,28 @@ import java.util.Random;
 
 public class Generator {
 
-    private static Game root = Layer.getRoot();
-    private static int lvl = Game.getLvl();
-    private static ArrayList<Layer> all = Layer.getAll();
-    public static final int NUM_OF_PLATFORMS = (int) (Const.STAGE_HEIGHT / Const.LAYER_HEIGHT[lvl - 1]) + 2;
-    private static boolean monster = false;
+    public static final int NUM_OF_PLATFORMS = (int) (Const.STAGE_HEIGHT / Const.LAYER_HEIGHT[Game.getLvl() - 1]) + 2;
 
     public static void generatePlatforms(){
-        for (int i = NUM_OF_PLATFORMS - 2; i >= 0; i--) new Layer((i - 1) * Const.LAYER_HEIGHT[lvl - 1]);
+        for (int i = NUM_OF_PLATFORMS - 2; i >= 0; i--) new Layer((i - 1) * Const.LAYER_HEIGHT[Game.getLvl() - 1]);
     }
 
-    public static Platform nextPlatform(double y){
+    public static Platform nextPlatform(double y, Game root){
         return new Platform(new Random().nextInt(Const.STAGE_WIDTH - Const.PLATFORM_WIDTH), y, nextType(y), root);
     }
 
     public static int nextType(double y){
 
         int type =  randomiseAnalogue(0,1,2,4);// all except for cracked (former can be deleted)
-       for(Layer l : all) {
+        for(Layer l : Layer.all) {
             if (Math.abs(l.getPlatformY() - (y - 2*Layer.offset - Const.PLATFORM_HEIGHT)) < Const.DOODLER_HEIGHT_OF_JUMP
-                && l.getPlatform().getType() != Platform.CRACKED
-                && l.getPlatformY() != y
-                && l.getPlatform().isDetectable()) {
+                    && l.getPlatform().getType() != Platform.CRACKED
+                    && l.getPlatformY() != y
+                    && l.getPlatform().isDetectable()) {
                 type = randomiseAnalogue(0,1,2,3,4);
             }
         }
-            return type;
+        return type;
     }
 
 
