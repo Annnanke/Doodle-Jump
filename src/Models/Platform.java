@@ -106,7 +106,7 @@ public class Platform extends ImageView {
                     coinOrDiamand = null;
                 }
                 root.getChildren().remove(additionalDetector);
-                detector.setHeight(30);
+                detector.setHeight(50);
                 additionalDetector = null;
                 setImage(Const.GOLDEN[Game.getLvl() - 1]);
                 break;

@@ -86,7 +86,7 @@ public class Sounds {
 
 
     public static void playSoundJetSound() {
-        File audioFile = new File("src\\jetSound.wav");
+        File audioFile = new File("src/jetSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
         audioPlayer4 = new MediaPlayer(audio);
         if (soundStatus != 2) {

@@ -23,8 +23,6 @@ public class Const {
         public static final double PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_LEFT = 1 - PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_RIGHT;
         public static final double DOODLER_HEIGHT_OF_JUMP = -DOODLER_V0_Y * DOODLER_V0_Y / (2 * GRAVITY);
         public static final double MIN_SPEED_FOR_JUMP = 3; //doodler can't jump when his speed_y is less then this value
-        public static final double VICTORY_SHIFT_SPEED = 3;
-        public static final double VICTORY_DOWN_SPEED = 3;
         public static final double DOODLER_LOSS_SPEED = -10;
         public static final double RATE_OF_FIRE = 2;
 
@@ -37,13 +35,13 @@ public class Const {
         public static final int PLATFORM_WIDTH = 60;
         public static final int PLATFORM_HEIGHT = 12;
         public static final double PLATFORM_V = DOODLER_V0_Y;
-        public static final double[] LAYER_HEIGHT = {PLATFORM_HEIGHT + 36, PLATFORM_HEIGHT + 100, PLATFORM_HEIGHT + 100, PLATFORM_HEIGHT + 100
-                , PLATFORM_HEIGHT + 100};
+        public static final double[] LAYER_HEIGHT = {PLATFORM_HEIGHT + 36, PLATFORM_HEIGHT + 36, PLATFORM_HEIGHT + 36, PLATFORM_HEIGHT + 36
+                , PLATFORM_HEIGHT + 36};
         public static final int LOWER_PLATFORM_OFFSET = STAGE_HEIGHT - 150;
         public static final double[][] PROBABILITIES_OF_PLATFORM_TYPES = {{0.5, 0.1, 0.05, 0.3, 0},
-                {0.5, 0.15, 0.04, 0.3, 0.01},
-                {0.5, 0.15, 0.04, 0.3, 0.01},
-                {0.5, 0.15, 0.04, 0.3, 0.01},
+                {0.5, 0.15, 0.05, 0.3, 0},
+                {0.5, 0.11, 0.04, 0.3, 0.05},
+                {0.5, 0, 0, 0.5, 0},
                 {0.5, 0.15, 0.04, 0.3, 0.01}}; //{DEFAULT, MOVING, TRAMPOLINE, CRACKED, JETPACKED}
         public static final int POST_CRACKED_TIME_OF_LIFE = 30;
         public static final double[] HORIZONTAL_SPEED = {2, 2, 2, 2, 2}; //only for moving platforms
@@ -51,30 +49,28 @@ public class Const {
         public static final double TRAMPOLINE_V_0 = Math.sqrt(-2 * GRAVITY * TRAMPOLINE_HEIGHT);
         public static final double JETPACK_HEIGHT = 3 * STAGE_HEIGHT;
         public static final double JETPACK_V_0 = Math.sqrt(-2 * GRAVITY * JETPACK_HEIGHT);
-        public static final double VICTORY_SPEED_OF_GOLDEN_PLATFORM = -2;
 
 
 
         //GAME GENERAL:
         public static final double HEIGHT_OF_LOSS_FALL = 2*STAGE_HEIGHT + 2*LAYER_HEIGHT[Game.getLvl() - 1];
-        public static final int HEIGHT_1 = 60000;
-        public static final int VICTORY_POSITION_X = 50;
+        public static final int HEIGHT_1[] = {2000, 3000, 5000, 5000, 5000};
         public static final int COIN_PICK = 5;
         public static final int DIAMOND_PICK = 1;
-        public static final double[] PROBABILITY_OF_COIN_OR_DIAMOND_APPEARANCE = {1, 0.2, 0.2, 0.2, 0.2};
-        public static final double[][] DIAMOND_AND_COIN_DISTRIBUTION = {{0.5, 0.5}, //{COIN, DIAMOND}
-                {1, 0},
-                {1, 0},
-                {1, 0},
-                {0.8, 0.2}};
+        public static final double[] PROBABILITY_OF_COIN_OR_DIAMOND_APPEARANCE = {0.2, 0.2, 0.2, 0.2, 0.2};
+        public static final double[][] DIAMOND_AND_COIN_DISTRIBUTION = {{1, 0}, //{COIN, DIAMOND}
+                                                                        {1, 0},
+                                                                        {1, 0},
+                                                                        {1, 0},
+                                                                        {0.8, 0.2}};
 
         //MONSTERS
-        public static final double[] PROBABILITY_OF_MONSTER_APPEARANCE = {1 , 0.1, 0.01, 0.01, 0.01};
-        public static final double[][] MONSTER_TYPE_PROBABILITY = {{0.25,0.25,0.25,0.25},
-                {0.25,0.25,0.25,0.25},
-                {0.25,0.25,0.25,0.25},
-                {0.25,0.25,0.25,0.25},
-                {0.25,0.25,0.25,0.25}};
+        public static final double[] PROBABILITY_OF_MONSTER_APPEARANCE = {0, 0.2, 0.2, 0.5, 0};
+        public static final double[][] MONSTER_TYPE_PROBABILITY = {{0,0,0,0},
+                                                                   {0.333,0.333,0.333,0},
+                                                                   {0.23,0.23,0.23,0.31},
+                                                                   {0,0.25,0,0},
+                                                                   {0.25,0.25,0.25,0.25}};
         public static final double[] BAT_SPEED_X = {2,2,2,2,2};
         public static final double[] DRAGON_SPEED_X = {2,2,2,2,2};
 
@@ -114,19 +110,19 @@ public class Const {
         public static final Image[] PLATFORM_1 = {new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
                 new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
                 new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
-                new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                new Icon("src/Images/lvl5_platform.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
                 new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT)};
 
         public static final Image[] PLATFORM_1_BROKEN = {new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
                 new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
                 new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
-                new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                new Icon("src/Images/lvl5_platform_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
                 new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT)};
 
         public static final Image[] PLATFORM_1_POST_BROKEN = {new Icon("src/Images/post_brokenpallet1.png",100, 37),
                 new Icon("src/Images/post_brokenpallet1.png",100, 37),
                 new Icon("src/Images/post_brokenpallet1.png",100, 37),
-                new Icon("src/Images/post_brokenpallet1.png",100, 37),
+                new Icon("src/Images/post_lvl5_brokenpallet.png",100, 37),
                 new Icon("src/Images/post_brokenpallet1.png",100, 37)};
 
         public static final Image[] TRAMPOLINE = {new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
@@ -144,7 +140,7 @@ public class Const {
         public static final Image[] BACKGROUND = {new Icon("src/Images/background.jpg"),
                 new Icon("src/Images/background.jpg"),
                 new Icon("src/Images/background.jpg"),
-                new Icon("src/Images/background.jpg"),
+                new Icon("src/Images/lvl5_background.png"),
                 new Icon("src/Images/background.jpg")};
 
         public static final Image[] MONSTERS =  {new Icon("src/Images/monster2.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1]),

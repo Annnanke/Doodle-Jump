@@ -151,6 +151,8 @@ public class Monster extends LayerGroup {
     public void totallyRemove(){
         if(!toRemove) return;
         Layer.setMonsterCounter(Layer.getMonsterCounter() - 1);
+        Layer.all.remove(l1);
+        Layer.all.remove(l2);
         root.getChildren().remove(this);
         root.getChildren().remove(pb);
         root.getChildren().remove(iv);

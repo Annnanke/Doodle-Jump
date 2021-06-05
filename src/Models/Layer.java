@@ -40,6 +40,7 @@ public class Layer {
     }
 
     public static void reload(){
+        if(all != null) cleanAll();
         all = new ArrayList<>();
         speed = 0;
         passed_height = 0;
@@ -112,8 +113,7 @@ public class Layer {
     public static void generateWhenPassed(){
         if(hasGoldenPlatform()) return;
         removeAllToDisappear();
-        System.out.println(Monster.monsters.size());
-        if(monster && Const.HEIGHT_1 - Game.getScorebar().getPoints() > Const.STAGE_HEIGHT) {
+        if(monster && Const.HEIGHT_1[Game.getLvl() - 1] - Game.getScorebar().getPoints() > Const.STAGE_HEIGHT) {
             new Monster(getTop().getY() - 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], Generator.randomiseMonster(0,1,2,3),root);
             monsterCounter++;
             monster = false;
@@ -122,13 +122,13 @@ public class Layer {
             if(l.getY() >= Const.STAGE_HEIGHT) {
                 l.setDetectable(true);
                 l.setY(getTop().getY() - Const.LAYER_HEIGHT[Game.getLvl() - 1]);
-                if(Const.LOWER_PLATFORM_OFFSET - l.getPlatformY() >= Const.HEIGHT_1 - Game.getScorebar().getPoints())
+                if(Const.LOWER_PLATFORM_OFFSET - l.getPlatformY() >= Const.HEIGHT_1[Game.getLvl() - 1] - Game.getScorebar().getPoints())
                     l.setType(Platform.GOLDEN);
                 else {
                     l.setType(Generator.nextType(l.getPlatformY()));
                     if(Math.random() < Const.PROBABILITY_OF_MONSTER_APPEARANCE[Game.getLvl() - 1]
                             && monsterCounter == 0
-                            && isReachable(getTop().getY() - 2*Const.LAYER_HEIGHT[Game.getLvl() - 1] + offset + Const.PLATFORM_HEIGHT))
+                            && isReachable(getTop().getY() - 2*Const.LAYER_HEIGHT[Game.getLvl() - 1] - offset - Const.PLATFORM_HEIGHT))
                         monster = true;
                 }
                 top = l;
@@ -194,6 +194,12 @@ public class Layer {
             for(Shape s : l.connectedShapes) s.setTranslateY(s.getTranslateY() + speed);
         }
         speed += Const.GRAVITY;
+    }
+
+    public static void cleanAll(){
+        for(int i = 0; i < all.size(); i++) {
+            all.remove(all.get(i));
+        }
     }
 
     public Detector getDetector(){

@@ -3,10 +3,15 @@ package GUI;
 import Basics.Const;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import Main.Game;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import Menu.Menu;
@@ -38,7 +43,25 @@ public class LossPanelController implements Initializable {
     }
 
     @FXML
-    private void menu(ActionEvent e){
+    private void menu(ActionEvent e) throws IOException {
+        if(!Game.isRunning()){
+            Parent rootD = FXMLLoader.load(getClass().getResource("../Menu/main.fxml"));
+            Menu.menuScene = new Scene(rootD);
 
+            if(Menu.style == null){
+                Menu.style = this.getClass().getResource("LightStyling.css").toExternalForm();
+                Menu.shopStyle = this.getClass().getResource("shopLightStyling.css").toExternalForm();
+            }
+            Menu.menuScene.getStylesheets().add(Menu.style);
+            Image icon = new Image("Images/cat_jump.png");
+            Menu.menuStage.setTitle("DoodleJump");
+            Menu.menuStage.getIcons().add(icon);
+            Menu.menuStage.setScene(Menu.menuScene);
+            Menu.menuStage.setX(100);
+            Menu.menuStage.setY(50);
+            Menu.menuStage.show();
+        }
     }
+
+
 }

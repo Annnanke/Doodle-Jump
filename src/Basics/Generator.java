@@ -11,9 +11,10 @@ import java.util.Random;
 
 public class Generator {
 
-    public static final int NUM_OF_PLATFORMS = (int) (Const.STAGE_HEIGHT / Const.LAYER_HEIGHT[Game.getLvl() - 1]) + 2;
+    public static int NUM_OF_PLATFORMS = (int) (Const.STAGE_HEIGHT / Const.LAYER_HEIGHT[Game.getLvl() - 1]) + 2;
 
     public static void generatePlatforms(){
+        NUM_OF_PLATFORMS = (int) (Const.STAGE_HEIGHT / Const.LAYER_HEIGHT[Game.getLvl() - 1]) + 2;
         for (int i = NUM_OF_PLATFORMS - 2; i >= 0; i--) new Layer((i - 1) * Const.LAYER_HEIGHT[Game.getLvl() - 1]);
     }
 

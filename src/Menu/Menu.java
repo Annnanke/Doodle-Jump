@@ -26,6 +26,7 @@ public class Menu extends Application {
     public static String style;
     public static String shopStyle;
     public static int soundStatus;
+
     @FXML
     private Label bag = new Label();
 

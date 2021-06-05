@@ -88,8 +88,8 @@ public class Doodler extends ImageView {
     public void verticalMovement(){
         setTranslateY(getTranslateY() - speed_y);
         detector.setY(getTranslateY() + Const.DOODLER_HEIGHT - 7);
-        if(getImage() == Const.CHARACTER_NORMAL[Game.getLvl() - 1]) generalDetector.setY(getTranslateY());
-        else if(getImage() == Const.CHARACTER_JUMP[Game.getLvl() - 1]) generalDetector.setY(getTranslateY() + 20);
+        if(getImage() == Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]) generalDetector.setY(getTranslateY());
+        else if(getImage() == Const.CHARACTER_JUMP[Const.CHOSEN_CHARACTER]) generalDetector.setY(getTranslateY() + 20);
         else generalDetector.setY(getTranslateY());
         speed_y += Const.GRAVITY;
         if(Math.abs(speed_y) < 1) setImage(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
