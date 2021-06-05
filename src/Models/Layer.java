@@ -3,7 +3,11 @@ package Models;
 import Basics.Const;
 import Basics.Generator;
 import Main.Game;
+import Monsters.Monster;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Shape;
+
 import java.util.ArrayList;
 
 public class Layer {
@@ -12,10 +16,12 @@ public class Layer {
     private static Game root;
     private double y;
     private static double speed = 0;
-    private boolean pivot, missedTrampoline = false;
+    private boolean pivot, missedTrampoline = false, toDisappear = false;
     private Line visualiser;
     private static Layer top;
-    private static double trampoline_height = 0;
+    private static double passed_height = 0;
+    private ImageView connectedImage;
+    private ArrayList<Shape> connectedShapes = new ArrayList<>();
 
 
     public Layer(double y){
@@ -40,10 +46,8 @@ public class Layer {
             case PIVOT_JUMP :
                 if(pivot.getY() + speed < Const.LOWER_PLATFORM_OFFSET && speed > Const.MIN_SPEED_FOR_JUMP) {
                     moveOnce();
-
                 }
                 else pivot.setPivot(false);
-
                 return;
 
             case PIVOT_TRAMPOLINE :
@@ -58,31 +62,90 @@ public class Layer {
                         return;
                     }
                 }
-
                 //ordinary trampoline jump
-                if(trampoline_height < Const.STAGE_HEIGHT && speed > Const.MIN_SPEED_FOR_JUMP) {
-                    trampoline_height += speed;
+                if(passed_height < Const.TRAMPOLINE_HEIGHT && speed > Const.MIN_SPEED_FOR_JUMP) {
+                    passed_height += speed;
                     moveOnce();
                 }
                 else {
-                    trampoline_height = 0;
+                    passed_height = 0;
                     pivot.setPivot(false);
                 }
                 return;
 
+            case PIVOT_JETPACK :
+                if(passed_height < Const.JETPACK_HEIGHT && speed > Const.MIN_SPEED_FOR_JUMP) {
+                    passed_height += speed;
+                    moveOnce();
+                }
+                else {
+                    passed_height = 0;
+                    pivot.setPivot(false);
+                }
+                return;
         }
-
-
     }
 
+    private static boolean monster = false;
+    private static int monsterCounter = 0;
+
     public static void generateWhenPassed(){
+        if(hasGoldenPlatform()) return;
+        removeAllToDisappear();
+        if(monster) {
+            new Monster(getTop().getY() - 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], Generator.randomiseMonster(0,1,2,3),root);
+            monsterCounter++;
+            monster = false;
+        }
         for(Layer l : all)
             if(l.getY() >= Const.STAGE_HEIGHT) {
                 l.setDetectable(true);
                 l.setY(getTop().getY() - Const.LAYER_HEIGHT[Game.getLvl() - 1]);
-                l.setType(Generator.nextType(l.getPlatformY()));
+                if(Const.LOWER_PLATFORM_OFFSET - l.getPlatformY() >= Const.HEIGHT_1 - Game.getScorebar().getPoints())
+                    l.setType(Platform.GOLDEN);
+                else {
+                    l.setType(Generator.nextType(l.getPlatformY()));
+                    if(Math.random() < Const.PROBABILITY_OF_MONSTER_APPEARANCE[Game.getLvl() - 1]
+                            && monsterCounter == 0
+                            && isReachable(getTop().getY() - 2*Const.LAYER_HEIGHT[Game.getLvl() - 1] + offset + Const.PLATFORM_HEIGHT))
+                        monster = true;
+                }
                 top = l;
             } else if(l.getPlatform().getTranslateY() >= Const.STAGE_HEIGHT) l.getPlatform().setDetectable(false);
+    }
+
+    private static void removeAllToDisappear(){
+        if(!hasOnesToDisappear()) return;
+        Layer toRemove = null;
+        for (Layer l : all) if(l.getY() >= Const.STAGE_HEIGHT && l.isToDisappear()) toRemove = l;
+        if(toRemove == null) return;
+        all.remove(toRemove);
+        root.getChildren().remove(toRemove.getPlatform());
+        root.getChildren().remove(toRemove.getPlatform().getDetector());
+        if(toRemove.getConnectedImage() != null) {
+            toRemove.setConnectedImage(null);
+            monsterCounter--;
+            Monster.monsters.remove(Monster.indexOf(toRemove));
+        }
+    }
+
+    private static boolean hasOnesToDisappear(){
+        for(Layer l : all) if(l.isToDisappear()) return true;
+        return false;
+    }
+
+    public static boolean hasGoldenPlatform(){
+        for(Layer l : all)
+            if(l.getType() == Platform.GOLDEN) return true;
+            return false;
+    }
+
+    public static boolean isReachable(double height){
+        for(Layer l : all)
+            if(Math.abs(l.getPlatformY() - height) < Const.DOODLER_HEIGHT_OF_JUMP
+                    && l.getPlatformY() > height
+                    && l.getPlatform().isStable()) return true;
+            return false;
     }
 
     public boolean isDetectable(){
@@ -103,7 +166,11 @@ public class Layer {
 
     private static void moveOnce(){
         Game.getScorebar().addPoints((int)speed);
-        for(Layer l : all) l.setY(l.getY() + speed);
+        for(Layer l : all) {
+            l.setY(l.getY() + speed);
+            if(l.getConnectedImage() != null) l.getConnectedImage().setTranslateY(l.getConnectedImage().getTranslateY() + speed);
+            for(Shape s : l.connectedShapes) s.setTranslateY(s.getTranslateY() + speed);
+        }
         speed += Const.GRAVITY;
     }
 
@@ -115,6 +182,22 @@ public class Layer {
         return p.getAdditionalDetector();
     }
 
+    public boolean isToDisappear() {
+        return toDisappear;
+    }
+
+    public void setToDisappear(boolean toDisappear) {
+        this.toDisappear = toDisappear;
+    }
+
+    public  void setConnectedImage(ImageView connectedImage) {
+        this.connectedImage = connectedImage;
+    }
+
+    public ImageView getConnectedImage() {
+        return connectedImage;
+    }
+
     public void setY(double y) {
         this.y = y;
         p.setTranslateY(y + offset);
@@ -123,6 +206,9 @@ public class Layer {
         visualiser.setEndY(y);
     }
 
+    public ArrayList<Shape> getConnectedShapes() {
+        return connectedShapes;
+    }
 
     public void setType(int type){
         getPlatform().setType(type);
@@ -173,13 +259,18 @@ public class Layer {
         return pivotType;
     }
 
+    public static Platform getGoldenPlatform(){
+        for(Layer l : all)
+            if(l.getType() == Platform.GOLDEN) return l.getPlatform();
+            return null;
+    }
+
     /**
      * setter for both pivot and pivotType
      * @param pivot
      */
     public void setPivot(boolean pivot) {
         this.pivot = pivot;
-
 
         if(pivot){
             switch (getPlatform().getType()){
@@ -190,6 +281,10 @@ public class Layer {
                 case Platform.CRACKED:
                     speed = 0;
                     pivotType = PIVOT_CRACKED;
+                    break;
+                case Platform.JETPACKED :
+                    speed = Const.JETPACK_V_0;
+                    pivotType = PIVOT_JETPACK;
                     break;
                 default :
                     speed = Const.PLATFORM_V;
@@ -208,5 +303,6 @@ public class Layer {
     public static final int PIVOT_JUMP = 0;
     public static final int PIVOT_TRAMPOLINE = 1;
     public static final int PIVOT_CRACKED = 2;
+    public static final int PIVOT_JETPACK = 3;
     private static int pivotType = NOT_A_PIVOT;
 }

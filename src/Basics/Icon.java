@@ -11,7 +11,10 @@ public class Icon extends Image {
         super(new File(file).toURI().toString(), width, height, true, true);
     }
 
+
     public Icon(String file){
         super(new File(file).toURI().toString());
     }
+
+
 }
