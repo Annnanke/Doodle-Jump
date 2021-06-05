@@ -46,6 +46,9 @@ public class Game extends Pane {
 
         isRunning = true;
 
+        scorebar = new ScoreBar();
+        getChildren().add(scorebar);
+
         setWidth(Const.STAGE_WIDTH);
         setHeight(Const.STAGE_HEIGHT);
 
@@ -68,8 +71,7 @@ public class Game extends Pane {
 
         Generator.generatePlatforms();
 
-        scorebar = new ScoreBar();
-        getChildren().add(scorebar);
+
 
         timer = new AnimationTimer() {
             @Override
@@ -101,7 +103,9 @@ public class Game extends Pane {
             timer.stop();
             return;
         }
+
         if(checkForLoss()) return;
+        getChildren().remove(scorebar);
         canShoot = time - start > Const.RATE_OF_FIRE;
         doodlersMovement();
         platformsMovement();
@@ -110,6 +114,7 @@ public class Game extends Pane {
         monsterMovement();
         Layer.generateWhenPassed();
         removeDead();
+        getChildren().add(scorebar);
     }
 
     public void setScene(Scene scene) {
@@ -126,7 +131,7 @@ public class Game extends Pane {
                     timer.stop();
                     break;
                 case SPACE :
-                    if(canShoot && releasedTrigger) {
+                    if(canShoot && releasedTrigger && !player.isFlying()) {
                         player.shoot();
                         start = time;
                         Sounds.playSoundGunSound();
@@ -233,6 +238,7 @@ public class Game extends Pane {
                     case Platform.TRAMPOLINE :
                         if(p.getAdditionalDetector().getBoundsInParent().intersects(player.getDetector().getBoundsInParent())) {
                             p.setMissedTrampoline(false);
+                            player.setFlying(true);
                             Sounds.playSoundSuperJump();
                             player.setSpeed_y(Const.TRAMPOLINE_V_0);
                             if(p.getPlatformY() > Const.LOWER_PLATFORM_OFFSET) {
@@ -274,6 +280,7 @@ public class Game extends Pane {
                     case Platform.JETPACKED :
                         Sounds.playSoundJetSound();
                         player.setSpeed_y(Const.JETPACK_V_0);
+                        player.setFlying(true);
                         if(p.getPlatformY() > Const.LOWER_PLATFORM_OFFSET) {
                             landingSpeed = Math.sqrt(-2 * Const.GRAVITY * (p.getPlatformY() - Const.LOWER_PLATFORM_OFFSET));
                         }
@@ -302,6 +309,8 @@ public class Game extends Pane {
 
 
         for(Monster m : Monster.monsters){
+
+            if(player.isFlying()) continue;
 
             if(player.getGeneralDetector().getBoundsInParent().intersects(m.getDetector().getBoundsInParent())){
 
@@ -342,43 +351,8 @@ public class Game extends Pane {
         if(landingSpeed + Const.GRAVITY > 0) landingSpeed += Const.GRAVITY;
     }
 
-    private boolean toClean = false;
     private void platformsMovement(){
 
-//        //victory movement
-//        if(won)
-//            for(Layer l : Layer.all)
-//                if(l.getType() == Platform.GOLDEN && l.getPlatform().getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM >= Const.VICTORY_POSITION_X) {
-//                    l.getPlatform().setTranslateX(l.getPlatform().getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM);
-//                    player.setTranslateX(player.getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM);
-//                    if(Math.abs(l.getPlatform().getTranslateX() + Const.PLATFORM_WIDTH/2 - Const.DOODLER_WIDTH/2 - player.getTranslateX()) >= Const.VICTORY_SHIFT_SPEED)
-//                        player.setTranslateX(player.getTranslateX() + Math.signum(l.getPlatform().getTranslateX() + Const.PLATFORM_WIDTH/2 - Const.DOODLER_WIDTH/2 - player.getTranslateX())*Const.VICTORY_SHIFT_SPEED);
-//                } else if(l.getPlatform().getTranslateX() + Const.VICTORY_SPEED_OF_GOLDEN_PLATFORM < Const.VICTORY_POSITION_X) {
-//                    if(victoryPanel == null){
-//                        try {
-//                            victoryPanel = FXMLLoader.load(getClass().getResource("../GUI/VictoryPanel.fxml"));
-//                        } catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
-//                    if(!getChildren().contains(victoryPanel)){
-//                        victoryPanel.setTranslateY(Layer.getGoldenPlatform().getTranslateY() - 1.5*Const.STAGE_HEIGHT);
-//                        getChildren().add(victoryPanel);
-//                    }
-//
-//
-//
-//                    if(victoryPanel.getTranslateY() < 0) {
-//                        for (Layer p : Layer.all)
-//                            if (p.getType() != Platform.GOLDEN) p.setY(p.getY() + Const.VICTORY_DOWN_SPEED);
-//                        victoryPanel.setTranslateY(victoryPanel.getTranslateY() + Const.VICTORY_DOWN_SPEED);
-//                    } else {
-//                        timer.stop();
-//                    }
-//                    isRunning = false;
-//
-//                }
 
         //horizontal movement
         Platform.moveAllMovingHorizontally();
@@ -391,6 +365,10 @@ public class Game extends Pane {
             player.setMoving(false);
         } else player.setMoving(true);
         Layer.move();
+    }
+
+    public Doodler getPlayer() {
+        return player;
     }
 
     public AnimationTimer getTimer() {

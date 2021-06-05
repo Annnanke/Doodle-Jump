@@ -38,6 +38,7 @@ public class Platform extends ImageView {
     public void setType(int type) {
 
         this.type = type;
+        if(coinOrDiamand != null) root.getChildren().remove(coinOrDiamand);
         switch (type){
 
             case DEFAULT :

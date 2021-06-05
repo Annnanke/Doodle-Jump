@@ -11,7 +11,7 @@ public class Doodler extends ImageView {
     private double speed_x, speed_y;
     private Detector detector;
     private Rectangle generalDetector;
-    private boolean moving = true;
+    private boolean moving = true, flying = false;
     private Game root;
 
     public Doodler(double x, double y, Game root) {
@@ -93,6 +93,14 @@ public class Doodler extends ImageView {
         else generalDetector.setY(getTranslateY());
         speed_y += Const.GRAVITY;
         if(Math.abs(speed_y) < 1) setImage(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
+    }
+
+    public boolean isFlying() {
+        return flying;
+    }
+
+    public void setFlying(boolean flying) {
+        this.flying = flying;
     }
 
     public Rectangle getGeneralDetector() {

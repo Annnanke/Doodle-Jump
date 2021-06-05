@@ -72,6 +72,7 @@ public class Layer {
                         return;
                     }
                     else {
+                        root.getPlayer().setFlying(false);
                         pivot.setPivot(false);
                         return;
                     }
@@ -83,6 +84,7 @@ public class Layer {
                 }
                 else {
                     passed_height = 0;
+                    root.getPlayer().setFlying(false);
                     pivot.setPivot(false);
                 }
                 return;
@@ -93,6 +95,7 @@ public class Layer {
                     moveOnce();
                 }
                 else {
+                    root.getPlayer().setFlying(false);
                     passed_height = 0;
                     pivot.setPivot(false);
                 }

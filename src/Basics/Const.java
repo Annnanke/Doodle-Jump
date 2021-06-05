@@ -57,8 +57,8 @@ public class Const {
         public static final int HEIGHT_1[] = {2000, 3000, 5000, 5000, 5000};
         public static final int COIN_PICK = 5;
         public static final int DIAMOND_PICK = 1;
-        public static final double[] PROBABILITY_OF_COIN_OR_DIAMOND_APPEARANCE = {0.2, 0.2, 0.2, 0.2, 0.2};
-        public static final double[][] DIAMOND_AND_COIN_DISTRIBUTION = {{1, 0}, //{COIN, DIAMOND}
+        public static final double[] PROBABILITY_OF_COIN_OR_DIAMOND_APPEARANCE = {1, 0.2, 0.2, 0.2, 0.2};
+        public static final double[][] DIAMOND_AND_COIN_DISTRIBUTION = {{0.5, 0.5}, //{COIN, DIAMOND}
                                                                         {1, 0},
                                                                         {1, 0},
                                                                         {1, 0},

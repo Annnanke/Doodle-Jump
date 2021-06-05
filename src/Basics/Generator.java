@@ -24,13 +24,21 @@ public class Generator {
 
     public static int nextType(double y){
 
-        int type =  randomiseAnalogue(0,1,2,4);// all except for cracked (former can be deleted)
+        int type =  randomiseAnalogue(0,1);
+        if(Const.HEIGHT_1[Game.getLvl() - 1] - Game.getScorebar().getPoints() > 2*Const.TRAMPOLINE_HEIGHT)
+            type = randomiseAnalogue(0,1,2);
+        if(Const.HEIGHT_1[Game.getLvl() - 1] - Game.getScorebar().getPoints() > 2*Const.JETPACK_HEIGHT)
+            type = randomiseAnalogue(0,1,2,4);
         for(Layer l : Layer.all) {
             if (Math.abs(l.getPlatformY() - (y - 2*Layer.offset - Const.PLATFORM_HEIGHT)) < Const.DOODLER_HEIGHT_OF_JUMP
                     && l.getPlatform().getType() != Platform.CRACKED
                     && l.getPlatformY() != y
                     && l.getPlatform().isDetectable()) {
+                if(Const.HEIGHT_1[Game.getLvl() - 1] - Game.getScorebar().getPoints() > 2*Const.JETPACK_HEIGHT)
                 type = randomiseAnalogue(0,1,2,3,4);
+                else if(Const.HEIGHT_1[Game.getLvl() - 1] - Game.getScorebar().getPoints() > 2*Const.TRAMPOLINE_HEIGHT)
+                    type = randomiseAnalogue(0,1,2,3);
+                else type = randomiseAnalogue(0,1,3);
             }
         }
         return type;
