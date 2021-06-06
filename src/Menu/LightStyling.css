@@ -1,20 +1,20 @@
 .root {
--fx-background-color: #EEE9DD;
+-fx-background-color: #B8D1E0;
 
 }
 .label {
--fx-font-fill: #5A4F28;
+-fx-font-fill: #466774;
 -fx-font-family:"Monaco";
 
 }
 
 .button:pressed{
--fx-background-color: #BCB3A7;
--fx-font-fill: #5A4F28;
+-fx-background-color: #D1DEE3;
+-fx-font-fill: #8A9DA4 ;
 }
 
 .button{
 -fx-font-family:"Monaco";
--fx-background-color: #D8D3C9;
+-fx-background-color: #DDEBF0;
 -fx-font-size: 2.1em;
 }

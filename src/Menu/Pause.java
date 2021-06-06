@@ -1,14 +1,10 @@
 package Menu;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Pause  extends Application {
 
@@ -20,13 +16,6 @@ public class Pause  extends Application {
             pauseStage.setY(50);
             pauseStage.show();
 
-        }
-
-        @FXML
-        private void unpause(){
-            Menu.game.getTimer().start();
-            Menu.game.getPauseStage().close();
-        }
 
         @FXML
         private void menu(){
@@ -52,6 +41,7 @@ public class Pause  extends Application {
             Menu.menuStage.show();
             Menu.game.getPauseStage().close();
         }
+    }
 
         public static void main(String[] args) {
             launch(args);
