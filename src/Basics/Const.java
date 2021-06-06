@@ -39,7 +39,7 @@ public class Const {
                 , PLATFORM_HEIGHT + 36};
         public static final int LOWER_PLATFORM_OFFSET = STAGE_HEIGHT - 150;
         public static final double[][] PROBABILITIES_OF_PLATFORM_TYPES = {{0.5, 0.1, 0.05, 0.3, 0},
-                {0.5, 0.15, 0.05, 0.3, 0},
+                {0.01, 0, 0, 0.99, 0},
                 {0.5, 0.11, 0.04, 0.3, 0.05},
                 {0.5, 0, 0, 0.5, 0},
                 {0.5, 0.15, 0.04, 0.3, 0.01}}; //{DEFAULT, MOVING, TRAMPOLINE, CRACKED, JETPACKED}

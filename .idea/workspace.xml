@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="295e4df6-673a-4174-9d45-df87ac6ff627" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/jetSound.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/VictoryPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/VictoryPanel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Basics/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Basics/Const.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Basics/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Basics/Generator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Doodler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Doodler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Layer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Platform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monsters/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monsters/Monster.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,13 +105,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -136,7 +138,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622552015646</updated>
-      <workItem from="1622890932348" duration="21649000" />
+      <workItem from="1622890932348" duration="27103000" />
+      <workItem from="1622973698533" duration="3431000" />
     </task>
     <task id="LOCAL-00001" summary="SHOP made">
       <created>1622742421377</created>
@@ -166,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622920188986</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="commit 7 (some more debugging[spawning coins or diamonds at the top])">
+      <created>1622922473046</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1622922473046</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,12 +234,14 @@
         <entry key="c33de8f2-63e5-4708-ac04-d9c9f2838cdb" value="TOOL_WINDOW" />
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="SHOP made" />
     <MESSAGE value="commit 6" />
     <MESSAGE value="commit 7 (some debugging)" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 7 (some debugging)" />
+    <MESSAGE value="commit 7 (some more debugging[spawning coins or diamonds at the top])" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 7 (some more debugging[spawning coins or diamonds at the top])" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -10,6 +10,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Layer {
     private Platform p;
@@ -117,6 +118,7 @@ public class Layer {
         if(hasGoldenPlatform()) return;
         removeAllToDisappear();
         if(monster && Const.HEIGHT_1[Game.getLvl() - 1] - Game.getScorebar().getPoints() > Const.STAGE_HEIGHT) {
+            getTop().getPlatform().setUnderMonster(true);
             new Monster(getTop().getY() - 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], Generator.randomiseMonster(0,1,2,3),root);
             monsterCounter++;
             monster = false;
@@ -124,6 +126,7 @@ public class Layer {
         for(Layer l : all)
             if(l.getY() >= Const.STAGE_HEIGHT) {
                 l.setDetectable(true);
+                l.getPlatform().setUnderMonster(false);
                 l.setY(getTop().getY() - Const.LAYER_HEIGHT[Game.getLvl() - 1]);
                 if(Const.LOWER_PLATFORM_OFFSET - l.getPlatformY() >= Const.HEIGHT_1[Game.getLvl() - 1] - Game.getScorebar().getPoints())
                     l.setType(Platform.GOLDEN);
@@ -131,8 +134,10 @@ public class Layer {
                     l.setType(Generator.nextType(l.getPlatformY()));
                     if(Math.random() < Const.PROBABILITY_OF_MONSTER_APPEARANCE[Game.getLvl() - 1]
                             && monsterCounter == 0
-                            && isReachable(getTop().getY() - 2*Const.LAYER_HEIGHT[Game.getLvl() - 1] - offset - Const.PLATFORM_HEIGHT))
+                            && isReachable(l.getY() - 2*Const.LAYER_HEIGHT[Game.getLvl() - 1] - offset - Const.PLATFORM_HEIGHT)) {
                         monster = true;
+                        l.setType(new Random().nextInt(1));
+                    }
                 }
                 top = l;
             } else if(l.getPlatform().getTranslateY() >= Const.STAGE_HEIGHT) l.getPlatform().setDetectable(false);
@@ -162,6 +167,19 @@ public class Layer {
         for(Layer l : all)
             if(l.getType() == Platform.GOLDEN) return true;
         return false;
+    }
+
+    public static boolean hasUnderMonster(){
+        for(Layer l : all)
+            if(l.getPlatform().isUnderMonster()) return true;
+            return false;
+    }
+
+    public static Platform getUnderMonster(){
+        if(!hasUnderMonster()) return null;
+        for (Layer l : all)
+            if(l.getPlatform().isUnderMonster()) return l.getPlatform();
+            return null;
     }
 
     public static boolean isReachable(double height){

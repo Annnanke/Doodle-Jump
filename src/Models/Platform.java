@@ -12,7 +12,7 @@ public class Platform extends ImageView {
     private Detector additionalDetector, detector;
     private int type, crackedCounter = 0;
     private double horizontal_speed;
-    private boolean detectable;
+    private boolean detectable, underMonster = false;
     private ImageView coinOrDiamand;
 
 
@@ -38,7 +38,10 @@ public class Platform extends ImageView {
     public void setType(int type) {
 
         this.type = type;
-        if(coinOrDiamand != null) root.getChildren().remove(coinOrDiamand);
+        if(coinOrDiamand != null) {
+            root.getChildren().remove(coinOrDiamand);
+            coinOrDiamand = null;
+        }
         switch (type){
 
             case DEFAULT :
@@ -152,6 +155,14 @@ public class Platform extends ImageView {
             }
 
 
+    }
+
+    public boolean isUnderMonster() {
+        return underMonster;
+    }
+
+    public void setUnderMonster(boolean underMonster) {
+        this.underMonster = underMonster;
     }
 
 

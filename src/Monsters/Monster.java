@@ -7,9 +7,11 @@ import Models.LayerGroup;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
+import javax.net.ssl.CertPathTrustManagerParameters;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -48,6 +50,7 @@ public class Monster extends LayerGroup {
         iv =  new ImageView(Const.MONSTERS[type]);
         iv.setTranslateY(y);
         iv.setTranslateX(new Random().nextInt((int) (Const.STAGE_WIDTH - iv.getImage().getWidth())));
+        iv.setTranslateX(getXPosition());
 
         if(type != Monster.BLACK_HOLE) {
             pb = new ProgressBar(1);
@@ -112,6 +115,18 @@ public class Monster extends LayerGroup {
 
     }
 
+
+    private double getXPosition(){
+        if(getType() == STATIONARY || getType() == BLACK_HOLE) {
+            double centre = Layer.getUnderMonster().getTranslateX() + Const.PLATFORM_WIDTH / 2;
+            if (centre > Const.STAGE_WIDTH / 2)
+                return Math.random() * (centre - Const.PLATFORM_WIDTH / 2 - iv.getImage().getWidth());
+            else
+                return centre + Const.PLATFORM_WIDTH / 2 + Math.random() * (Const.STAGE_WIDTH - centre - Const.PLATFORM_WIDTH / 2 - iv.getImage().getWidth());
+
+        } else return new Random().nextInt((int) (Const.STAGE_WIDTH - iv.getImage().getWidth()));
+    }
+
     public static void reload(){
         monsters = new ArrayList<>();
     }
@@ -133,6 +148,8 @@ public class Monster extends LayerGroup {
             speed_x *= -1;
         }
     }
+
+
 
     public static boolean hasOnesToRemove(){
         for(Monster m : monsters) if(m.toRemove) return true;
