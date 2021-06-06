@@ -17,9 +17,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-
-import static Menu.Shop.bagOfMagic;
-import static Menu.Shop.coins;
+import static Menu.Shop.*;
 
 
 public class Menu extends Application {
@@ -226,6 +224,8 @@ public class Menu extends Application {
            cosmoPlayer1.setVisible(true);
            catPlayer.setText("Cat");
            ghostPlayer1.setText("Ghost");
+           cosmoGotten = 1;
+            typeOfGG = 3;
 
         }else{
             yourCoins.setTextFill(Color.RED);
@@ -241,6 +241,8 @@ public class Menu extends Application {
             ghostPlayer1.setVisible(true);
             catPlayer.setText("Cat");
             cosmoPlayer1.setText("Cosmo");
+            ghostGotten = 1;
+            typeOfGG = 2;
         }else{
             yourCoins.setTextFill(Color.RED);
         }
@@ -254,6 +256,10 @@ public class Menu extends Application {
             coolBullet1.setVisible(true);
             coolBullet1.setText("chosen");
             normalBullet.setText("Simple");
+            coolBulletGotten = 1;
+            typeOfBullet = 2;
+            //
+            //
         }else{
         yourCoins.setTextFill(Color.RED);
     }
@@ -267,6 +273,12 @@ public class Menu extends Application {
             coolPlatform1.setVisible(true);
             coolPlatform1.setText("chosen");
             normalPlatform.setText("Simple");
+            coolPlatformGotten = 1;
+            typeOfPlatform = 2;
+            ///
+            ///
+        } else {
+            yourCoins.setTextFill(Color.RED);
         }
     }
     public void catChosen (ActionEvent e) throws Exception {
@@ -274,30 +286,37 @@ public class Menu extends Application {
         catPlayer.setText("chosen");
         ghostPlayer1.setText("Ghost");
         cosmoPlayer1.setText("Cosmo");
-
+        typeOfGG = 1;
+        ///
     }
     public void cosmoChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         cosmoPlayer1.setText("chosen");
         ghostPlayer1.setText("Ghost");
         catPlayer.setText("Cat");
+        typeOfGG = 3;
+        ///
     }
     public void ghostChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         catPlayer.setText("Cat");
         ghostPlayer1.setText("chosen");
         cosmoPlayer1.setText("Cosmo");
+        typeOfGG = 2;
+        ///
     }
     public void normalBulletChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         normalBullet.setText("chosen");
         coolBullet1.setText("Cool");
+        typeOfBullet = 1;
 
     }
     public void coolBulletChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         coolBullet1.setText("chosen");
         normalBullet.setText("Simple");
+        typeOfBullet = 2;
     }
     public void magicWandBought (ActionEvent e) throws Exception {
         if ((Shop.coins  - 100) >= 0) {
@@ -315,11 +334,13 @@ public class Menu extends Application {
         Sounds.playSoundButton();
         normalPlatform.setText("chosen");
         coolPlatform1.setText("Cool");
+        typeOfPlatform = 1;
     }
     public void coolPlatformChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         normalPlatform.setText("Simple");
         coolPlatform1.setText("chosen");
+        typeOfPlatform =2;
     }
     public void back (ActionEvent e) throws Exception {
 
@@ -336,6 +357,49 @@ public class Menu extends Application {
     @FXML
     public void initialize(){
         code.setVisible(false);
+        if(typeOfBullet==2){
+            coolBullet1.setText("chosen");
+            normalBullet.setText("Simple");
+        }
+        if(typeOfBullet==1){
+            normalBullet.setText("chosen");
+            coolBullet1.setText("Cool");
+        }
+        if(typeOfPlatform==2){
+            coolPlatform1.setText("chosen");
+            normalPlatform.setText("Simple");
+        }
+        if(typeOfPlatform==1){
+            normalPlatform.setText("chosen");
+            coolPlatform1.setText("Cool");
+        }
+        if (typeOfGG == 1){
+            catPlayer.setText("chosen");
+            ghostPlayer1.setText("Ghost");
+            cosmoPlayer1.setText("Cosmo");
+        }
+        if (typeOfGG == 2){
+            ghostPlayer1.setText("chosen");
+            cosmoPlayer1.setText("Cosmo");
+            catPlayer.setText("Cat");
+        }
+        if (typeOfGG == 3){
+            cosmoPlayer1.setText("chosen");
+            ghostPlayer1.setText("Ghost");
+            catPlayer.setText("Cat");
+        }
+        if(coolBulletGotten==1){
+            coolBullet.setVisible(false);
+        }
+        if(coolPlatformGotten==1){
+            coolPlatform.setVisible(false);
+        }
+        if(ghostGotten==1){
+            ghostPlayer.setVisible(false);
+        }
+        if(cosmoGotten==1){
+           astraunautPlayer.setVisible(false);
+        }
         yourCoins.setText( ""+ Shop.coins);
         bag.setText("Bag: "+ bagOfMagic);
     }
