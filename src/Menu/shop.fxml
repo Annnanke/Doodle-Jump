@@ -15,7 +15,7 @@
             <Image url="@../Images/cat_normal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="76.0" fitWidth="82.0" layoutX="310.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+      <ImageView fitHeight="76.0" fitWidth="82.0" layoutX="326.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/bullet1.png" />
          </image>
@@ -45,7 +45,6 @@
             <Image url="@../Images/cosmo_normal.png" />
          </image>
       </ImageView>
-      <Label layoutX="413.0" layoutY="14.0" prefHeight="34.0" prefWidth="73.0" text=" coinss" />
       <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="386.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/coin.png" />
@@ -61,7 +60,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ImageView fitHeight="76.0" fitWidth="82.0" layoutX="398.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+      <ImageView fitHeight="76.0" fitWidth="82.0" layoutX="418.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/bullet2.png" />
          </image>
@@ -81,26 +80,6 @@
       <Line endX="406.70001220703125" layoutX="100.0" layoutY="291.0" startX="-100.0" />
       <Line endX="398.6999816894531" layoutX="107.0" layoutY="48.0" startX="-106.99999237060547" />
       <Button fx:id="magicBought" layoutX="232.0" layoutY="384.0" mnemonicParsing="false" onAction="#magicWandBought" text="100">
-         <font>
-            <Font name="Serif Regular" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="ghostPlayer" layoutX="234.0" layoutY="218.0" mnemonicParsing="false" onAction="#ghostChosen" text="1000">
-         <font>
-            <Font name="Serif Regular" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="astraunautPlayer" layoutX="399.0" layoutY="218.0" mnemonicParsing="false" onAction="#cosmoChosen" text="5000">
-         <font>
-            <Font name="Serif Regular" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="nicePlatform" layoutX="197.0" layoutY="598.0" mnemonicParsing="false" onAction="#coolPlatformChosen" text="200">
-         <font>
-            <Font name="Serif Regular" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="coolBullet" layoutX="422.0" layoutY="598.0" mnemonicParsing="false" onAction="#coolBulletChosen" text="1000">
          <font>
             <Font name="Serif Regular" size="12.0" />
          </font>
@@ -126,5 +105,46 @@
          </font>
       </Button>
       <Label fx:id="bag" layoutX="337.0" layoutY="395.0" text="Bag: " />
+      <Label fx:id="yourCoins" layoutX="428.0" layoutY="22.0" prefHeight="18.0" prefWidth="61.0" text="Label" />
+      <Button fx:id="ghostPlayer1" layoutX="229.0" layoutY="218.0" mnemonicParsing="false" onAction="#ghostChosen" text="chosen">
+         <font>
+            <Font name="Serif Regular" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="cosmoPlayer1" layoutX="394.0" layoutY="218.0" mnemonicParsing="false" onAction="#cosmoChosen" text="chosen">
+         <font>
+            <Font name="Serif Regular" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="nicePlatform1" layoutX="190.0" layoutY="598.0" mnemonicParsing="false" onAction="#normalPlatformChosen" text="chosen">
+         <font>
+            <Font name="Serif Regular" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="coolBullet1" layoutX="417.0" layoutY="598.0" mnemonicParsing="false" onAction="#normalPlatformChosen" text="chosen">
+         <font>
+            <Font name="Serif Regular" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="ghostPlayer" layoutX="234.0" layoutY="218.0" mnemonicParsing="false" onAction="#ghostBought" text="1000">
+         <font>
+            <Font name="Serif Regular" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="astraunautPlayer" layoutX="399.0" layoutY="218.0" mnemonicParsing="false" onAction="#cosmoBought" text="5000">
+         <font>
+            <Font name="Serif Regular" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="nicePlatform" layoutX="197.0" layoutY="598.0" mnemonicParsing="false" onAction="#coolPlatformBought" text="200">
+         <font>
+            <Font name="Serif Regular" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="coolBullet" layoutX="422.0" layoutY="598.0" mnemonicParsing="false" onAction="#coolBulletBought" text="1000">
+         <font>
+            <Font name="Serif Regular" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
