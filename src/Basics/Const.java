@@ -139,33 +139,50 @@ public class Const {
                 {new Icon("src/Images/post_brokenpallet1.png", 100, 37), COOL_PLATFORM_POSTBROKEN},
                 {new Icon("src/Images/post_brokenpallet1.png", 100, 37), COOL_PLATFORM_POSTBROKEN},
                 {new Icon("src/Images/post_lvl5_brokenpallet.png", 100, 37),new Icon("src/Images/post_lvl5_brokenpallet.png", 100, 37)},
-                {new Icon("src/Images/post_brokenpallet1.png", 100, 37), COOL_PLATFORM_POSTBROKEN}};
+                {new Icon("src/Images/post_brokenpallet1.png", 100, 37), COOL_PLATFORM_POSTBROKEN}
+        };
 
-        public static final Image[] TRAMPOLINE = {new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
+        public static final Image[] TRAMPOLINE = {
                 new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
                 new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
                 new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
-                new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT)};
+                new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
+                new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT)
+        };
 
-        public static final Image[] GOLDEN = {new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6),
+        public static final Image[] GOLDEN = {
                 new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6),
                 new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6),
                 new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6),
-                new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6)};
+                new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6),
+                new Icon("src/Images/golden_platform.png",PLATFORM_WIDTH + 6, PLATFORM_HEIGHT + 6)
+        };
 
-        public static final Image[] BACKGROUND = {new Icon("src/Images/background.jpg"),
+        public static final Image[] BACKGROUND = {
+                new Icon("src/Images/background.jpg"),
                 new Icon("src/Images/background.jpg"),
                 new Icon("src/Images/background.jpg"),
                 new Icon("src/Images/lvl5_background.png"),
-                new Icon("src/Images/background.jpg")};
+                new Icon("src/Images/background.jpg")
+        };
 
-        public static final Image[] MONSTERS =  {new Icon("src/Images/monster2.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
+        public static final Image[] MONSTERS =  {
+                new Icon("src/Images/monster2.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
                 new Icon("src/Images/monster1.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
                 new Icon("src/Images/monster3.gif", 6*Const.LAYER_HEIGHT[Game.getLvl() - 1], 6*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
-                new Icon("src/Images/hole.png", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1])};
+                new Icon("src/Images/hole.png", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1])
+        };
 
-        public static final Image[] BULLETS = {new Icon("src/Images/bullet1.png", 120/5, 190/5),
-                new Icon("src/Images/bullet2.png", 51/2,80/2)};
+        public static final Image[] BULLETS = {
+                new Icon("src/Images/bullet1.png", 120/5, 190/5),
+                new Icon("src/Images/bullet2.png", 51/2,80/2)
+        };
+
+        public static final Image[] HOLE_ANIMATIONS = {
+                new Icon("src/Images/hole_cat.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
+                new Icon("src/Images/hole_ghost.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1]),
+                new Icon("src/Images/hole_cosmo.gif", 2*Const.LAYER_HEIGHT[Game.getLvl() - 1], 2*Const.LAYER_HEIGHT[Game.getLvl() - 1])
+        };
 
         public static final Image JETPACK = new Icon("src/Images/jackpack_on_platform.png", PLATFORM_WIDTH*4, PLATFORM_HEIGHT*4);
 

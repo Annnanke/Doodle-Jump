@@ -170,9 +170,22 @@ public class Game extends Pane {
 
 
     private boolean loss;
+    private boolean black_hole_animation;
+    private int animation_time = 0;
 
     public boolean checkForLoss(){
         if(won) return false;
+
+        if(black_hole_animation){
+            animation_time++;
+            if(animation_time < 80) {
+                black_hole_animation = true;
+                return false;
+            } else {
+                black_hole_animation = false;
+            }
+        }
+
         if(player.getTranslateY() + Const.DOODLER_HEIGHT > Const.STAGE_HEIGHT || loss){
             if(!loss) Sounds.playSoundGameOver();
             loss = true;
@@ -316,8 +329,9 @@ public class Game extends Pane {
 
                 switch (m.getType()){
                     case Monster.BLACK_HOLE :
-                        player.setSpeed_y(Const.DOODLER_LOSS_SPEED);
-                        player.setImage(Const.CHARACTER_LAYS[Shop.typeOfGG - 1]);
+                        getChildren().remove(player);
+                        black_hole_animation = true;
+                        m.getIv().setImage(Const.HOLE_ANIMATIONS[Shop.typeOfGG - 1]);
                         break;
                     default:
                         player.setSpeed_y(Const.DOODLER_LOSS_SPEED);

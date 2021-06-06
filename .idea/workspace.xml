@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="295e4df6-673a-4174-9d45-df87ac6ff627" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_06_2021_20_51__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_06_2021_20_51__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/hole_cat.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/hole_cosmo.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/hole_ghost.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/Images/cosmo_jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/Images/cosmo_jump.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Basics/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Basics/Const.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Images/cosmo_jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Images/cosmo_jump.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Shop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Doodler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Doodler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Platform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Monsters/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monsters/Monster.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622997129048</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="commit 8 (shop attached)">
+      <created>1623003885869</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1623003885869</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,7 +268,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="SHOP made" />
     <MESSAGE value="SHOP rework" />
-    <option name="LAST_COMMIT_MESSAGE" value="SHOP rework" />
+    <MESSAGE value="commit 8 (shop attached)" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit 8 (shop attached)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
