@@ -186,7 +186,13 @@ public class Const {
 
         public static final Image JETPACK = new Icon("src/Images/jackpack_on_platform.png", PLATFORM_WIDTH*4, PLATFORM_HEIGHT*4);
 
-        public static final Image PAUSE = new Icon("src/Images/pause.png", Const.SCOREBAR_WIDTH * 0.05, Const.SCOREBAR_WIDTH * 0.05);
+        public static final Image PAUSE = new Icon("src/Images/pause.png", Const.SCOREBAR_WIDTH * 0.07, Const.SCOREBAR_WIDTH * 0.07);
+
+        public static final Image MAGICWAND = new Icon("src/Images/magicScoreBar.png", Const.SCOREBAR_WIDTH * 0.08, Const.SCOREBAR_WIDTH * 0.08);
+
+        public static final Image COIN_SCORE = new Icon("src/images/coin.png", Const.SCOREBAR_WIDTH * 0.06, Const.SCOREBAR_WIDTH * 0.06);
+
+        public static final Image DIAMOND_SCORE = new Icon("src/images/diamond.png",Const.SCOREBAR_WIDTH * 0.07, Const.SCOREBAR_WIDTH * 0.07);
 
         public static final Image COIN = new Icon("src/images/coin.png", 100/5,114/5);
 
