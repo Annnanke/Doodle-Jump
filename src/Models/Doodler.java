@@ -12,7 +12,7 @@ public class Doodler extends ImageView {
     private double speed_x, speed_y;
     private Detector detector;
     private Rectangle generalDetector;
-    private boolean moving = true, flying = false;
+    private boolean moving = true, flying = false, transparent = false;
     private Game root;
 
     public Doodler(double x, double y, Game root) {
@@ -94,6 +94,14 @@ public class Doodler extends ImageView {
         else generalDetector.setY(getTranslateY());
         speed_y += Const.GRAVITY;
         if(Math.abs(speed_y) < 1) setImage(Const.CHARACTER_NORMAL[Shop.typeOfGG - 1]);
+    }
+
+    public boolean isTransparent() {
+        return transparent;
+    }
+
+    public void setTransparent(boolean transparent) {
+        this.transparent = transparent;
     }
 
     public boolean isFlying() {

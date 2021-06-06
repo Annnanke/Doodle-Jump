@@ -39,7 +39,7 @@ public class Const {
                 , PLATFORM_HEIGHT + 36};
         public static final int LOWER_PLATFORM_OFFSET = STAGE_HEIGHT - 150;
         public static final double[][] PROBABILITIES_OF_PLATFORM_TYPES = {{0.5, 0.1, 0.05, 0.3, 0},
-                {0.01, 0, 0, 0.99, 0},
+                {0.55, 0.1, 0.05, 0.3, 0},
                 {0.5, 0.11, 0.04, 0.3, 0.05},
                 {0.5, 0, 0, 0.5, 0},
                 {0.5, 0.15, 0.04, 0.3, 0.01}}; //{DEFAULT, MOVING, TRAMPOLINE, CRACKED, JETPACKED}
@@ -54,23 +54,24 @@ public class Const {
 
         //GAME GENERAL:
         public static final double HEIGHT_OF_LOSS_FALL = 2*STAGE_HEIGHT + 2*LAYER_HEIGHT[Game.getLvl() - 1];
-        public static final int HEIGHT_1[] = {2000, 3000, 5000, 5000, 5000};
-        public static final int COIN_PICK = 5;
-        public static final int DIAMOND_PICK = 1;
-        public static final double[] PROBABILITY_OF_COIN_OR_DIAMOND_APPEARANCE = {1, 0.2, 0.2, 0.2, 0.2};
-        public static final double[][] DIAMOND_AND_COIN_DISTRIBUTION = {{0.5, 0.5}, //{COIN, DIAMOND}
+        public static final int HEIGHT_1[] = {10000, 10000, 10000, 10000, 15000};
+        public static final int COIN_PICK = 10;
+        public static final int DIAMOND_PICK = 200;
+        public static final double[] PROBABILITY_OF_COIN_OR_DIAMOND_APPEARANCE = {0.2, 0.2, 0.2, 0.2, 0.2};
+        public static final double[][] DIAMOND_AND_COIN_DISTRIBUTION = {{1, 0}, //{COIN, DIAMOND}
                                                                         {1, 0},
                                                                         {1, 0},
                                                                         {1, 0},
                                                                         {0.8, 0.2}};
+        public static final int TIME_OF_TRANSPARENCY = 200;
 
         //MONSTERS
         public static final double[] PROBABILITY_OF_MONSTER_APPEARANCE = {0, 0.2, 0.2, 0.5, 0};
         public static final double[][] MONSTER_TYPE_PROBABILITY = {{0,0,0,0},
-                                                                   {0.333,0.333,0.333,0},
-                                                                   {0.23,0.23,0.23,0.31},
-                                                                   {0,0.25,0,0},
-                                                                   {0.25,0.25,0.25,0.25}};
+                                                                   {0.5,0.5,0,0},
+                                                                   {0,0,0,1},
+                                                                   {0,1,0,0},
+                                                                   {0.25,0.32,0.15,0.28}};
         public static final double[] BAT_SPEED_X = {2,2,2,2,2};
         public static final double[] DRAGON_SPEED_X = {2,2,2,2,2};
 

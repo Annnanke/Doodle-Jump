@@ -29,6 +29,7 @@ public class Menu extends Application {
     public static String style;
     public static String shopStyle;
     public static int soundStatus;
+    public static Game game;
 
     @FXML
     public Label bag = new Label();
@@ -80,6 +81,7 @@ public class Menu extends Application {
         Sounds.playSoundButton();
 
         Game game = new Game(1);
+        this.game = game;
         Scene scene = new Scene(game, Const.STAGE_WIDTH, Const.STAGE_HEIGHT);
         game.setScene(scene);
         menuStage.setScene(scene);
@@ -93,6 +95,7 @@ public class Menu extends Application {
         Sounds.playSoundButton();
 
         Game game = new Game(2);
+        this.game = game;
         Scene scene = new Scene(game, Const.STAGE_WIDTH, Const.STAGE_HEIGHT);
         game.setScene(scene);
         menuStage.setScene(scene);
@@ -106,6 +109,7 @@ public class Menu extends Application {
         Sounds.playSoundButton();
 
         Game game = new Game(3);
+        this.game = game;
         Scene scene = new Scene(game, Const.STAGE_WIDTH, Const.STAGE_HEIGHT);
         game.setScene(scene);
         menuStage.setScene(scene);
@@ -119,6 +123,7 @@ public class Menu extends Application {
         Sounds.playSoundButton();
 
         Game game = new Game(4);
+        this.game = game;
         Scene scene = new Scene(game, Const.STAGE_WIDTH, Const.STAGE_HEIGHT);
         game.setScene(scene);
         menuStage.setScene(scene);
@@ -132,6 +137,7 @@ public class Menu extends Application {
         Sounds.playSoundButton();
 
         Game game = new Game(5);
+        this.game = game;
         Scene scene = new Scene(game, Const.STAGE_WIDTH, Const.STAGE_HEIGHT);
         game.setScene(scene);
         menuStage.setScene(scene);
@@ -402,6 +408,11 @@ public class Menu extends Application {
         }
         yourCoins.setText( ""+ Shop.coins);
         bag.setText("Bag: "+ bagOfMagic);
+    }
+
+    public static void diamandsIntoCoins(){
+        Shop.coins += diamands*Const.DIAMOND_PICK;
+        diamands = 0;
     }
 
     public static void main(String[] args) {

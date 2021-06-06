@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import Main.Game;
+import Menu.Shop;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,6 +49,7 @@ public class VictoryPanelController implements Initializable {
     @FXML
     private void restart(ActionEvent e){
         if(!Game.isRunning()){
+            Shop.diamands = 0;
             Sounds.playSoundButton();
             Game game = new Game(Menu.chosenLvl);
             Scene scene = new Scene(game, Const.STAGE_WIDTH, Const.STAGE_HEIGHT);
@@ -59,21 +61,26 @@ public class VictoryPanelController implements Initializable {
     }
 
     @FXML
-    private void nextLvl(ActionEvent e){
+    private void nextLvl(ActionEvent e) throws IOException {
         if(!Game.isRunning()){
-            Sounds.playSoundButton();
-            Menu.chosenLvl++;
-            Game game = new Game(Menu.chosenLvl);
-            Scene scene = new Scene(game, Const.STAGE_WIDTH, Const.STAGE_HEIGHT);
-            game.setScene(scene);
-            Menu.menuStage.setScene(scene);
-            Menu.menuStage.show();
+            if(Game.getLvl() != 5){
+                Sounds.playSoundButton();
+                Menu.chosenLvl++;
+                Game game = new Game(Menu.chosenLvl);
+                Scene scene = new Scene(game, Const.STAGE_WIDTH, Const.STAGE_HEIGHT);
+                game.setScene(scene);
+                Menu.menuStage.setScene(scene);
+                Menu.menuStage.show();
+            } else {
+                menu(e);
+            }
         }
     }
 
     @FXML
     private void menu(ActionEvent e) throws IOException {
         if(!Game.isRunning()){
+            Menu.diamandsIntoCoins();
             Parent rootD = FXMLLoader.load(getClass().getResource("../Menu/main.fxml"));
             Menu.menuScene = new Scene(rootD);
 

@@ -3,6 +3,7 @@ package Main;
 import Basics.Const;
 import Basics.Generator;
 import GUI.LossPanelController;
+import Menu.Pause;
 import Menu.Shop;
 import Menu.Sounds;
 import Models.*;
@@ -10,10 +11,12 @@ import Monsters.Monster;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -31,6 +34,7 @@ public class Game extends Pane {
     private boolean won;
     private int time = 0, start = 0;
     private static boolean isRunning;
+    private Stage pauseStage;
 
     private static int cc = 0;
 
@@ -107,6 +111,12 @@ public class Game extends Pane {
         if(checkForLoss()) return;
         getChildren().remove(scorebar);
         canShoot = time - start > Const.RATE_OF_FIRE;
+        if(player.isTransparent() && transparentCounter < Const.TIME_OF_TRANSPARENCY) transparentCounter++;
+        else {
+            transparentCounter = 0;
+            player.setOpacity(1);
+            player.setTransparent(false);
+        }
         doodlersMovement();
         platformsMovement();
         Bullet.move();
@@ -116,6 +126,8 @@ public class Game extends Pane {
         removeDead();
         getChildren().add(scorebar);
     }
+
+    private int transparentCounter = 0;
 
     public void setScene(Scene scene) {
         this.scene = scene;
@@ -129,6 +141,7 @@ public class Game extends Pane {
                     break;
                 case P :
                     timer.stop();
+                    pause();
                     break;
                 case SPACE :
                     if(canShoot && releasedTrigger && !player.isFlying()) {
@@ -136,6 +149,13 @@ public class Game extends Pane {
                         start = time;
                         Sounds.playSoundGunSound();
                         releasedTrigger = false;
+                    }
+                    break;
+                case W:
+                    if(Shop.bagOfMagic > 0) {
+                        player.setOpacity(0.5);
+                        player.setTransparent(true);
+                        Shop.bagOfMagic--;
                     }
                     break;
             }
@@ -150,14 +170,30 @@ public class Game extends Pane {
                 case RIGHT:
                     moving_right = false;
                     break;
-                case P :
-                    timer.start();
-                    break;
                 case SPACE:
                     releasedTrigger = true;
                     break;
             }
         });
+    }
+
+    public void pause(){
+        Stage stage = new Stage();
+        pauseStage = stage;
+        Parent rootD = null;
+        try {
+            rootD = FXMLLoader.load(getClass().getResource("../Menu/pause.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(new Scene(rootD,400,220));
+        stage.setX(100);
+        stage.setY(50);
+        stage.show();
+    }
+
+    public Stage getPauseStage(){
+        return pauseStage;
     }
 
     private void removeDead(){
@@ -309,12 +345,14 @@ public class Game extends Pane {
                     p.getPlatform().setCoinOrDiamand(null);
                     Sounds.playSoundCoin();
                     Shop.coins += Const.COIN_PICK;
+                    scorebar.update();
                 }
                 if(p.getPlatform().hasDiamond() && p.getPlatform().getCoinOrDiamand().getBoundsInParent().intersects(player.getGeneralDetector().getBoundsInParent())){
                     p.getPlatform().getCoinOrDiamand().setImage(null);
                     p.getPlatform().setCoinOrDiamand(null);
                     Sounds.playSoundDiamondSound();
-                    Shop.diamands += Const.DIAMOND_PICK;
+                    Shop.diamands += 1;
+                    scorebar.update();
                 }
 
             }
@@ -323,7 +361,7 @@ public class Game extends Pane {
 
         for(Monster m : Monster.monsters){
 
-            if(player.isFlying()) continue;
+            if(player.isFlying() || player.isTransparent()) continue;
 
             if(player.getGeneralDetector().getBoundsInParent().intersects(m.getDetector().getBoundsInParent())){
 

@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import Menu.Menu;
 import Menu.Sounds;
+import Menu.Shop;
 
 public class LossPanelController implements Initializable {
 
@@ -50,12 +51,13 @@ public class LossPanelController implements Initializable {
     private void restart(ActionEvent e){
         if(!Game.isRunning()){
             Sounds.playSoundButton();
-
+            Shop.diamands = 0;
             Game game = new Game(Menu.chosenLvl);
             Scene scene = new Scene(game, Const.STAGE_WIDTH, Const.STAGE_HEIGHT);
             game.setScene(scene);
             Menu.menuStage.setScene(scene);
             Menu.menuStage.show();
+
         }
 
     }
@@ -65,7 +67,7 @@ public class LossPanelController implements Initializable {
         if(!Game.isRunning()){
             Parent rootD = FXMLLoader.load(getClass().getResource("../Menu/main.fxml"));
             Menu.menuScene = new Scene(rootD);
-
+            Shop.diamands = 0;
             if(Menu.style == null){
                 Menu.style = this.getClass().getResource("LightStyling.css").toExternalForm();
                 Menu.shopStyle = this.getClass().getResource("shopLightStyling.css").toExternalForm();
