@@ -116,12 +116,12 @@
             <Font name="Serif Regular" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="nicePlatform1" layoutX="190.0" layoutY="598.0" mnemonicParsing="false" onAction="#normalPlatformChosen" text="chosen">
+      <Button fx:id="coolPlatform1" layoutX="190.0" layoutY="598.0" mnemonicParsing="false" onAction="#coolPlatformChosen" text="chosen">
          <font>
             <Font name="Serif Regular" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="coolBullet1" layoutX="417.0" layoutY="598.0" mnemonicParsing="false" onAction="#normalPlatformChosen" text="chosen">
+      <Button fx:id="coolBullet1" layoutX="417.0" layoutY="598.0" mnemonicParsing="false" onAction="#coolBulletChosen" text="chosen">
          <font>
             <Font name="Serif Regular" size="12.0" />
          </font>
@@ -136,7 +136,7 @@
             <Font name="Serif Regular" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="nicePlatform" layoutX="197.0" layoutY="598.0" mnemonicParsing="false" onAction="#coolPlatformBought" text="200">
+      <Button fx:id="coolPlatform" layoutX="197.0" layoutY="598.0" mnemonicParsing="false" onAction="#coolPlatformBought" text="200">
          <font>
             <Font name="Serif Regular" size="12.0" />
          </font>

@@ -1,6 +1,7 @@
 package GUI;
 
 import Basics.Const;
+import Basics.Icon;
 import Menu.Menu;
 import Menu.Sounds;
 import javafx.event.ActionEvent;
@@ -9,7 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import Main.Game;
 
@@ -21,10 +25,24 @@ public class VictoryPanelController implements Initializable {
 
     @FXML
     private Text scoreText;
+    public Button restart, nextLvl, home;
+    public ImageView sun;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         scoreText.setText(Game.getScorebar().getPoints() + "");
+        scoreText.setFill(Color.DARKSLATEGREY);
+        nextLvl.setStyle("-fx-background-color: #95C2DC");
+        restart.setStyle("-fx-background-color: #95C2DC");
+        home.setStyle("-fx-background-color: #95C2DC");
+
+        if(Game.getLvl() == 4) {
+            sun.setVisible(false);
+            scoreText.setFill(Color.DARKCYAN);
+            nextLvl.setStyle("-fx-background-color: #95C2DC");
+            restart.setStyle("-fx-background-color: #95C2DC");
+            home.setStyle("-fx-background-color: #95C2DC");
+        }
     }
 
     @FXML

@@ -10,22 +10,28 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LossPanelController">
    <children>
-      <ImageView fitHeight="351.0" fitWidth="519.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cloud" fitHeight="351.0" fitWidth="519.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/loss_cloud.png" />
          </image>
       </ImageView>
-      <Label layoutX="177.0" layoutY="27.0" text="SCORE" textFill="RED">
+      <Label fx:id="scoreLabel" layoutX="177.0" layoutY="27.0" text="SCORE" textFill="#345963">
          <font>
-            <Font name="System Italic" size="48.0" />
+            <Font name="Berlin Sans FB" size="48.0" />
          </font>
       </Label>
-      <Text fx:id="scoreText" layoutX="60.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="376.546875">
+      <Text fx:id="scoreText" fill="#6e684f" layoutX="60.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="376.546875">
          <font>
-            <Font size="48.0" />
+            <Font name="Arial Narrow" size="48.0" />
          </font>
       </Text>
-      <Button layoutX="197.0" layoutY="219.0" mnemonicParsing="false" onAction="#restart" prefHeight="64.0" prefWidth="101.0" text="Restart" textAlignment="CENTER" />
-      <Button layoutX="200.0" layoutY="326.0" mnemonicParsing="false" onAction="#menu" prefHeight="64.0" prefWidth="101.0" text="Menu" textAlignment="CENTER" />
+      <Button fx:id="restart" layoutX="214.0" layoutY="218.0" mnemonicParsing="false" onAction="#restart" prefHeight="64.0" prefWidth="68.0" text="⟲" textAlignment="CENTER">
+         <font>
+            <Font size="30.0" />
+         </font></Button>
+      <Button fx:id="home" layoutX="216.0" layoutY="327.0" mnemonicParsing="false" onAction="#menu" prefHeight="66.0" prefWidth="68.0" text="🏠" textAlignment="CENTER">
+         <font>
+            <Font size="29.0" />
+         </font></Button>
    </children>
 </Pane>

@@ -11,9 +11,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 
 import static Menu.Shop.bagOfMagic;
 import static Menu.Shop.coins;
@@ -31,14 +34,16 @@ public class Menu extends Application {
 
     @FXML
     public Label bag = new Label();
+    public TextField code = new TextField();
     public Label yourCoins = new Label();
     public RadioButton soundOn, soundOff, themeCoffee, themeMilk;
-    public Button ghostPlayer = new Button(), astraunautPlayer  = new Button(), catPlayer  = new Button(), nicePlatform  = new Button(), normalBullet  = new Button(), normalPlatform  = new Button(), coolBullet  = new Button(), ghostPlayer1  = new Button(), cosmoPlayer1  = new Button(), nicePlatform1  = new Button(), coolBullet1  = new Button();
+    public Button locker, ghostPlayer = new Button(), astraunautPlayer  = new Button(), catPlayer  = new Button(), coolPlatform = new Button(), normalBullet  = new Button(), normalPlatform  = new Button(), coolBullet  = new Button(), ghostPlayer1  = new Button(), cosmoPlayer1  = new Button(), coolPlatform1 = new Button(), coolBullet1  = new Button();
 
     public static int chosenLvl;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+       initialize();
         menuStage = primaryStage;
         Parent rootD = FXMLLoader.load(getClass().getResource("main.fxml"));
         menuScene = new Scene(rootD);
@@ -149,6 +154,30 @@ public class Menu extends Application {
         menuStage.setY(50);
         menuStage.show();
     }
+    @FXML
+    public void unlocked(ActionEvent e) throws Exception {
+        code.setVisible(true);
+        Sounds.playSoundButton();
+        code.setOnKeyPressed(ke -> {
+            if (ke.getCode().equals(KeyCode.ENTER)) {
+                if (code.getText().equals("admin.coins5000")) {
+                    coins += 5000;
+                }
+                if (code.getText().equals("admin.coins1000")) {
+                    coins += 1000;
+                }
+                if (code.getText().equals("admin.coins10000")) {
+                    coins += 10000;
+                }
+                if (code.getText().equals("admin.coins100")) {
+                    coins += 100;
+                }
+                code.setVisible(false);
+            }
+        });
+    }
+
+
     public void getSoundAndTheme(ActionEvent e) throws Exception {
 
         Sounds.playSoundButton();
@@ -172,19 +201,6 @@ public class Menu extends Application {
     }
     @FXML
     public void shop (ActionEvent e) throws Exception {
-        if (ghostPlayer.isVisible()){
-            ghostPlayer1.setVisible(false);
-        }
-        if (astraunautPlayer.isVisible()){
-            cosmoPlayer1.setVisible(false);
-        }
-        if (nicePlatform.isVisible()){
-            nicePlatform1.setVisible(false);
-        }
-        if (coolBullet.isVisible()){
-            coolBullet1.setVisible(false);
-        }
-
         initialize();
         Sounds.playSoundButton();
         Parent rootP = FXMLLoader.load(getClass().getResource("shop.fxml"));
@@ -231,22 +247,26 @@ public class Menu extends Application {
     }
     public void coolBulletBought (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
-        if ((Shop.coins - 5000) >= 0){
-            Shop.coins  -= 5000;
+        if ((Shop.coins - 1000) >= 0){
+            Shop.coins  -= 1000;
             initialize();
             coolBullet.setVisible(false);
             coolBullet1.setVisible(true);
+            coolBullet1.setText("chosen");
+            normalBullet.setText("Simple");
         }else{
         yourCoins.setTextFill(Color.RED);
     }
     }
     public void coolPlatformBought (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
-        if ((Shop.coins  - 1000) >= 0){
-            Shop.coins  -= 1000;
+        if ((Shop.coins  - 200) >= 0){
+            Shop.coins  -= 200;
             initialize();
-            nicePlatform.setVisible(false);
-            nicePlatform1.setVisible(true);
+            coolPlatform.setVisible(false);
+            coolPlatform1.setVisible(true);
+            coolPlatform1.setText("chosen");
+            normalPlatform.setText("Simple");
         }
     }
     public void catChosen (ActionEvent e) throws Exception {
@@ -270,10 +290,14 @@ public class Menu extends Application {
     }
     public void normalBulletChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
+        normalBullet.setText("chosen");
+        coolBullet1.setText("Cool");
 
     }
     public void coolBulletChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
+        coolBullet1.setText("chosen");
+        normalBullet.setText("Simple");
     }
     public void magicWandBought (ActionEvent e) throws Exception {
         if ((Shop.coins  - 100) >= 0) {
@@ -289,9 +313,13 @@ public class Menu extends Application {
     }
     public void normalPlatformChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
+        normalPlatform.setText("chosen");
+        coolPlatform1.setText("Cool");
     }
     public void coolPlatformChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
+        normalPlatform.setText("Simple");
+        coolPlatform1.setText("chosen");
     }
     public void back (ActionEvent e) throws Exception {
 
@@ -307,7 +335,7 @@ public class Menu extends Application {
     }
     @FXML
     public void initialize(){
-
+        code.setVisible(false);
         yourCoins.setText( ""+ Shop.coins);
         bag.setText("Bag: "+ bagOfMagic);
     }
