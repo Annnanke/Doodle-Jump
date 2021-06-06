@@ -77,7 +77,7 @@ public class Const {
         //BULLETS
         public static final double BULLET_SPEED_Y = -20;
         public static final double DISPERSION = Math.PI/6;
-        public static final double BULLET_DAMAGE = 3;
+        public static final double BULLET_DAMAGE[] = {1,3};
 
 
         //SCORE BAR
@@ -86,44 +86,60 @@ public class Const {
         public static final double SCOREBAR_HEIGHT = STAGE_HEIGHT * 0.08;
 
         //IMAGES
-        public static final int CHOSEN_CHARACTER = 0;
-        public static final Image[] CHARACTER_NORMAL = {new Icon("src/Images/cat_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT),
-                new Icon("src/Images/cosmo_normal.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
-                new Icon("src/Images/ghost_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT)};
 
-        public static final Image[] CHARACTER_JUMP = {new Icon("src/Images/cat_jump.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
-                new Icon("src/Images/cosmo_jump.png", DOODLER_WIDTH, DOODLER_HEIGHT),
-                new Icon("src/Images/ghost_jump.png", DOODLER_WIDTH + 15, DOODLER_HEIGHT + 15)};
+        public static final Image COOL_PLATFORM = new Icon("src/Images/platform2.png", PLATFORM_WIDTH, PLATFORM_HEIGHT);
 
-        public static final Image[] CHARACTER_WITH_JETPACK = {new Icon("src/Images/cat_fly.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
-                new Icon("src/Images/cosmo_fly.png", DOODLER_WIDTH, DOODLER_HEIGHT),
-                new Icon("src/Images/ghost_fly.png", DOODLER_WIDTH + 10, DOODLER_HEIGHT + 10)};
+        public static final Image COOL_PLATFORM_BROKEN = new Icon("src/Images/platform2_broken.png", PLATFORM_WIDTH, PLATFORM_HEIGHT);
 
-        public static final Image[] CHARACTER_SHOOT = {new Icon("src/Images/cat_shoot.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
-                new Icon("src/Images/cosmo_shoot.png", DOODLER_WIDTH, DOODLER_HEIGHT),
-                new Icon("src/Images/ghost_shoot.png", DOODLER_WIDTH + 15, DOODLER_HEIGHT + 15)};
+        public static final Image COOL_PLATFORM_POSTBROKEN = new Icon("src/Images/post_brokenpallet2.png", 100, 20);
 
-        public static final Image[] CHARACTER_LAYS = {new Icon("src/Images/cat_lays.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
-                new Icon("src/Images/cosmo_lays.png", DOODLER_WIDTH, DOODLER_HEIGHT),
-                new Icon("src/Images/ghost_lays.png", DOODLER_WIDTH + 10, DOODLER_HEIGHT + 10)};
+        public static final Image[] CHARACTER_NORMAL = {
+                new Icon("src/Images/cat_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT),
+                new Icon("src/Images/ghost_normal.png", DOODLER_WIDTH, DOODLER_HEIGHT),
+                new Icon("src/Images/cosmo_normal.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20)
+        };
 
-        public static final Image[] PLATFORM_1 = {new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
-                new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
-                new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
-                new Icon("src/Images/lvl5_platform.png", PLATFORM_WIDTH, PLATFORM_HEIGHT),
-                new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT)};
+        public static final Image[] CHARACTER_JUMP = {
+                new Icon("src/Images/cat_jump.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
+                new Icon("src/Images/ghost_jump.png", DOODLER_WIDTH + 15, DOODLER_HEIGHT + 15),
+                new Icon("src/Images/cosmo_jump.png", DOODLER_WIDTH, DOODLER_HEIGHT)
+        };
 
-        public static final Image[] PLATFORM_1_BROKEN = {new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
-                new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
-                new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
-                new Icon("src/Images/lvl5_platform_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
-                new Icon("src/Images/platform1_broken.png",PLATFORM_WIDTH, PLATFORM_HEIGHT)};
+        public static final Image[] CHARACTER_WITH_JETPACK = {
+                new Icon("src/Images/cat_fly.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
+                new Icon("src/Images/ghost_fly.png", DOODLER_WIDTH + 10, DOODLER_HEIGHT + 10),
+                new Icon("src/Images/cosmo_fly.png", DOODLER_WIDTH, DOODLER_HEIGHT)};
 
-        public static final Image[] PLATFORM_1_POST_BROKEN = {new Icon("src/Images/post_brokenpallet1.png",100, 37),
-                new Icon("src/Images/post_brokenpallet1.png",100, 37),
-                new Icon("src/Images/post_brokenpallet1.png",100, 37),
-                new Icon("src/Images/post_lvl5_brokenpallet.png",100, 37),
-                new Icon("src/Images/post_brokenpallet1.png",100, 37)};
+        public static final Image[] CHARACTER_SHOOT = {
+                new Icon("src/Images/cat_shoot.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
+                new Icon("src/Images/ghost_shoot.png", DOODLER_WIDTH + 15, DOODLER_HEIGHT + 15),
+                new Icon("src/Images/cosmo_shoot.png", DOODLER_WIDTH, DOODLER_HEIGHT)};
+
+        public static final Image[] CHARACTER_LAYS = {
+                new Icon("src/Images/cat_lays.png", DOODLER_WIDTH + 20, DOODLER_HEIGHT + 20),
+                new Icon("src/Images/ghost_lays.png", DOODLER_WIDTH + 10, DOODLER_HEIGHT + 10),
+                new Icon("src/Images/cosmo_lays.png", DOODLER_WIDTH, DOODLER_HEIGHT)};
+
+        public static final Image[][] PLATFORM_1 = {
+                {new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT), COOL_PLATFORM},
+                {new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT), COOL_PLATFORM},
+                {new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT), COOL_PLATFORM},
+                {new Icon("src/Images/lvl5_platform.png", PLATFORM_WIDTH, PLATFORM_HEIGHT), new Icon("src/Images/lvl5_platform.png", PLATFORM_WIDTH, PLATFORM_HEIGHT)},
+                {new Icon("src/Images/platform1.png", PLATFORM_WIDTH, PLATFORM_HEIGHT), COOL_PLATFORM}};
+
+        public static final Image[][] PLATFORM_1_BROKEN = {
+                        {new Icon("src/Images/platform1_broken.png", PLATFORM_WIDTH, PLATFORM_HEIGHT), COOL_PLATFORM_BROKEN},
+                        {new Icon("src/Images/platform1_broken.png", PLATFORM_WIDTH, PLATFORM_HEIGHT), COOL_PLATFORM_BROKEN},
+                        {new Icon("src/Images/platform1_broken.png", PLATFORM_WIDTH, PLATFORM_HEIGHT), COOL_PLATFORM_BROKEN},
+                        {new Icon("src/Images/lvl5_platform_broken.png", PLATFORM_WIDTH, PLATFORM_HEIGHT), new Icon("src/Images/lvl5_platform_broken.png", PLATFORM_WIDTH, PLATFORM_HEIGHT)},
+                        {new Icon("src/Images/platform1_broken.png", PLATFORM_WIDTH, PLATFORM_HEIGHT), COOL_PLATFORM_BROKEN}};
+
+        public static final Image[][] PLATFORM_1_POST_BROKEN = {
+                {new Icon("src/Images/post_brokenpallet1.png", 100, 37), COOL_PLATFORM_POSTBROKEN},
+                {new Icon("src/Images/post_brokenpallet1.png", 100, 37), COOL_PLATFORM_POSTBROKEN},
+                {new Icon("src/Images/post_brokenpallet1.png", 100, 37), COOL_PLATFORM_POSTBROKEN},
+                {new Icon("src/Images/post_lvl5_brokenpallet.png", 100, 37),new Icon("src/Images/post_lvl5_brokenpallet.png", 100, 37)},
+                {new Icon("src/Images/post_brokenpallet1.png", 100, 37), COOL_PLATFORM_POSTBROKEN}};
 
         public static final Image[] TRAMPOLINE = {new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
                 new Icon("src/Images/trampoline.png",PLATFORM_WIDTH, PLATFORM_HEIGHT),
@@ -158,6 +174,8 @@ public class Const {
         public static final Image COIN = new Icon("src/images/coin.png", 100/5,114/5);
 
         public static final Image DIAMOND = new Icon("src/images/diamond.png", 550/17,452/17);
+
+
 }
 
 

@@ -13,8 +13,8 @@ public class Shop {
     public static int ghostGotten;
     public static int coolPlatformGotten;
     public static int coolBulletGotten;
-    public static int typeOfBullet;
-    public static int typeOfPlatform;
-    public static int typeOfGG;
+    public static int typeOfBullet = 1;
+    public static int typeOfPlatform = 1;
+    public static int typeOfGG = 1;
 
 }

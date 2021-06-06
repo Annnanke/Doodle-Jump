@@ -2,6 +2,7 @@ package Monsters;
 
 import Basics.Const;
 import Main.Game;
+import Menu.Shop;
 import Models.Layer;
 import Models.LayerGroup;
 import javafx.scene.control.ProgressBar;
@@ -62,6 +63,7 @@ public class Monster extends LayerGroup {
 
         switch (type){
             case STATIONARY :
+                HP = 4;
                 detector = new Circle();
                 ((Circle) detector).setRadius(iv.getImage().getWidth()/2);
                 detector.setTranslateX(iv.getTranslateX() + ((Circle) detector).getRadius());
@@ -74,6 +76,7 @@ public class Monster extends LayerGroup {
                 }
                 break;
             case MOVING_BAT:
+                HP = 2;
                 detector = new Rectangle();
                 ((Rectangle) detector).setWidth(iv.getImage().getWidth() - 30);
                 ((Rectangle) detector).setHeight(iv.getImage().getHeight() - 60);
@@ -87,6 +90,7 @@ public class Monster extends LayerGroup {
                 }
                 break;
             case MOVING_DRAGON:
+                HP = 10;
                 detector = new Rectangle();
                 ((Rectangle) detector).setWidth(iv.getImage().getWidth() - 70);
                 ((Rectangle) detector).setHeight(iv.getImage().getHeight() - 60);
@@ -133,7 +137,7 @@ public class Monster extends LayerGroup {
 
     public void damage(){
         double lastHP = HP;
-        HP -= Const.BULLET_DAMAGE;
+        HP -= Const.BULLET_DAMAGE[Shop.typeOfBullet - 1];
         if(HP > 0) pb.setProgress(pb.getProgress() * HP/lastHP);
         else toRemove = true;
     }

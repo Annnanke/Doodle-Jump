@@ -2,6 +2,7 @@ package Models;
 
 import Basics.Const;
 import Main.Game;
+import Menu.Shop;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Bullet extends ImageView {
     private boolean toRemove = false;
 
     public Bullet(double x, double y, Game root){
-        super(Const.BULLETS[0]);
+        super(Const.BULLETS[Shop.typeOfBullet - 1]);
         double angle = Math.pow(-1, new Random().nextInt()) * Const.DISPERSION * Math.random();
         speed_y = Const.BULLET_SPEED_Y;
         speed_x = speed_y * Math.tan(angle);

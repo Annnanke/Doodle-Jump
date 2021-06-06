@@ -2,6 +2,7 @@ package Models;
 
 import Basics.Const;
 import Main.Game;
+import Menu.Shop;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 
@@ -15,7 +16,7 @@ public class Doodler extends ImageView {
     private Game root;
 
     public Doodler(double x, double y, Game root) {
-        super(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
+        super(Const.CHARACTER_NORMAL[Shop.typeOfGG - 1]);
         setTranslateX(x);
         setTranslateY(y);
         this.root = root;
@@ -33,15 +34,15 @@ public class Doodler extends ImageView {
 
 
     public void shoot(){
-        setImage(Const.CHARACTER_SHOOT[Const.CHOSEN_CHARACTER]);
+        setImage(Const.CHARACTER_SHOOT[Shop.typeOfGG - 1]);
         if(getScaleX() == 1)
-            switch (Const.CHOSEN_CHARACTER){
+            switch (Shop.typeOfGG - 1){
                 case 0 -> new Bullet(getTranslateX() + getImage().getWidth() - 30, getTranslateY(), root);
                 case 1 -> new Bullet(getTranslateX() + getImage().getWidth() - 22, getTranslateY(), root);
                 case 2 -> new Bullet(getTranslateX() + getImage().getWidth() - 20, getTranslateY(), root);
             }
         if(getScaleX() == -1){
-            switch (Const.CHOSEN_CHARACTER){
+            switch (Shop.typeOfGG - 1){
                 case 0 -> new Bullet(getTranslateX() + 5, getTranslateY(), root);
                 case 1 -> new Bullet(getTranslateX() + 4, getTranslateY(), root);
                 case 2 -> new Bullet(getTranslateX() + 20, getTranslateY(), root);
@@ -66,10 +67,10 @@ public class Doodler extends ImageView {
     public void setJumpImage(int type){
         switch (type){
             default :
-                setImage(Const.CHARACTER_JUMP[Const.CHOSEN_CHARACTER]);
+                setImage(Const.CHARACTER_JUMP[Shop.typeOfGG - 1]);
                 break;
             case Platform.JETPACKED :
-                setImage(Const.CHARACTER_WITH_JETPACK[Const.CHOSEN_CHARACTER]);
+                setImage(Const.CHARACTER_WITH_JETPACK[Shop.typeOfGG - 1]);
                 break;
         }
     }
@@ -88,11 +89,11 @@ public class Doodler extends ImageView {
     public void verticalMovement(){
         setTranslateY(getTranslateY() - speed_y);
         detector.setY(getTranslateY() + Const.DOODLER_HEIGHT - 7);
-        if(getImage() == Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]) generalDetector.setY(getTranslateY());
-        else if(getImage() == Const.CHARACTER_JUMP[Const.CHOSEN_CHARACTER]) generalDetector.setY(getTranslateY() + 20);
+        if(getImage() == Const.CHARACTER_NORMAL[Shop.typeOfGG - 1]) generalDetector.setY(getTranslateY());
+        else if(getImage() == Const.CHARACTER_JUMP[Shop.typeOfGG - 1]) generalDetector.setY(getTranslateY() + 20);
         else generalDetector.setY(getTranslateY());
         speed_y += Const.GRAVITY;
-        if(Math.abs(speed_y) < 1) setImage(Const.CHARACTER_NORMAL[Const.CHOSEN_CHARACTER]);
+        if(Math.abs(speed_y) < 1) setImage(Const.CHARACTER_NORMAL[Shop.typeOfGG - 1]);
     }
 
     public boolean isFlying() {

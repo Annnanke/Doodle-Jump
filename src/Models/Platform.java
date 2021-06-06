@@ -1,6 +1,7 @@
 package Models;
 import Basics.Const;
 import Main.Game;
+import Menu.Shop;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
@@ -45,7 +46,7 @@ public class Platform extends ImageView {
         switch (type){
 
             case DEFAULT :
-                setImage(Const.PLATFORM_1[Game.getLvl() - 1]);
+                setImage(Const.PLATFORM_1[Game.getLvl() - 1][Shop.typeOfPlatform - 1]);
                 if(Math.random() < Const.PROBABILITY_OF_COIN_OR_DIAMOND_APPEARANCE[Game.getLvl() - 1] && (type == DEFAULT || type == MOVING)){
                     if(Math.random() < Const.DIAMOND_AND_COIN_DISTRIBUTION[Game.getLvl() - 1][0]) coinOrDiamand = new ImageView(Const.COIN);
                     else coinOrDiamand = new ImageView(Const.DIAMOND);
@@ -58,7 +59,7 @@ public class Platform extends ImageView {
                 break;
 
             case MOVING :
-                setImage(Const.PLATFORM_1[Game.getLvl() - 1]);
+                setImage(Const.PLATFORM_1[Game.getLvl() - 1][Shop.typeOfPlatform - 1]);
                 if(Math.random() < Const.PROBABILITY_OF_COIN_OR_DIAMOND_APPEARANCE[Game.getLvl() - 1] && (type == DEFAULT || type == MOVING)){
                     if(Math.random() < Const.DIAMOND_AND_COIN_DISTRIBUTION[Game.getLvl() - 1][0]) coinOrDiamand = new ImageView(Const.COIN);
                     else coinOrDiamand = new ImageView(Const.DIAMOND);
@@ -90,7 +91,7 @@ public class Platform extends ImageView {
                 }
                 root.getChildren().remove(additionalDetector);
                 additionalDetector = null;
-                setImage(Const.PLATFORM_1_BROKEN[Game.getLvl() - 1]);
+                setImage(Const.PLATFORM_1_BROKEN[Game.getLvl() - 1][Shop.typeOfPlatform - 1]);
                 break;
 
             case JETPACKED :
@@ -137,7 +138,7 @@ public class Platform extends ImageView {
 
     public static void removePostCracked(){
         for(Layer l : Layer.getAll())
-            if(l.getPlatform().getType() == CRACKED && l.getPlatform().getImage() == Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1])
+            if(l.getPlatform().getType() == CRACKED && l.getPlatform().getImage() == Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1][Shop.typeOfPlatform - 1])
                 l.getPlatform().disposeOfPostCracked();
     }
 

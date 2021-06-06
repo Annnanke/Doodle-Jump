@@ -274,7 +274,7 @@ public class Game extends Pane {
                         break;
 
                     case Platform.CRACKED :
-                        p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1]);
+                        p.getPlatform().setImage(Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1][Shop.typeOfPlatform - 1]);
                         break;
 
                     case Platform.JETPACKED :
@@ -317,11 +317,11 @@ public class Game extends Pane {
                 switch (m.getType()){
                     case Monster.BLACK_HOLE :
                         player.setSpeed_y(Const.DOODLER_LOSS_SPEED);
-                        player.setImage(Const.CHARACTER_LAYS[Const.CHOSEN_CHARACTER]);
+                        player.setImage(Const.CHARACTER_LAYS[Shop.typeOfGG - 1]);
                         break;
                     default:
                         player.setSpeed_y(Const.DOODLER_LOSS_SPEED);
-                        player.setImage(Const.CHARACTER_LAYS[Const.CHOSEN_CHARACTER]);
+                        player.setImage(Const.CHARACTER_LAYS[Shop.typeOfGG - 1]);
 
                         break;
                 }
