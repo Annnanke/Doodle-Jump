@@ -11,12 +11,20 @@ public class LayerGroup {
     private ArrayList<Layer> layers;
     private int capacity;
 
+    /**
+     * basic constructor
+     * @param capacity - int
+     */
     public LayerGroup(int capacity) {
         this.capacity = capacity;
         layers = new ArrayList<>();
     }
 
 
+    /**
+     * adds a layer to the group
+     * @param l - Layer
+     */
     public void add(Layer l){
         if(layers.size() + 1 <= capacity) {
             layers.add(l);
@@ -24,10 +32,4 @@ public class LayerGroup {
         else System.err.println("Size of the layerGroup can't be bigger then its capacity");
     }
 
-    public Layer getTopOfGroup(){
-        if(layers.size() == 0) return null;
-        Layer res = layers.get(0);
-        for (Layer l : layers) if(l.getY() < res.getY()) res = l;
-        return res;
-    }
 }

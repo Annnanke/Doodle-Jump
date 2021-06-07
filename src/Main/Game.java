@@ -3,6 +3,7 @@ package Main;
 import Basics.Const;
 import Basics.Generator;
 import GUI.LossPanelController;
+import Menu.Menu;
 import Menu.Pause;
 import Menu.Shop;
 import Menu.Sounds;
@@ -38,6 +39,10 @@ public class Game extends Pane {
 
     private static int cc = 0;
 
+    /**
+     * Constructor of game
+     * @param lvl - {1,2,3,4,5}
+     */
     public Game(int lvl){
         super();
         cc++;
@@ -46,6 +51,9 @@ public class Game extends Pane {
     }
 
 
+    /**
+     * initializes game
+     */
     private void init(){
 
         isRunning = true;
@@ -89,6 +97,9 @@ public class Game extends Pane {
 
     }
 
+    /**
+     * updates the events
+     */
     private void update(){
 
         time++;
@@ -129,6 +140,10 @@ public class Game extends Pane {
 
     private int transparentCounter = 0;
 
+    /**
+     * setter for scene
+     * @param scene - scene
+     */
     public void setScene(Scene scene) {
         this.scene = scene;
         this.scene.setOnKeyPressed(e -> {
@@ -177,6 +192,9 @@ public class Game extends Pane {
         });
     }
 
+    /**
+     * makes pause
+     */
     public void pause(){
         Stage stage = new Stage();
         pauseStage = stage;
@@ -186,20 +204,32 @@ public class Game extends Pane {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage.setScene(new Scene(rootD,400,220));
-        stage.setX(100);
-        stage.setY(50);
+        stage.setScene(new Scene(rootD,360,350));
+        stage.setX(Menu.menuStage.getX() + Const.STAGE_WIDTH/2 - 180);
+        stage.setY(Menu.menuStage.getY() + 100);
         stage.show();
     }
 
+    /**
+     * getter for pause stage
+     * @return
+     */
     public Stage getPauseStage(){
         return pauseStage;
     }
 
+
+    /**
+     * removes all post-cracked platforms
+     */
     private void removeDead(){
         Platform.removePostCracked();
     }
 
+    /**
+     * adds an ImageView
+     * @param im
+     */
     public void add(ImageView im){
         if(!getChildren().contains(im)) getChildren().add(im);
     }
@@ -209,6 +239,10 @@ public class Game extends Pane {
     private boolean black_hole_animation;
     private int animation_time = 0;
 
+    /**
+     * Checks whether the player has won
+     * @return boolean
+     */
     public boolean checkForLoss(){
         if(won) return false;
 
@@ -264,6 +298,9 @@ public class Game extends Pane {
         return false;
     }
 
+    /**
+     * checks whether any bodies have collided
+     */
     private void checkForCollision(){
         for (Layer p : Layer.all) {
             if (
@@ -392,17 +429,26 @@ public class Game extends Pane {
         Bullet.removeAllToRemove();
     }
 
+    /**
+     * moves player
+     */
     private void doodlersMovement(){
         if(moving_left) player.moveLeft();
         if(moving_right) player.moveRight();
         player.verticalMovement();
     }
 
+    /**
+     * lands player
+     */
     private void landingMovement(){
         landing -= landingSpeed;
         if(landingSpeed + Const.GRAVITY > 0) landingSpeed += Const.GRAVITY;
     }
 
+    /**
+     * moves platforms
+     */
     private void platformsMovement(){
 
 
@@ -419,29 +465,53 @@ public class Game extends Pane {
         Layer.move();
     }
 
+    /**
+     * getter for player
+     * @return Doodler
+     */
     public Doodler getPlayer() {
         return player;
     }
 
+    /**
+     * getter for timer
+     * @return Animation Timer
+     */
     public AnimationTimer getTimer() {
         return timer;
     }
 
+    /**
+     * check for whether the game is running
+     * @return boolean
+     */
     public static boolean isRunning() {
         return isRunning;
     }
 
+    /**
+     * moves all monters
+     */
     private static void monsterMovement(){
         for(Monster m : Monster.monsters) m.move();
     }
 
+    /**
+     * getter for scorebar
+     * @return ScoreBar
+     */
     public static ScoreBar getScorebar(){
         return scorebar;
     }
 
+    /**
+     * getter for lvl
+     * @return int
+     */
     public static int getLvl() {
         return lvl;
     }
+
 
     private double landing, landingSpeed = 0;
 }

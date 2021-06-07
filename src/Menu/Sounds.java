@@ -13,6 +13,10 @@ public class Sounds {
     public static  MediaPlayer audioPlayer2;
     public static  MediaPlayer audioPlayer3;
     public static  MediaPlayer audioPlayer4;
+
+    /**
+     * Plays sound "buttonSound.wav"
+     */
     public static void playSoundButton() {
         File audioFile = new File("src\\buttonSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
@@ -21,6 +25,10 @@ public class Sounds {
             audioPlayer.play();
         }
     }
+
+    /**
+     * Plays sound "victorySound.wav"
+     */
     public static void playSoundVictory() {
         File audioFile = new File("src\\victorySound.wav");
         Media audio = new Media(audioFile.toURI().toString());
@@ -29,6 +37,10 @@ public class Sounds {
             audioPlayer1.play();
         }
     }
+
+    /**
+     * Plays sound "gameOverSound.wav"
+     */
     public static void playSoundGameOver() {
         File audioFile = new File("src\\gameOverSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
@@ -38,6 +50,9 @@ public class Sounds {
         }
     }
 
+    /**
+     * Plays sound "superJumpSound.wav"
+     */
     public static void playSoundSuperJump() {
         File audioFile = new File("src\\superJumpSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
@@ -47,6 +62,9 @@ public class Sounds {
         }
     }
 
+    /**
+     * Plays sound "coinSound.wav"
+     */
     public static void playSoundCoin() {
         File audioFile = new File("src\\coinSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
@@ -56,6 +74,9 @@ public class Sounds {
         }
 
     }
+    /**
+     * Plays sound "jumpSound.wav"
+     */
     public static void playSoundJump() {
         File audioFile = new File("src\\jumpSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
@@ -66,6 +87,9 @@ public class Sounds {
     }
 
 
+    /**
+     * Plays sound "diamondSound.wav"
+     */
     public static void playSoundDiamondSound() {
         File audioFile = new File("src\\diamondSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
@@ -75,6 +99,9 @@ public class Sounds {
         }
     }
 
+    /**
+     * Plays sound "gunSound.wav"
+     */
     public static void playSoundGunSound() {
         File audioFile = new File("src\\gunSound.wav");
         Media audio = new Media(audioFile.toURI().toString());
@@ -85,6 +112,9 @@ public class Sounds {
     }
 
 
+    /**
+     * Plays sound "jetSound.wav"
+     */
     public static void playSoundJetSound() {
         File audioFile = new File("src/jetSound.wav");
         Media audio = new Media(audioFile.toURI().toString());

@@ -29,6 +29,12 @@ public class Monster extends LayerGroup {
     private int HP = 3;
     private boolean toRemove = false;
 
+    /**
+     * basic constructor
+     * @param y - y-coordinate
+     * @param type - type
+     * @param root - game root
+     */
     public Monster(double y, int type, Game root) {
         super(2);
         monsters.add(this);
@@ -120,6 +126,10 @@ public class Monster extends LayerGroup {
     }
 
 
+    /**
+     * getter for y-coordinate
+     * @return double
+     */
     private double getXPosition(){
         if(getType() == STATIONARY || getType() == BLACK_HOLE) {
             double centre = Layer.getUnderMonster().getTranslateX() + Const.PLATFORM_WIDTH / 2;
@@ -131,10 +141,16 @@ public class Monster extends LayerGroup {
         } else return new Random().nextInt((int) (Const.STAGE_WIDTH - iv.getImage().getWidth()));
     }
 
+    /**
+     * reloads the class
+     */
     public static void reload(){
         monsters = new ArrayList<>();
     }
 
+    /**
+     * damages the monster
+     */
     public void damage(){
         double lastHP = HP;
         HP -= Const.BULLET_DAMAGE[Shop.typeOfBullet - 1];
@@ -142,6 +158,9 @@ public class Monster extends LayerGroup {
         else toRemove = true;
     }
 
+    /**
+     * moves the monster
+     */
     public void move(){
         if(iv.getTranslateX() + speed_x < Const.STAGE_WIDTH - iv.getImage().getWidth() && iv.getTranslateX() + speed_x > 0){
             iv.setTranslateX(iv.getTranslateX() + speed_x);
@@ -153,22 +172,34 @@ public class Monster extends LayerGroup {
         }
     }
 
-
-
+    /**
+     * checks whether there're monsters to remove
+     * @return - bool
+     */
     public static boolean hasOnesToRemove(){
         for(Monster m : monsters) if(m.toRemove) return true;
         return false;
     }
 
+    /**
+     * returns the first monster to remove
+     * @return - Monster
+     */
     public static Monster getFirstToRemove(){
         for(Monster m : monsters) if(m.toRemove) return m;
         return null;
     }
 
+    /**
+     * removes all monsters to remove
+     */
     public static void removeAllToRemove(){
         while(hasOnesToRemove()) getFirstToRemove().totallyRemove();
     }
 
+    /**
+     * totally remove one monster
+     */
     public void totallyRemove(){
         if(!toRemove) return;
         Layer.setMonsterCounter(Layer.getMonsterCounter() - 1);
@@ -184,70 +215,65 @@ public class Monster extends LayerGroup {
         l1.setConnectedImage(null);
     }
 
+    /**
+     * getter for progress bar
+     * @return - ProgressBar
+     */
     public ProgressBar getPb() {
         return pb;
     }
 
-    public void setPb(ProgressBar pb) {
-        this.pb = pb;
-    }
-
+    /**
+     * getter for image view
+     * @return - ImageView
+     */
     public ImageView getIv() {
         return iv;
     }
 
+    /**
+     * index of layer in the array of monsters
+     * @param l - Layer
+     * @return - int
+     */
     public static int indexOf(Layer l){
         for(Monster m : monsters) if(m.getL1().equals(l) || m.getL2().equals(l)) return monsters.indexOf(m);
         return -1;
     }
 
+    /**
+     * getter for type
+     * @return - int
+     */
     public int getType() {
         return type;
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public void setIv(ImageView iv) {
-        this.iv = iv;
-    }
-
-    public double getSpeed_x() {
-        return speed_x;
-    }
-
-    public void setSpeed_x(double speed_x) {
-        this.speed_x = speed_x;
-    }
-
-    public void setDetector(Shape detector) {
-        this.detector = detector;
-    }
-
+    /**
+     * getter for detector
+     * @return - Shape
+     */
     public Shape getDetector(){
         return detector;
     }
 
+    /**
+     * getter for l1
+     * @return - Layer
+     */
     public Layer getL1() {
         return l1;
     }
 
-    public void setL1(Layer l1) {
-        this.l1 = l1;
-    }
 
+    /**
+     * getter for l2
+     * @return Layer
+     */
     public Layer getL2() {
         return l2;
     }
 
-    public void setL2(Layer l2) {
-        this.l2 = l2;
-    }
-
-    public static double getHeight(){
-        return 2*Const.LAYER_HEIGHT[Game.getLvl() - 1];
-    }
 
     public static final int STATIONARY = 0;
     public static final int MOVING_BAT = 1;

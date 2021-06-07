@@ -28,7 +28,10 @@ public class Layer {
     private static boolean monster;
     private static int monsterCounter;
 
-
+    /**
+     * Basic constructor
+     * @param y - y-coordinate
+     */
     public Layer(double y){
         this.y = y;
         p = Generator.nextPlatform(y + offset,root);
@@ -40,6 +43,9 @@ public class Layer {
         root.getChildren().add(visualiser);
     }
 
+    /**
+     * reloads the class
+     */
     public static void reload(){
         if(all != null) cleanAll();
         all = new ArrayList<>();
@@ -50,6 +56,9 @@ public class Layer {
         monsterCounter = 0;
     }
 
+    /**
+     * moves layers
+     */
     public static void move(){
 
         if(!hasPivot()) return;
@@ -104,16 +113,26 @@ public class Layer {
         }
     }
 
+    /**
+     * getter for monsterCounter
+     * @return - int
+     */
     public static int getMonsterCounter() {
         return monsterCounter;
     }
 
+    /**
+     * setter for monsterCounter
+     * @param monsterCounter - int
+     */
     public static void setMonsterCounter(int monsterCounter) {
         Layer.monsterCounter = monsterCounter;
     }
 
 
-
+    /**
+     * generates platforms. Each one generated for each passed
+     */
     public static void generateWhenPassed(){
         if(hasGoldenPlatform()) return;
         removeAllToDisappear();
@@ -143,6 +162,9 @@ public class Layer {
             } else if(l.getPlatform().getTranslateY() >= Const.STAGE_HEIGHT) l.getPlatform().setDetectable(false);
     }
 
+    /**
+     * removes all layers toDisappear
+     */
     private static void removeAllToDisappear(){
         if(!hasOnesToDisappear()) return;
         Layer toRemove = null;
@@ -158,23 +180,39 @@ public class Layer {
         }
     }
 
+    /**
+     * returns whether there're any layers to disappear
+     * @return - bool
+     */
     private static boolean hasOnesToDisappear(){
         for(Layer l : all) if(l.isToDisappear()) return true;
         return false;
     }
 
+    /**
+     * getter for whether there're golden platform
+     * @return - bool
+     */
     public static boolean hasGoldenPlatform(){
         for(Layer l : all)
             if(l.getType() == Platform.GOLDEN) return true;
         return false;
     }
 
+    /**
+     * checks whether it is an underMonster layer
+     * @return
+     */
     public static boolean hasUnderMonster(){
         for(Layer l : all)
             if(l.getPlatform().isUnderMonster()) return true;
             return false;
     }
 
+    /**
+     * getter for undermonster platform
+     * @return
+     */
     public static Platform getUnderMonster(){
         if(!hasUnderMonster()) return null;
         for (Layer l : all)
@@ -182,6 +220,11 @@ public class Layer {
             return null;
     }
 
+    /**
+     * checks whether the height is reachable by doodler
+     * @param height - height
+     * @return - bool
+     */
     public static boolean isReachable(double height){
         for(Layer l : all)
             if(Math.abs(l.getPlatformY() - height) < Const.DOODLER_HEIGHT_OF_JUMP
@@ -190,22 +233,41 @@ public class Layer {
         return false;
     }
 
+    /**
+     * getter for platform detectable
+     * @return - bool
+     */
     public boolean isDetectable(){
         return getPlatform().isDetectable();
     }
 
+    /**
+     * setter gor detectable
+     * @param t - bool
+     */
     public void setDetectable(boolean t){
         getPlatform().setDetectable(t);
     }
 
+    /**
+     * setts missed trampoline
+     * @param missedTrampline - bool
+     */
     public void setMissedTrampoline(boolean missedTrampline) {
         this.missedTrampoline = missedTrampline;
     }
 
+    /**
+     * getter for missed trampoline
+     * @return
+     */
     public boolean isMissedTrampoline() {
         return missedTrampoline;
     }
 
+    /**
+     * moves all layers ones
+     */
     private static void moveOnce(){
         Game.getScorebar().addPoints((int)speed);
         for(Layer l : all) {
@@ -217,44 +279,83 @@ public class Layer {
         speed += Const.GRAVITY;
     }
 
+    /**
+     * cleans all-arraylist
+     */
     public static void cleanAll(){
         for(int i = 0; i < all.size(); i++) {
             all.remove(all.get(i));
         }
     }
 
+    /**
+     * getter for platform's detector
+     * @return Detector
+     */
     public Detector getDetector(){
         return p.getDetector();
     }
 
+    /**
+     * getter for platform's additional detector
+     * @return - Detector
+     */
     public Detector getAdditionalDetector(){
         return p.getAdditionalDetector();
     }
 
+    /**
+     * getter for toDisappear
+     * @return - bool
+     */
     public boolean isToDisappear() {
         return toDisappear;
     }
 
+    /**
+     * setter for toDisappear
+     * @param toDisappear - bool
+     */
     public void setToDisappear(boolean toDisappear) {
         this.toDisappear = toDisappear;
     }
 
-    public  void setConnectedImage(ImageView connectedImage) {
+    /**
+     * setter for connectedImage
+     * @param connectedImage - imageView
+     */
+    public void setConnectedImage(ImageView connectedImage) {
         this.connectedImage = connectedImage;
     }
 
+    /**
+     * getter for connectedImage
+     * @return - ImageView
+     */
     public ImageView getConnectedImage() {
         return connectedImage;
     }
 
+    /**
+     * getter for connectedProgressBar
+     * @return - ProgressBar
+     */
     public ProgressBar getConnectedProgressBar() {
         return connectedProgressBar;
     }
 
+    /**
+     * setter for connectedProgressBar
+     * @param connectedProgressBar - ProgressBar
+     */
     public void setConnectedProgressBar(ProgressBar connectedProgressBar) {
         this.connectedProgressBar = connectedProgressBar;
     }
 
+    /**
+     * setter for y-coordinate
+     * @param y - double
+     */
     public void setY(double y) {
         this.y = y;
         p.setTranslateY(y + offset);
@@ -263,64 +364,105 @@ public class Layer {
         visualiser.setEndY(y);
     }
 
+    /**
+     * getter for connectedShapes
+     * @return - ArrayList<Shape>
+     */
     public ArrayList<Shape> getConnectedShapes() {
         return connectedShapes;
     }
 
+    /**
+     * setter for type
+     * @param type - int
+     */
     public void setType(int type){
         getPlatform().setType(type);
     }
 
+    /**
+     * getter for type
+     * @return - int
+     */
     public int getType(){
         return getPlatform().getType();
     }
 
+    /**
+     * getter for y-coordinate
+     * @return - double
+     */
     public double getY() {
         return y;
     }
 
+    /**
+     * getter for platform y-coordinate
+     * @return
+     */
     public double getPlatformY(){
         return p.getTranslateY();
     }
 
+    /**
+     * getter for p
+     * @return - platform
+     */
     public Platform getPlatform() {
         return p;
     }
 
+    /**
+     * returns the top layer
+     * @return - Layer
+     */
     public static Layer getTop(){
         return top;
     }
 
-    public static Game getRoot() {
-        return root;
-    }
 
+    /**
+     * returns pivot
+     * @return - Layer
+     */
     public static Layer getPivot(){
         for(Layer l : all) if(l.isPivot()) return l;
         return null;
     }
+
+    /**
+     * getter for pivot
+     * @return - bool
+     */
     public static boolean hasPivot(){
         for(Layer l : all) if(l.isPivot()) return true;
         return false;
     }
 
+    /**
+     * getter for pivot
+     * @return - bool
+     */
     public boolean isPivot() {
         return pivot;
     }
 
+    /**
+     * getter for all-arraylist
+     * @return - ArrayList<Layer>
+     */
     public static ArrayList<Layer> getAll() {
         return all;
     }
 
+    /**
+     * getter for pivot type
+     * @return - int
+     */
     public int getPivotType() {
         return pivotType;
     }
 
-    public static Platform getGoldenPlatform(){
-        for(Layer l : all)
-            if(l.getType() == Platform.GOLDEN) return l.getPlatform();
-        return null;
-    }
 
     /**
      * setter for both pivot and pivotType
@@ -351,6 +493,10 @@ public class Layer {
         } else pivotType = NOT_A_PIVOT;
     }
 
+    /**
+     * setter for root
+     * @param root
+     */
     public static void setRoot(Game root) {
         Layer.root = root;
     }

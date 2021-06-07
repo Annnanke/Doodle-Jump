@@ -15,6 +15,12 @@ public class Doodler extends ImageView {
     private boolean moving = true, flying = false, transparent = false;
     private Game root;
 
+    /**
+     * Basic constructor
+     * @param x - x-coordinate
+     * @param y - y-coordinate
+     * @param root - root
+     */
     public Doodler(double x, double y, Game root) {
         super(Const.CHARACTER_NORMAL[Shop.typeOfGG - 1]);
         setTranslateX(x);
@@ -32,7 +38,9 @@ public class Doodler extends ImageView {
         root.getChildren().add(this);
     }
 
-
+    /**
+     * makes doodler shoot
+     */
     public void shoot(){
         setImage(Const.CHARACTER_SHOOT[Shop.typeOfGG - 1]);
         if(getScaleX() == 1)
@@ -51,7 +59,9 @@ public class Doodler extends ImageView {
 
     }
 
-
+    /**
+     * moves doodler left
+     */
     public void moveLeft(){
         setScaleX(-1);
         if(getTranslateX() - speed_x >= -Const.PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_RIGHT*Const.DOODLER_WIDTH) {
@@ -64,6 +74,10 @@ public class Doodler extends ImageView {
         }
     }
 
+    /**
+     * setterFor jump image by type
+     * @param type - int
+     */
     public void setJumpImage(int type){
         switch (type){
             default :
@@ -75,6 +89,9 @@ public class Doodler extends ImageView {
         }
     }
 
+    /**
+     * moves doodler right
+     */
     public void moveRight(){
         setScaleX(1);
         if(getTranslateX() + speed_x + Const.PROPORTION_OF_DISAPPEARANCE_BEHIND_WALL_LEFT*Const.DOODLER_WIDTH <= Const.STAGE_WIDTH) {
@@ -86,6 +103,9 @@ public class Doodler extends ImageView {
         }
     }
 
+    /**
+     * moves doodler vertically
+     */
     public void verticalMovement(){
         setTranslateY(getTranslateY() - speed_y);
         detector.setY(getTranslateY() + Const.DOODLER_HEIGHT - 7);
@@ -96,42 +116,82 @@ public class Doodler extends ImageView {
         if(Math.abs(speed_y) < 1) setImage(Const.CHARACTER_NORMAL[Shop.typeOfGG - 1]);
     }
 
+    /**
+     * getter for transparent
+     * @return - boolean
+     */
     public boolean isTransparent() {
         return transparent;
     }
 
+    /**
+     * setter for transparent
+     * @param transparent - transparent
+     */
     public void setTransparent(boolean transparent) {
         this.transparent = transparent;
     }
 
+    /**
+     * getter for flying
+     * @return - boolean
+     */
     public boolean isFlying() {
         return flying;
     }
 
+    /**
+     * setter for flying
+     * @param flying - boolean
+     */
     public void setFlying(boolean flying) {
         this.flying = flying;
     }
 
+    /**
+     * getter for general detector
+     * @return - Rectangle
+     */
     public Rectangle getGeneralDetector() {
         return generalDetector;
     }
 
+    /**
+     * getter for y-speed of the doodler
+     * @return - double
+     */
     public double getSpeed_y() {
         return speed_y;
     }
 
+    /**
+     * setter for y-speed
+     * @param speed_y - double
+     */
     public void setSpeed_y(double speed_y) {
         this.speed_y = speed_y;
     }
 
+    /**
+     * getter for detector
+     * @return - Detector
+     */
     public Detector getDetector() {
         return detector;
     }
 
+    /**
+     * getter for moving
+     * @return
+     */
     public boolean isMoving() {
         return moving;
     }
 
+    /**
+     * setter for moving
+     * @param moving
+     */
     public void setMoving(boolean moving) {
         this.moving = moving;
     }

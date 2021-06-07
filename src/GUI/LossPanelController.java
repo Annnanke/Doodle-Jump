@@ -77,8 +77,6 @@ public class LossPanelController implements Initializable {
             Menu.menuStage.setTitle("DoodleJump");
             Menu.menuStage.getIcons().add(icon);
             Menu.menuStage.setScene(Menu.menuScene);
-            Menu.menuStage.setX(100);
-            Menu.menuStage.setY(50);
             Menu.menuStage.show();
         }
     }

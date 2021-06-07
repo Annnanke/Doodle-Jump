@@ -13,15 +13,29 @@ public class Generator {
 
     public static int NUM_OF_PLATFORMS = (int) (Const.STAGE_HEIGHT / Const.LAYER_HEIGHT[Game.getLvl() - 1]) + 2;
 
+    /**
+     * generates platforms in the beginning of game
+     */
     public static void generatePlatforms(){
         NUM_OF_PLATFORMS = (int) (Const.STAGE_HEIGHT / Const.LAYER_HEIGHT[Game.getLvl() - 1]) + 2;
         for (int i = NUM_OF_PLATFORMS - 2; i >= 0; i--) new Layer((i - 1) * Const.LAYER_HEIGHT[Game.getLvl() - 1]);
     }
 
+    /**
+     * returns next platform
+     * @param y - y-coordinate
+     * @param root - root
+     * @return - platform
+     */
     public static Platform nextPlatform(double y, Game root){
         return new Platform(new Random().nextInt(Const.STAGE_WIDTH - Const.PLATFORM_WIDTH), y, nextType(y), root);
     }
 
+    /**
+     * generates of platform type randomly
+     * @param y - y-coordinate
+     * @return - int
+     */
     public static int nextType(double y){
 
         int type =  randomiseAnalogue(0,1);
@@ -45,7 +59,11 @@ public class Generator {
     }
 
 
-
+    /**
+     * randomises typs
+     * @param types - types
+     * @return int
+     */
     public static int randomiseAnalogue(int... types){
         double prob = Math.random() * probSum(types);
         double sum;
@@ -57,12 +75,22 @@ public class Generator {
         return -1;
     }
 
+    /**
+     * calculates the sum of probabilities of platform types
+     * @param types - types
+     * @return - double
+     */
     public static double probSum(int... types){
         double res = 0;
         for(int prob : types) res += Const.PROBABILITIES_OF_PLATFORM_TYPES[Game.getLvl() - 1][prob];
         return res;
     }
 
+    /**
+     * ramdomises monster type
+     * @param types - types
+     * @return - int
+     */
     public static int randomiseMonster(int... types){
         double prob = Math.random() * probMonsterSum(types);
         double sum;
@@ -74,6 +102,11 @@ public class Generator {
         return -1;
     }
 
+    /**
+     * calculates the sum of monster probabilities
+     * @param types - types
+     * @return double
+     */
     public static double probMonsterSum(int... types){
         double res = 0;
         for(int prob : types) res += Const.MONSTER_TYPE_PROBABILITY[Game.getLvl() - 1][prob];

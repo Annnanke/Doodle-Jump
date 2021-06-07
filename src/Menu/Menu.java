@@ -17,6 +17,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.awt.*;
+
 import static Menu.Shop.*;
 
 
@@ -60,13 +62,16 @@ public class Menu extends Application {
         menuStage.setTitle("DoodleJump");
         menuStage.getIcons().add(icon);
         menuStage.setScene(menuScene);
-        menuStage.setX(100);
-        menuStage.setY(50);
         menuStage.show();
 
 
     }
 
+    /**
+     * opens lvlChooser
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void play(ActionEvent e) throws Exception {
         Sounds.playSoundButton();
 
@@ -74,12 +79,15 @@ public class Menu extends Application {
         lvlChoosingScene = new Scene(rootC);
         menuStage.setScene(lvlChoosingScene);
         lvlChoosingScene.getStylesheets().add(style);
-        menuStage.setX(100);
-        menuStage.setY(50);
         menuStage.show();
 
     }
-    public void lvl1(ActionEvent e) throws Exception {
+
+    /**
+     * opens lvl 1
+     * @param e - event
+     */
+    public void lvl1(ActionEvent e)  {
 
         Sounds.playSoundButton();
 
@@ -93,6 +101,11 @@ public class Menu extends Application {
         chosenLvl = 1;
     }
 
+    /**
+     * opens lvl2
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void lvl2(ActionEvent e) throws Exception {
 
         if(!lvl2IsUnlocked) return;
@@ -109,6 +122,11 @@ public class Menu extends Application {
         chosenLvl = 2;
     }
 
+    /**
+     * opens lvl3
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void lvl3(ActionEvent e) throws Exception {
 
         if(!lvl3IsUnlocked) return;
@@ -125,6 +143,11 @@ public class Menu extends Application {
         chosenLvl = 3;
     }
 
+    /**
+     * opens lvl4
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void lvl4(ActionEvent e) throws Exception {
 
         if(!lvl4IsUnlocked) return;
@@ -141,6 +164,11 @@ public class Menu extends Application {
         chosenLvl = 4;
     }
 
+    /**
+     * opens lvl5
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void lvl5(ActionEvent e) throws Exception {
 
         if(!lvl5IsUnlocked) return;
@@ -157,6 +185,11 @@ public class Menu extends Application {
         chosenLvl = 5;
     }
 
+    /**
+     * opens settings
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void settings(ActionEvent e) throws Exception {
 
         Sounds.playSoundButton();
@@ -165,8 +198,6 @@ public class Menu extends Application {
         SettingScene = new Scene(rootO);
         menuStage.setScene(SettingScene);
         SettingScene.getStylesheets().add(style);
-        menuStage.setX(100);
-        menuStage.setY(50);
         menuStage.show();
     }
     @FXML
@@ -199,6 +230,11 @@ public class Menu extends Application {
     }
 
 
+    /**
+     * getter for sound and theme
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void getSoundAndTheme(ActionEvent e) throws Exception {
 
         Sounds.playSoundButton();
@@ -228,8 +264,6 @@ public class Menu extends Application {
         ShopScene = new Scene(rootP);
         menuStage.setScene(ShopScene);
         ShopScene.getStylesheets().add(shopStyle);
-        menuStage.setX(100);
-        menuStage.setY(50);
         menuStage.show();
         System.out.println(""+ Shop.coins);
         yourCoins.setText( ""+ Shop.coins);
@@ -237,6 +271,11 @@ public class Menu extends Application {
 
     }
 
+    /**
+     * buys character Cosmo
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void cosmoBought (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         if ((Shop.coins - 5000) >= 0){
@@ -254,6 +293,11 @@ public class Menu extends Application {
             yourCoins.setTextFill(Color.RED);
         }
     }
+    /**
+     * buys character Ghost
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void ghostBought (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         if ((Shop.coins  - 1000) >= 0){
@@ -270,6 +314,12 @@ public class Menu extends Application {
             yourCoins.setTextFill(Color.RED);
         }
     }
+
+    /**
+     * Buys cool bullet
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void coolBulletBought (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         if ((Shop.coins - 1000) >= 0){
@@ -287,6 +337,12 @@ public class Menu extends Application {
         yourCoins.setTextFill(Color.RED);
     }
     }
+
+    /**
+     * buys cool platform
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void coolPlatformBought (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         if ((Shop.coins  - 200) >= 0){
@@ -304,6 +360,12 @@ public class Menu extends Application {
             yourCoins.setTextFill(Color.RED);
         }
     }
+
+    /**
+     * chooses cat
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void catChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         catPlayer.setText("chosen");
@@ -312,6 +374,12 @@ public class Menu extends Application {
         typeOfGG = 1;
         ///
     }
+
+    /**
+     * chooses cosmo
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void cosmoChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         cosmoPlayer1.setText("chosen");
@@ -320,6 +388,12 @@ public class Menu extends Application {
         typeOfGG = 3;
         ///
     }
+
+    /**
+     * chooses ghost
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void ghostChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         catPlayer.setText("Cat");
@@ -328,6 +402,12 @@ public class Menu extends Application {
         typeOfGG = 2;
         ///
     }
+
+    /**
+     * chooses normal bullets
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void normalBulletChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         normalBullet.setText("chosen");
@@ -335,12 +415,24 @@ public class Menu extends Application {
         typeOfBullet = 1;
 
     }
+
+    /**
+     * chooses cool bullets
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void coolBulletChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         coolBullet1.setText("chosen");
         normalBullet.setText("Simple");
         typeOfBullet = 2;
     }
+
+    /**
+     * Buys magic wand
+      * @param e - event
+     * @throws Exception - exception
+     */
     public void magicWandBought (ActionEvent e) throws Exception {
         if ((Shop.coins  - 100) >= 0) {
             Sounds.playSoundButton();
@@ -353,24 +445,48 @@ public class Menu extends Application {
         }
 
     }
+
+    /**
+     * chooses normal platforms
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void normalPlatformChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         normalPlatform.setText("chosen");
         coolPlatform1.setText("Cool");
         typeOfPlatform = 1;
     }
+
+    /**
+     * chooses cool platforms
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void coolPlatformChosen (ActionEvent e) throws Exception {
         Sounds.playSoundButton();
         normalPlatform.setText("Simple");
         coolPlatform1.setText("chosen");
         typeOfPlatform =2;
     }
+
+    /**
+     * moves back from lvlChooser to menu
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void back (ActionEvent e) throws Exception {
 
         Sounds.playSoundButton();
 
         start(menuStage);
     }
+
+    /**
+     * exits game
+     * @param e - event
+     * @throws Exception - exception
+     */
     public void exit (ActionEvent e) throws Exception {
 
         Sounds.playSoundButton();
@@ -427,11 +543,18 @@ public class Menu extends Application {
         bag.setText("Bag: "+ bagOfMagic);
     }
 
+    /**
+     * Turns diamonds into coins
+     */
     public static void diamandsIntoCoins(){
         Shop.coins += diamands*Const.DIAMOND_PICK;
         diamands = 0;
     }
 
+    /**
+     * main
+     * @param args - args
+     */
     public static void main(String[] args) {
         launch(args);
 

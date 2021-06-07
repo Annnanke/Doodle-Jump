@@ -17,6 +17,13 @@ public class Platform extends ImageView {
     private ImageView coinOrDiamand;
 
 
+    /**
+     * basic constructor
+     * @param x - x-coordinate
+     * @param y - y-coordinate
+     * @param type - type
+     * @param root - game root
+     */
     public Platform(double x, double y, int type, Game root) {
         super();
         this.root = root;
@@ -32,10 +39,18 @@ public class Platform extends ImageView {
         root.getChildren().add(this);
     }
 
+    /**
+     * getter for type
+     * @return int
+     */
     public int getType() {
         return type;
     }
 
+    /**
+     * setter for type
+     * @param type - int
+     */
     public void setType(int type) {
 
         this.type = type;
@@ -118,34 +133,59 @@ public class Platform extends ImageView {
         }
     }
 
+    /**
+     * returns whether a platform has a diamond
+     * @return - int
+     */
     public boolean hasDiamond(){
         if(coinOrDiamand == null) return false;
         return coinOrDiamand.getImage() == Const.DIAMOND;
     }
 
+    /**
+     * returns whether a platform has a coin
+     * @return - int
+     */
     public boolean hasCoin(){
         if(coinOrDiamand == null) return false;
         return coinOrDiamand.getImage() == Const.COIN;
     }
 
+    /**
+     * getter for coinOrDiamond
+     * @return - ImageView
+     */
     public ImageView getCoinOrDiamand(){
         return coinOrDiamand;
     }
 
+    /**
+     * setter for coinOrDiamond
+     * @param coinOrDiamand - ImageView
+     */
     public void setCoinOrDiamand(ImageView coinOrDiamand) {
         this.coinOrDiamand = coinOrDiamand;
     }
 
+    /**
+     * removes one post-cracked
+     */
     public static void removePostCracked(){
         for(Layer l : Layer.getAll())
             if(l.getPlatform().getType() == CRACKED && l.getPlatform().getImage() == Const.PLATFORM_1_POST_BROKEN[Game.getLvl() - 1][Shop.typeOfPlatform - 1])
                 l.getPlatform().disposeOfPostCracked();
     }
 
+    /**
+     * removes all post-cracked
+     */
     public void disposeOfPostCracked(){
         if(++crackedCounter > Const.POST_CRACKED_TIME_OF_LIFE) setImage(null);
     }
 
+    /**
+     * moves all moving platforms horizontally
+     */
     public static void moveAllMovingHorizontally(){
         for(Layer l : Layer.getAll())
             if(l.getPlatform().getType() == MOVING) {
@@ -158,19 +198,34 @@ public class Platform extends ImageView {
 
     }
 
+    /**
+     * getter for underMonster
+     * @return - bool
+     */
     public boolean isUnderMonster() {
         return underMonster;
     }
 
+    /**
+     * setter for underMonster
+     * @param underMonster - boolean
+     */
     public void setUnderMonster(boolean underMonster) {
         this.underMonster = underMonster;
     }
 
 
+    /**
+     * getter for stable
+     * @return - boolean
+     */
     public boolean isStable(){
         return type != CRACKED;
     }
 
+    /**
+     * moves all platform's detectors
+     */
     public void moveDetector(){
         detector.setX(getTranslateX());
         detector.setY(getTranslateY());
@@ -187,6 +242,9 @@ public class Platform extends ImageView {
         if(type == JETPACKED) setTranslateY(getTranslateY() - 40);
     }
 
+    /**
+     * totally removes platform
+     */
     public void remove(){
         root.getChildren().remove(this);
         root.getChildren().remove(getDetector());
@@ -196,18 +254,34 @@ public class Platform extends ImageView {
         setDetectable(false);
     }
 
+    /**
+     * getter for detectable
+     * @return - bool
+     */
     public boolean isDetectable(){
         return detectable;
     }
 
+    /**
+     * setter for detectable
+     * @param d - bool
+     */
     public void setDetectable(boolean d){
         detectable = d;
     }
 
+    /**
+     * getter for detector
+     * @return - Detector
+     */
     public Detector getDetector() {
         return detector;
     }
 
+    /**
+     * getter for additionalDetector
+     * @return - Detector
+     */
     public Detector getAdditionalDetector() {
         return additionalDetector;
     }

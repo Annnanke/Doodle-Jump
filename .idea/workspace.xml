@@ -2,14 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="295e4df6-673a-4174-9d45-df87ac6ff627" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Images/542-5427258_clouds-pixel-art.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Images/oie_Ei4rGtJq9HmX.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Doodle-Jump.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Doodle-Jump.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Basics/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Basics/Const.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/VictoryPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/VictoryPanelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/Menu/pause.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/Menu/pause.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Basics/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Icon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Basics/Icon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu/LevelChooserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu/MainController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu/Pause.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Pause.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu/Sounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Sounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu/pause.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/pause.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Detector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Detector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Doodler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Doodler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Layer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/LayerGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/LayerGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Platform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/ScoreBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/ScoreBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monsters/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monsters/Monster.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +80,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Program Files (x86)/Java/javafx/javafx-sdk-16/lib" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Практика/final game" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15299027" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -172,7 +183,7 @@
       <updated>1622552015646</updated>
       <workItem from="1622890932348" duration="6315000" />
       <workItem from="1623012370556" duration="376000" />
-      <workItem from="1623061990475" duration="1680000" />
+      <workItem from="1623061990475" duration="6155000" />
     </task>
     <task id="LOCAL-00001" summary="SHOP made">
       <created>1622742421377</created>
@@ -223,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623011795623</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Final commit (lvl blocking)">
+      <created>1623063847961</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1623063847961</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,104 +308,7 @@
     <MESSAGE value="commit 8 (shop attached)" />
     <MESSAGE value="commit 8 (black hole animation)" />
     <MESSAGE value="Final commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final commit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/Main.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>283</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>320</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>328</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>239</line>
-          <properties class="Menu.Menu" method="cosmoBought">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>223</line>
-          <properties class="Menu.Menu" method="shop">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>256</line>
-          <properties class="Menu.Menu" method="ghostBought">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>272</line>
-          <properties class="Menu.Menu" method="coolBulletBought">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>337</line>
-          <properties class="Menu.Menu" method="coolBulletChosen">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>343</line>
-          <properties class="Menu.Menu" method="magicWandBought">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>355</line>
-          <properties class="Menu.Menu" method="normalPlatformChosen">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>361</line>
-          <properties class="Menu.Menu" method="coolPlatformChosen">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>367</line>
-          <properties class="Menu.Menu" method="back">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Final commit (lvl blocking)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final commit (lvl blocking)" />
   </component>
 </project>

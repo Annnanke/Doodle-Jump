@@ -28,6 +28,9 @@ public class ScoreBar extends Pane {
     private Text amountOfDiamonds;
     private int points;
 
+    /**
+     * basic constructor
+     */
     public ScoreBar(){
         super();
         setWidth(Const.SCOREBAR_WIDTH);
@@ -88,20 +91,35 @@ public class ScoreBar extends Pane {
 
     }
 
+    /**
+     * getter for points
+     * @return - int
+     */
     public int getPoints() {
         return points;
     }
 
+    /**
+     * adds points
+     * @param points - int
+     */
     public void addPoints(int points) {
         this.points += points;
         score.setText("SCORE : " + this.points);
     }
 
+    /**
+     * setter for points
+     * @param points - int
+     */
     public void setPoints(int points) {
         this.points = points;
         score.setText("SCORE: " + this.points);
     }
 
+    /**
+     * updates score bar's values
+     */
     public void update(){
         amountOfCoins.setText("x"+ Shop.coins);
         amountOfWands.setText("x" + Shop.bagOfMagic);
