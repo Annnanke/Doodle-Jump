@@ -30,6 +30,10 @@ public class Menu extends Application {
     public static String shopStyle;
     public static int soundStatus;
     public static Game game;
+    public static boolean lvl2IsUnlocked = false;
+    public static boolean lvl3IsUnlocked = false;
+    public static boolean lvl4IsUnlocked = false;
+    public static boolean lvl5IsUnlocked = false;
 
     @FXML
     public Label bag = new Label();
@@ -66,7 +70,6 @@ public class Menu extends Application {
     public void play(ActionEvent e) throws Exception {
         Sounds.playSoundButton();
 
-        System.out.println("The girl is MAGIC");
         Parent rootC = FXMLLoader.load(getClass().getResource("lvlchooser.fxml"));
         lvlChoosingScene = new Scene(rootC);
         menuStage.setScene(lvlChoosingScene);
@@ -92,6 +95,8 @@ public class Menu extends Application {
 
     public void lvl2(ActionEvent e) throws Exception {
 
+        if(!lvl2IsUnlocked) return;
+
         Sounds.playSoundButton();
 
         Game game = new Game(2);
@@ -105,6 +110,8 @@ public class Menu extends Application {
     }
 
     public void lvl3(ActionEvent e) throws Exception {
+
+        if(!lvl3IsUnlocked) return;
 
         Sounds.playSoundButton();
 
@@ -120,6 +127,8 @@ public class Menu extends Application {
 
     public void lvl4(ActionEvent e) throws Exception {
 
+        if(!lvl4IsUnlocked) return;
+
         Sounds.playSoundButton();
 
         Game game = new Game(4);
@@ -133,6 +142,8 @@ public class Menu extends Application {
     }
 
     public void lvl5(ActionEvent e) throws Exception {
+
+        if(!lvl5IsUnlocked) return;
 
         Sounds.playSoundButton();
 
@@ -175,6 +186,12 @@ public class Menu extends Application {
                 }
                 if (code.getText().equals("admin.coins100")) {
                     coins += 100;
+                }
+                if(code.getText().equals("admin.unlockAll")){
+                    lvl2IsUnlocked = true;
+                    lvl3IsUnlocked = true;
+                    lvl4IsUnlocked = true;
+                    lvl5IsUnlocked = true;
                 }
                 code.setVisible(false);
             }

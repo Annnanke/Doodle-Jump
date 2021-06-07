@@ -65,6 +65,12 @@ public class VictoryPanelController implements Initializable {
         if(!Game.isRunning()){
             if(Game.getLvl() != 5){
                 Sounds.playSoundButton();
+                switch (Game.getLvl()){
+                    case 1 -> Menu.lvl2IsUnlocked = true;
+                    case 2 -> Menu.lvl3IsUnlocked = true;
+                    case 3 -> Menu.lvl4IsUnlocked = true;
+                    case 4 -> Menu.lvl5IsUnlocked = true;
+                }
                 Menu.chosenLvl++;
                 Game game = new Game(Menu.chosenLvl);
                 Scene scene = new Scene(game, Const.STAGE_WIDTH, Const.STAGE_HEIGHT);
@@ -80,6 +86,12 @@ public class VictoryPanelController implements Initializable {
     @FXML
     private void menu(ActionEvent e) throws IOException {
         if(!Game.isRunning()){
+            switch (Game.getLvl()){
+                case 1 -> Menu.lvl2IsUnlocked = true;
+                case 2 -> Menu.lvl3IsUnlocked = true;
+                case 3 -> Menu.lvl4IsUnlocked = true;
+                case 4 -> Menu.lvl5IsUnlocked = true;
+            }
             Menu.diamandsIntoCoins();
             Parent rootD = FXMLLoader.load(getClass().getResource("../Menu/main.fxml"));
             Menu.menuScene = new Scene(rootD);

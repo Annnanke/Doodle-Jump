@@ -66,7 +66,7 @@ public class Const {
         public static final int TIME_OF_TRANSPARENCY = 200;
 
         //MONSTERS
-        public static final double[] PROBABILITY_OF_MONSTER_APPEARANCE = {0, 0.2, 0.2, 0.5, 0};
+        public static final double[] PROBABILITY_OF_MONSTER_APPEARANCE = {0, 0.2, 0.2, 0.5, 0.2};
         public static final double[][] MONSTER_TYPE_PROBABILITY = {{0,0,0,0},
                                                                    {0.5,0.5,0,0},
                                                                    {0,0,0,1},

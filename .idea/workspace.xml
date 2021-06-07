@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="295e4df6-673a-4174-9d45-df87ac6ff627" name="Default Changelist" comment="commit 8 (black hole animation)">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+    <list default="true" id="295e4df6-673a-4174-9d45-df87ac6ff627" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Images/542-5427258_clouds-pixel-art.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/oie_Ei4rGtJq9HmX.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Doodle-Jump.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Doodle-Jump.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Basics/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Basics/Const.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/LossPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/LossPanelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/VictoryPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/VictoryPanelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu/Pause.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Pause.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu/pause.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/pause.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Doodler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Doodler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/ScoreBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/ScoreBar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +171,8 @@
       <option name="presentableId" value="Default" />
       <updated>1622552015646</updated>
       <workItem from="1622890932348" duration="6315000" />
+      <workItem from="1623012370556" duration="376000" />
+      <workItem from="1623061990475" duration="1680000" />
     </task>
     <task id="LOCAL-00001" summary="SHOP made">
       <created>1622742421377</created>
@@ -217,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623004884159</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Final commit">
+      <created>1623011795623</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1623011795623</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +289,8 @@
     <MESSAGE value="SHOP rework" />
     <MESSAGE value="commit 8 (shop attached)" />
     <MESSAGE value="commit 8 (black hole animation)" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit 8 (black hole animation)" />
+    <MESSAGE value="Final commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -295,22 +302,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>266</line>
+          <line>283</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>303</line>
+          <line>320</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>311</line>
+          <line>328</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>222</line>
+          <line>239</line>
           <properties class="Menu.Menu" method="cosmoBought">
             <option name="EMULATED" value="true" />
           </properties>
@@ -318,7 +325,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>206</line>
+          <line>223</line>
           <properties class="Menu.Menu" method="shop">
             <option name="EMULATED" value="true" />
           </properties>
@@ -326,7 +333,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>239</line>
+          <line>256</line>
           <properties class="Menu.Menu" method="ghostBought">
             <option name="EMULATED" value="true" />
           </properties>
@@ -334,7 +341,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>255</line>
+          <line>272</line>
           <properties class="Menu.Menu" method="coolBulletBought">
             <option name="EMULATED" value="true" />
           </properties>
@@ -342,7 +349,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>320</line>
+          <line>337</line>
           <properties class="Menu.Menu" method="coolBulletChosen">
             <option name="EMULATED" value="true" />
           </properties>
@@ -350,7 +357,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>326</line>
+          <line>343</line>
           <properties class="Menu.Menu" method="magicWandBought">
             <option name="EMULATED" value="true" />
           </properties>
@@ -358,7 +365,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>338</line>
+          <line>355</line>
           <properties class="Menu.Menu" method="normalPlatformChosen">
             <option name="EMULATED" value="true" />
           </properties>
@@ -366,7 +373,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>344</line>
+          <line>361</line>
           <properties class="Menu.Menu" method="coolPlatformChosen">
             <option name="EMULATED" value="true" />
           </properties>
@@ -374,7 +381,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
-          <line>350</line>
+          <line>367</line>
           <properties class="Menu.Menu" method="back">
             <option name="EMULATED" value="true" />
           </properties>
