@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Doodle-Jump:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="295e4df6-673a-4174-9d45-df87ac6ff627" name="Default Changelist" comment="" />
+    <list default="true" id="295e4df6-673a-4174-9d45-df87ac6ff627" name="Default Changelist" comment="Final commit (javadocs)">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Doodle_Jump_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Doodle-Jump.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Doodle-Jump.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Basics/Const.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Basics/Vector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Menu.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -31,31 +50,60 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Ruslan" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1tLcsPKleigvGpwTinaoDN6gr5l" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/sample" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Ann/Videos/javafx-sdk-16/lib",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Menu" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ann\Videos\Doodle-Jump\src\GUI" />
       <recent name="C:\Users\Ann\Videos\Doodle-Jump\src\sample" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\IdeaProjects\Doodle-Jump\src\Images" />
+      <recent name="C:\Users\admin\IdeaProjects\Doodle-Jump\src" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Menu">
+  <component name="RunManager" selected="Application.Main (1)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Doodle-Jump" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main.Main" />
       <module name="Doodle-Jump" />
@@ -74,7 +122,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="15 (2)" />
       <option name="MAIN_CLASS_NAME" value="Menu.Menu" />
       <module name="Doodle-Jump" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Ann\Videos\javafx-sdk-16\lib&quot; --add-modules javafx.controls,javafx.media,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files (x86)\Java\javafx\javafx-sdk-16\lib&quot; --add-modules javafx.controls,javafx.media,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Menu.*" />
@@ -91,15 +139,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Pause" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Menu.Pause" />
+      <module name="Doodle-Jump" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files (x86)\Java\javafx\javafx-sdk-16\lib&quot; --add-modules javafx.controls,javafx.media,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Menu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Menu1" />
       <item itemvalue="Application.Menu" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Pause" />
+      <item itemvalue="Application.Main (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Menu" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Menu" />
+        <item itemvalue="Application.Pause" />
       </list>
     </recent_temporary>
   </component>
@@ -111,6 +177,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622552015646</updated>
+      <workItem from="1622890932348" duration="6315000" />
+      <workItem from="1623012370556" duration="376000" />
+      <workItem from="1623061990475" duration="6391000" />
+      <workItem from="1623071724762" duration="4271000" />
+      <workItem from="1623077655999" duration="848000" />
+      <workItem from="1623134643024" duration="3334000" />
+      <workItem from="1623140996503" duration="8000" />
+      <workItem from="1623141047145" duration="2000" />
+      <workItem from="1623173808828" duration="1009000" />
+      <workItem from="1623248683718" duration="104000" />
+      <workItem from="1623249972253" duration="652000" />
+      <workItem from="1623281765686" duration="1030000" />
+      <workItem from="1623403021516" duration="275000" />
+      <workItem from="1623513324585" duration="19000" />
+      <workItem from="1623764207406" duration="1601000" />
+      <workItem from="1624539022756" duration="16000" />
+      <workItem from="1646394440790" duration="71000" />
+      <workItem from="1646401728004" duration="24000" />
+      <workItem from="1647086887863" duration="2590000" />
+      <workItem from="1654098204405" duration="249000" />
+      <workItem from="1654710579469" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="SHOP made">
       <created>1622742421377</created>
@@ -126,22 +213,130 @@
       <option name="project" value="LOCAL" />
       <updated>1622743537656</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="SHOP rework">
+      <created>1622984542838</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622984542838</updated>
+    </task>
+    <task id="LOCAL-00004" summary="SHOP rework">
+      <created>1622997129048</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1622997129048</updated>
+    </task>
+    <task id="LOCAL-00005" summary="commit 8 (shop attached)">
+      <created>1623003885869</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1623003885869</updated>
+    </task>
+    <task id="LOCAL-00006" summary="commit 8 (black hole animation)">
+      <created>1623004884159</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1623004884159</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Final commit">
+      <created>1623011795623</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1623011795623</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Final commit (lvl blocking)">
+      <created>1623063847961</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1623063847961</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Final commit (javadocs)">
+      <created>1623068341874</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1623068341874</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Final commit (javadocs)">
+      <created>1623072383006</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1623072383006</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="SHOP made" />
-    <option name="LAST_COMMIT_MESSAGE" value="SHOP made" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/Main.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Ruslan" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="c33de8f2-63e5-4708-ac04-d9c9f2838cdb">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="c33de8f2-63e5-4708-ac04-d9c9f2838cdb" value="TOOL_WINDOW" />
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="SHOP made" />
+    <MESSAGE value="SHOP rework" />
+    <MESSAGE value="commit 8 (shop attached)" />
+    <MESSAGE value="commit 8 (black hole animation)" />
+    <MESSAGE value="Final commit" />
+    <MESSAGE value="Final commit (lvl blocking)" />
+    <MESSAGE value="Final commit (javadocs)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final commit (javadocs)" />
   </component>
 </project>

@@ -1,0 +1,280 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"295e4df6-673a-4174-9d45-df87ac6ff627\" name=\"Default Changelist\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/Images/moon.png\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Images/sun.gif\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/Doodle-Jump/GUI/LossPanel.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/Doodle-Jump/GUI/LossPanel.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/Doodle-Jump/GUI/VictoryPanel.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/Doodle-Jump/GUI/VictoryPanel.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/Doodle-Jump/Images/sun.png\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/Doodle-Jump/Menu/main.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/Doodle-Jump/Menu/main.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/Doodle-Jump/Menu/shop.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/Doodle-Jump/Menu/shop.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/GUI/LossPanel.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/GUI/LossPanel.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/GUI/LossPanelController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/GUI/LossPanelController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/GUI/VictoryPanel.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/GUI/VictoryPanel.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/GUI/VictoryPanelController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/GUI/VictoryPanelController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Images/sun.png\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Menu/Menu.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Menu/Menu.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Menu/Shop.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Menu/Shop.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Menu/lvlchooser.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Menu/lvlchooser.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Menu/main.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Menu/main.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Menu/shop.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Menu/shop.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n        <option value=\"Enum\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <favorite-branches>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"REMOTE\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"origin/main\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </favorite-branches>\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1tLcsPKleigvGpwTinaoDN6gr5l\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/GUI\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Libraries\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"Menu\" />\r\n    </key>\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Ann\\Videos\\Doodle-Jump\\src\\GUI\" />\r\n      <recent name=\"C:\\Users\\Ann\\Videos\\Doodle-Jump\\src\\sample\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\admin\\IdeaProjects\\Doodle-Jump\\src\\Images\" />\r\n      <recent name=\"C:\\Users\\admin\\IdeaProjects\\Doodle-Jump\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Menu\">\r\n    <configuration default=\"true\" type=\"ArquillianTestNG\" factoryName=\"\" nameIsGenerated=\"true\">\r\n      <option name=\"arquillianRunConfiguration\">\r\n        <value>\r\n          <option name=\"containerStateName\" value=\"\" />\r\n        </value>\r\n      </option>\r\n      <option name=\"TEST_OBJECT\" value=\"CLASS\" />\r\n      <properties />\r\n      <listeners />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main.Main\" />\r\n      <module name=\"Doodle-Jump\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;C:\\Users\\Ann\\Videos\\javafx-sdk-11.0.2\\lib&quot; --add-modules javafx.controls,javafx.fxml\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"Main.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Menu\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"15 (2)\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Menu.Menu\" />\r\n      <module name=\"Doodle-Jump\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;C:\\Users\\Ann\\Videos\\javafx-sdk-16\\lib&quot; --add-modules javafx.controls,javafx.media,javafx.fxml\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"Menu.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Menu1\" type=\"Application\" factoryName=\"Application\">\r\n      <module name=\"Doodle-Jump\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Pause\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Menu.Pause\" />\r\n      <module name=\"Doodle-Jump\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"Menu.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.Menu1\" />\r\n      <item itemvalue=\"Application.Menu\" />\r\n      <item itemvalue=\"Application.Main\" />\r\n      <item itemvalue=\"Application.Pause\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Menu\" />\r\n        <item itemvalue=\"Application.Pause\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"295e4df6-673a-4174-9d45-df87ac6ff627\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1622552015646</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1622552015646</updated>\r\n      <workItem from=\"1622890932348\" duration=\"6315000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"SHOP made\">\r\n      <created>1622742421377</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1622742421377</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"SHOP made\">\r\n      <created>1622743537656</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1622743537656</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"SHOP rework\">\r\n      <created>1622984542838</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1622984542838</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/Ruslan\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n        <entry key=\"c33de8f2-63e5-4708-ac04-d9c9f2838cdb\">\r\n          <value>\r\n            <State>\r\n              <option name=\"SHOW_ONLY_AFFECTED_CHANGES\" value=\"true\" />\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"HEAD\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                  <entry key=\"roots\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"$PROJECT_DIR$\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"OPEN_GENERIC_TABS\">\r\n      <map>\r\n        <entry key=\"c33de8f2-63e5-4708-ac04-d9c9f2838cdb\" value=\"TOOL_WINDOW\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"SHOP made\" />\r\n    <MESSAGE value=\"SHOP rework\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"SHOP rework\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/Main/Main.java</url>\r\n          <line>7</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>218</line>\r\n          <properties class=\"Menu.Menu\" method=\"cosmoBought\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>202</line>\r\n          <properties class=\"Menu.Menu\" method=\"shop\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>233</line>\r\n          <properties class=\"Menu.Menu\" method=\"ghostBought\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"5\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>247</line>\r\n          <properties class=\"Menu.Menu\" method=\"coolBulletBought\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"6\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>260</line>\r\n          <properties class=\"Menu.Menu\" method=\"coolPlatformBought\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"7\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>271</line>\r\n          <properties class=\"Menu.Menu\" method=\"catChosen\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"8\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>278</line>\r\n          <properties class=\"Menu.Menu\" method=\"cosmoChosen\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"9\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>284</line>\r\n          <properties class=\"Menu.Menu\" method=\"ghostChosen\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"10\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>290</line>\r\n          <properties class=\"Menu.Menu\" method=\"normalBulletChosen\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"11\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>296</line>\r\n          <properties class=\"Menu.Menu\" method=\"coolBulletChosen\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"12\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>301</line>\r\n          <properties class=\"Menu.Menu\" method=\"magicWandBought\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"13\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>313</line>\r\n          <properties class=\"Menu.Menu\" method=\"normalPlatformChosen\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"14\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>318</line>\r\n          <properties class=\"Menu.Menu\" method=\"coolPlatformChosen\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"15\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>\r\n          <line>323</line>\r\n          <properties class=\"Menu.Menu\" method=\"back\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"16\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -2,24 +2,10 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="295e4df6-673a-4174-9d45-df87ac6ff627" name="Default Changelist" comment="">
+-      <change afterPath="$PROJECT_DIR$/src/Images/moon.png" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/Images/sun.gif" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_06_2021_20_51__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_06_2021_20_51__Default_Changelist_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/LossPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/LossPanel.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/VictoryPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/GUI/VictoryPanel.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/Images/sun.png" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/Menu/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/Menu/main.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/Menu/shop.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/Menu/shop.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/GUI/LossPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/LossPanel.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/GUI/LossPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/LossPanelController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/GUI/VictoryPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/VictoryPanel.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/GUI/VictoryPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/VictoryPanelController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Images/sun.png" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Menu.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Menu/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Shop.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Menu/lvlchooser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/lvlchooser.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Menu/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/main.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Menu/shop.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/shop.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Doodle-Jump/Menu/lvlchooser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Doodle-Jump/Menu/lvlchooser.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -29,9 +15,9 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="FxmlFile" />
++        <option value="Enum" />
+         <option value="Class" />
+-        <option value="Enum" />
++        <option value="FxmlFile" />
+       </list>
+     </option>
+   </component>
+@@ -71,7 +57,7 @@
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="aspect.path.notification.shown" value="true" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/GUI" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Program Files (x86)/Java/javafx/javafx-sdk-16/lib" />
+     <property name="project.structure.last.edited" value="Libraries" />
+     <property name="project.structure.proportion" value="0.15" />
+     <property name="project.structure.side.proportion" value="0.2" />
+@@ -90,19 +76,6 @@
+     </key>
+   </component>
+   <component name="RunManager" selected="Application.Menu">
+-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+-      <option name="arquillianRunConfiguration">
+-        <value>
+-          <option name="containerStateName" value="" />
+-        </value>
+-      </option>
+-      <option name="TEST_OBJECT" value="CLASS" />
+-      <properties />
+-      <listeners />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="Main.Main" />
+       <module name="Doodle-Jump" />
+@@ -121,7 +94,7 @@
+       <option name="ALTERNATIVE_JRE_PATH" value="15 (2)" />
+       <option name="MAIN_CLASS_NAME" value="Menu.Menu" />
+       <module name="Doodle-Jump" />
+-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Ann\Videos\javafx-sdk-16\lib&quot; --add-modules javafx.controls,javafx.media,javafx.fxml" />
++      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files (x86)\Java\javafx\javafx-sdk-16\lib&quot; --add-modules javafx.controls,javafx.media,javafx.fxml" />
+       <extension name="coverage">
+         <pattern>
+           <option name="PATTERN" value="Menu.*" />
+@@ -151,6 +124,17 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
++      <option name="arquillianRunConfiguration">
++        <value>
++          <option name="containerStateName" value="" />
++        </value>
++      </option>
++      <option name="TEST_OBJECT" value="class" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <list>
+       <item itemvalue="Application.Menu1" />
+       <item itemvalue="Application.Menu" />
+@@ -273,7 +257,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>218</line>
+-          <properties class="Menu.Menu" method="cosmoBought">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="3" />
+@@ -281,7 +265,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>202</line>
+-          <properties class="Menu.Menu" method="shop">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="4" />
+@@ -289,7 +273,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>233</line>
+-          <properties class="Menu.Menu" method="ghostBought">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="5" />
+@@ -297,7 +281,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>247</line>
+-          <properties class="Menu.Menu" method="coolBulletBought">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="6" />
+@@ -305,7 +289,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>260</line>
+-          <properties class="Menu.Menu" method="coolPlatformBought">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="7" />
+@@ -313,7 +297,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>271</line>
+-          <properties class="Menu.Menu" method="catChosen">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="8" />
+@@ -321,7 +305,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>278</line>
+-          <properties class="Menu.Menu" method="cosmoChosen">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="9" />
+@@ -329,7 +313,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>284</line>
+-          <properties class="Menu.Menu" method="ghostChosen">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="10" />
+@@ -337,7 +321,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>290</line>
+-          <properties class="Menu.Menu" method="normalBulletChosen">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="11" />
+@@ -345,7 +329,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>296</line>
+-          <properties class="Menu.Menu" method="coolBulletChosen">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="12" />
+@@ -353,7 +337,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>301</line>
+-          <properties class="Menu.Menu" method="magicWandBought">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="13" />
+@@ -361,7 +345,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>313</line>
+-          <properties class="Menu.Menu" method="normalPlatformChosen">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="14" />
+@@ -369,7 +353,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>318</line>
+-          <properties class="Menu.Menu" method="coolPlatformChosen">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="15" />
+@@ -377,7 +361,7 @@
+         <line-breakpoint enabled="true" type="java-method">
+           <url>file://$PROJECT_DIR$/src/Menu/Menu.java</url>
+           <line>323</line>
+-          <properties class="Menu.Menu" method="back">
++          <properties class="Menu.Menu">
+             <option name="EMULATED" value="true" />
+           </properties>
+           <option name="timeStamp" value="16" />
+Index: .idea/libraries/lib.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"libraryTable\">\r\n  <library name=\"lib\">\r\n    <CLASSES>\r\n      <root url=\"file://$PROJECT_DIR$/../javafx-sdk-16/lib\" />\r\n    </CLASSES>\r\n    <JAVADOC />\r\n    <SOURCES>\r\n      <root url=\"file://$PROJECT_DIR$/../javafx-sdk-16/lib\" />\r\n    </SOURCES>\r\n    <jarDirectory url=\"file://$PROJECT_DIR$/../javafx-sdk-16/lib\" recursive=\"false\" />\r\n    <jarDirectory url=\"file://$PROJECT_DIR$/../javafx-sdk-16/lib\" recursive=\"false\" type=\"SOURCES\" />\r\n  </library>\r\n</component>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/lib.xml b/.idea/libraries/lib.xml
+--- a/.idea/libraries/lib.xml	
++++ b/.idea/libraries/lib.xml	
+@@ -1,13 +1,13 @@
+ <component name="libraryTable">
+   <library name="lib">
+     <CLASSES>
+-      <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib" />
++      <root url="file://$PROJECT_DIR$/../../../../Program Files (x86)/Java/javafx/javafx-sdk-16/lib" />
+     </CLASSES>
+     <JAVADOC />
+     <SOURCES>
+-      <root url="file://$PROJECT_DIR$/../javafx-sdk-16/lib" />
++      <root url="file://$PROJECT_DIR$/../../../../Program Files (x86)/Java/javafx/javafx-sdk-16/lib" />
+     </SOURCES>
+-    <jarDirectory url="file://$PROJECT_DIR$/../javafx-sdk-16/lib" recursive="false" />
+-    <jarDirectory url="file://$PROJECT_DIR$/../javafx-sdk-16/lib" recursive="false" type="SOURCES" />
++    <jarDirectory url="file://$PROJECT_DIR$/../../../../Program Files (x86)/Java/javafx/javafx-sdk-16/lib" recursive="false" />
++    <jarDirectory url="file://$PROJECT_DIR$/../../../../Program Files (x86)/Java/javafx/javafx-sdk-16/lib" recursive="false" type="SOURCES" />
+   </library>
+ </component>
+\ No newline at end of file
+Index: out/production/Doodle-Jump/Menu/lvlchooser.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.image.Image?>\r\n<?import javafx.scene.image.ImageView?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.text.Font?>\r\n\r\n<AnchorPane prefHeight=\"700.0\" prefWidth=\"500.0\" xmlns=\"http://javafx.com/javafx/16\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"Menu.Menu\">\r\n   <children>\r\n      <ImageView fitHeight=\"112.0\" fitWidth=\"124.0\" layoutX=\"28.0\" layoutY=\"79.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../Images/lvl1.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <ImageView fitHeight=\"112.0\" fitWidth=\"112.0\" layoutX=\"28.0\" layoutY=\"202.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../Images/lvl2.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <ImageView fitHeight=\"112.0\" fitWidth=\"112.0\" layoutX=\"28.0\" layoutY=\"323.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../Images/lvl3.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <ImageView fitHeight=\"112.0\" fitWidth=\"112.0\" layoutX=\"28.0\" layoutY=\"445.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../Images/lvl4.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <ImageView fitHeight=\"112.0\" fitWidth=\"119.0\" layoutX=\"28.0\" layoutY=\"566.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../Images/lvl5.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <Button layoutX=\"250.0\" layoutY=\"108.0\" mnemonicParsing=\"false\" onAction=\"#lvl1\" prefHeight=\"53.0\" prefWidth=\"186.0\" text=\"Level 1\">\r\n         <font>\r\n            <Font size=\"25.0\" />\r\n         </font>\r\n      </Button>\r\n      <Button layoutX=\"250.0\" layoutY=\"231.0\" mnemonicParsing=\"false\" onAction=\"#lvl2\" prefHeight=\"53.0\" prefWidth=\"186.0\" text=\"Level 2\">\r\n         <font>\r\n            <Font size=\"25.0\" />\r\n         </font>\r\n      </Button>\r\n      <Button layoutX=\"250.0\" layoutY=\"352.0\" mnemonicParsing=\"false\" onAction=\"#lvl3\" prefHeight=\"53.0\" prefWidth=\"186.0\" text=\"Level 3\">\r\n         <font>\r\n            <Font size=\"25.0\" />\r\n         </font>\r\n      </Button>\r\n      <Button layoutX=\"250.0\" layoutY=\"474.0\" mnemonicParsing=\"false\" onAction=\"#lvl4\" prefHeight=\"53.0\" prefWidth=\"186.0\" text=\"Level 4\">\r\n         <font>\r\n            <Font size=\"25.0\" />\r\n         </font>\r\n      </Button>\r\n      <Button layoutX=\"250.0\" layoutY=\"595.0\" mnemonicParsing=\"false\" onAction=\"#lvl5\" prefHeight=\"53.0\" prefWidth=\"186.0\" text=\"Level 5\">\r\n         <font>\r\n            <Font size=\"25.0\" />\r\n         </font>\r\n      </Button>\r\n      <Button layoutX=\"52.0\" layoutY=\"14.0\" mnemonicParsing=\"false\" onAction=\"#back\" prefHeight=\"54.0\" prefWidth=\"64.0\" text=\"в¬…\">\r\n         <font>\r\n            <Font size=\"24.0\" />\r\n         </font>\r\n      </Button>\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/out/production/Doodle-Jump/Menu/lvlchooser.fxml b/out/production/Doodle-Jump/Menu/lvlchooser.fxml
+--- a/out/production/Doodle-Jump/Menu/lvlchooser.fxml	
++++ b/out/production/Doodle-Jump/Menu/lvlchooser.fxml	
+@@ -58,7 +58,7 @@
+             <Font size="25.0" />
+          </font>
+       </Button>
+-      <Button layoutX="52.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="54.0" prefWidth="64.0" text="в¬…">
++      <Button layoutX="52.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="54.0" prefWidth="64.0" text="⬅">
+          <font>
+             <Font size="24.0" />
+          </font>

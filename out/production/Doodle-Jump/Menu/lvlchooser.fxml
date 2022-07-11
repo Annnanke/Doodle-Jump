@@ -38,22 +38,22 @@
             <Font size="25.0" />
          </font>
       </Button>
-      <Button layoutX="250.0" layoutY="231.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="186.0" text="Level 2">
+      <Button layoutX="250.0" layoutY="231.0" mnemonicParsing="false" onAction="#lvl2" prefHeight="53.0" prefWidth="186.0" text="Level 2">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button layoutX="250.0" layoutY="352.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="186.0" text="Level 3">
+      <Button layoutX="250.0" layoutY="352.0" mnemonicParsing="false" onAction="#lvl3" prefHeight="53.0" prefWidth="186.0" text="Level 3">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button layoutX="250.0" layoutY="474.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="186.0" text="Level 4">
+      <Button layoutX="250.0" layoutY="474.0" mnemonicParsing="false" onAction="#lvl4" prefHeight="53.0" prefWidth="186.0" text="Level 4">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button layoutX="250.0" layoutY="595.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="186.0" text="Level 5">
+      <Button layoutX="250.0" layoutY="595.0" mnemonicParsing="false" onAction="#lvl5" prefHeight="53.0" prefWidth="186.0" text="Level 5">
          <font>
             <Font size="25.0" />
          </font>

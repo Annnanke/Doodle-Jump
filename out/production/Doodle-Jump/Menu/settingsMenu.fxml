@@ -34,7 +34,7 @@
             <Font size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="themeCoffee" layoutX="222.0" layoutY="316.0" mnemonicParsing="false" text="Coffee">
+      <RadioButton fx:id="themeCoffee" layoutX="222.0" layoutY="316.0" mnemonicParsing="false" text="Night">
          <font>
             <Font size="18.0" />
          </font>
@@ -42,7 +42,7 @@
             <ToggleGroup fx:id="theme" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="themeMilk" layoutX="352.0" layoutY="316.0" mnemonicParsing="false" text="Milk" toggleGroup="$theme">
+      <RadioButton fx:id="themeMilk" layoutX="352.0" layoutY="316.0" mnemonicParsing="false" text="Day" toggleGroup="$theme">
          <font>
             <Font size="18.0" />
          </font>
@@ -52,7 +52,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <ImageView fitHeight="203.0" fitWidth="215.0" layoutX="149.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="233.0" fitWidth="281.0" layoutX="9.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/settings_coffee.gif" />
          </image>
